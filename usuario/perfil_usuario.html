@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>UFLY</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+</head>
+
+<body class="perfil-usuario">
+
+
+    <div id="wrapper">
+
+        <!--SIDEBAR-->
+
+        <div id="sidebar-wrapper">
+            <div id="border-logo">
+                <img src="/img/logo.png" class="img-fluid">
+            </div>
+            <ul class="sidebar-nav">
+
+                <li>
+                    <a href="#">Mi informacion</a>
+                </li>
+                <li>
+                    <a href="#">Mis tiquetes</a>
+                </li>
+            </ul>
+        </div>
+        <!--CONTENIDO-->
+        <div class="container-fluid" id="navegation">
+            <div class="row">
+                <div class="col-lg-2 xs-12 ">
+                    <button type="button" id="menu-toggle" class="btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div id="panel-imagen" class="row">
+                        <img src="/img/hombre.png" class="img-fluid">
+
+                    </div>
+                    <div class="row panel d-flex justify-content-start align-items-center my-3 mx-5 py-2 px-2 ">
+
+                        <button type="button" id="btn-editar" class="btn">
+                            Editar
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-10 md-10 xs-12">
+                    <h1 id="titulo-perfil">Mi información</h1>
+
+                    <h6 id="titulo-perfil">Datos personales</h6>
+
+                    <form action="">
+                        <div class="form-group ">
+                            <label for="nombre">Nombre completo</label>
+                            <input type="text" name="nombre" id="nombre" class="form-control input-group-text">
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="idenficiacion">Idenficación</label>
+                            <input type="text" name="idenficiacion" id="idenficiacion"
+                                class="form-control input-group-text">
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="correo">Correo electrónico</label>
+                            <input type="text" name="correo" id="correo" class="form-control input-group-text">
+                        </div>
+                        <div class="form-group ">
+                            <label for="telefono">Teléfono</label>
+                            <input type="text" name="telefono" id="telefono" class="form-control input-group-text">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="direccion">Dirección</label>
+                            <input type="text" name="direccion" id="direccion" class="form-control input-group-text">
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="fecha-nacimiento">Fecha de nacimiento</label>
+                            <input type="text" name="fecha-nacimiento" id="fecha-nacimiento"
+                                class="form-control input-group-text">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("menuDisplayed");
+        });
+
+    </script>
+
+</body>
