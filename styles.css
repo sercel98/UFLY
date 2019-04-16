@@ -48,9 +48,6 @@ table, tr, td, thead {
   width: 80%;
 }
 
-#genero {
-  width: 30%;
-}
 
 .informacion-aeropuerto {
   background-color: #00ADB5;
@@ -70,7 +67,7 @@ table, tr, td, thead {
   color: black;
 }
 
-.registro {
+.registro-usuario {
   background: url(/img/fondo-cielo.png);
 }
 
@@ -159,4 +156,14 @@ td {
 
 .sidebar-nav li a:hover {
   background-color: rgb(108, 115, 128);
+}
+
+#registrar_aeropuertos button{
+  font-size: 24px;
+  font-weight:bold;
+}
+
+#registrar_usuario {
+  font-size: 24px;
+  border: 0px;
 }
