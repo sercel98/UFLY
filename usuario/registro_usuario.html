@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-    
+
 </head>
 
 <body class="registro-usuario">
-   
-    <form action="" class="formulario-registro">
+
+    <form action="" class="formulario-registro" @submit.prevent="procesarFormulario" id="formulario-registro-usuario">
         <div class="d-flex justify-content-center">
             <img src="/img/logo.png" class="my-3" width="15%" height="15%">
         </div>
@@ -22,72 +22,83 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="primer-nombre">Primer nombre</label>
-                    <input type="text" name="primer-nombre" id="primer-nombre" class="form-control input-group-text">
+                    <input type="text" name="primer-nombre" id="primer-nombre" v-model="primerNombre"
+                        class="form-control input-group-text">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="segundo-nombre">Segundo nombre</label>
-                    <input type="text" name="segundo-nombre" id="segundo-nombre" class="form-control input-group-text">
+                    <input type="text" name="segundo-nombre" id="segundo-nombre" v-model="segundoNombre"
+                        class="form-control input-group-text">
                 </div>
             </div>
-            
+
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="primer-apellido">Primer apellido</label>
-                    <input type="text" name="primer-apellido" id="primer-apellido" class="form-control input-group-text">
+                    <input type="text" name="primer-apellido" id="primer-apellido" v-model="primerApellido"
+                        class="form-control input-group-text">
                 </div>
                 <div class="form-group col-md-6 ">
                     <label for="segundo-apellido">Segundo apellido</label>
-                    <input type="text" name="segundo-apellido" id="segundo-apellido" class="form-control input-group-text">
+                    <input type="text" name="segundo-apellido" id="segundo-apellido" v-model="segundoApellido"
+                        class="form-control input-group-text">
                 </div>
             </div>
-            
+
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="idenficiacion">Idenficación</label>
-                    <input type="text" name="idenficiacion" id="idenficiacion" class="form-control input-group-text">
+                    <label for="identificacion">Identificación</label>
+                    <input type="text" name="identificacion" id="identificacion" v-model="identificacion"
+                        class="form-control input-group-text">
                 </div>
-            
+
                 <div class="form-group col-md-3">
                     <label for="genero">Género</label>
-                    <select name="genero" id="genero" class="form-control input-group-text">
+                    <select name="genero" id="genero" v-model="genero" class="form-control input-group-text">
                         <option>Masculino</option>
                         <option>Femenino</option>
                     </select>
                 </div>
-            
+
             </div>
-            
+
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="correo">Correo electrónico</label>
-                    <input type="email" name="correo" id="correo" class="form-control input-group-text">
+                    <input type="email" name="correo" id="correo" v-model="correoElectronico"
+                        class="form-control input-group-text">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="telefono">Teléfono</label>
-                    <input type="text" name="telefono" id="telefono" class="form-control input-group-text">
+                    <input type="text" name="telefono" id="telefono" v-model="telefono"
+                        class="form-control input-group-text">
                 </div>
-            
+
             </div>
-            
+
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="direccion">Dirección</label>
-                    <input type="text" name="direccion" id="direccion" class="form-control input-group-text">
+                    <input type="text" name="direccion" id="direccion" v-model="direccion"
+                        class="form-control input-group-text">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="fecha-nacimiento">Fecha de nacimiento</label>
-                    <input type="date" name="fecha-nacimiento" id="fecha-nacimiento" class="form-control input-group-text">
+                    <input type="date" name="fecha-nacimiento" id="fecha-nacimiento" v-model="fechaNacimiento"
+                        class="form-control input-group-text">
                 </div>
             </div>
-            
+
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="contrasena">Contraseña</label>
-                    <input type="password" name="contrasena" id="contrasena" class="form-control input-group-text">
+                    <input type="password" name="contrasena" id="contrasena" v-model="contrasena"
+                        class="form-control input-group-text">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="confirmar-contrasena">Confirmar contraseña</label>
-                    <input type="password" name="confirmar-contrasena" id="confirmar-contrasena" class="form-control input-group-text">
+                    <input type="password" name="confirmar-contrasena" id="confirmar-contrasena"
+                        class="form-control input-group-text">
                 </div>
             </div>
         </div>
@@ -98,10 +109,53 @@
     </form>
 
 
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+
+
+
+    <!--TODO:Validar si el email es válido -->
+    <script>
+
+        var app = new Vue({
+            el: '#formulario-registro-usuario',
+            data:
+            {
+                primerNombre: '',
+                segundoNombre: '',
+                primerApellido: '',
+                segundoApellido: '',
+                identificacion: '',
+                genero: '',
+                correoElectronico: '',
+                telefono: '',
+                direccion: '',
+                fechaNacimiento: '',
+                contrasena: ''
+
+            },
+            methods: {
+                procesarFormulario: function () {
+                    console.log({ primer_nombre: this.primerNombre, segundo_nombre: this.segundoNombre });
+                    alert('Procesando');
+                }
+            },
+
+
+
+        })
+
+    </script>
+
 
 </body>
 
