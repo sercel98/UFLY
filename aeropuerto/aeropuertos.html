@@ -16,107 +16,82 @@
 </head>
 
 <body class="body-admin">
-    	<span class="ir-arriba icon-arrow-up2"></span>
-
-    <div class="header d-flex justify-content-between align-items-center flex-wrap-reverse py-2 px-2">
-        <img src="/img/logo.png" width="8%" height="8%" class="img-fluid px-1 py-1">
-        <h1 class="text-center m-0">Aeropuertos</h1>
-        <li class="nav-item dropdown d-flex align-items-center px-1 py-1">
-            <a class="nav-link dropdown-toggle  text-white" data-toggle="dropdown" href="#" role="button"
-                aria-haspopup="true" aria-expanded="false">Configuración</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#one">Ver mi perfil</a>
-                <div role="separator" class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#two">Cerrar sesión</a>
+    
+    <div id="aeropuertos">
+        <span class="ir-arriba icon-arrow-up2"></span>
+        <div class="header d-flex justify-content-between align-items-center flex-wrap-reverse py-2 px-2">
+            <img src="/img/logo.png" width="8%" height="8%" class="img-fluid px-1 py-1">
+            <h1 class="text-center m-0">{{titulo}}</h1>
+            <li class="nav-item dropdown d-flex align-items-center px-1 py-1">
+                <a class="nav-link dropdown-toggle  text-white" data-toggle="dropdown" href="#" role="button"
+                    aria-haspopup="true" aria-expanded="false">Configuración</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#one">Ver mi perfil</a>
+                    <div role="separator" class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#two">Cerrar sesión</a>
+                </div>
+            </li>
+        </div>
+        
+        <div class="busqueda d-flex justify-content-start align-items-center my-3 mx-5 py-2 px-2">
+            <h5 class="mt-2 py-2 px-3">Buscar: </h5>
+            <input id="buscarAeropuerto" class="aeropuerto py-1 px-2 border-0 mr-4 text-capitalize flex-fill bd-highlight col-md-12" type="text">
+            <button type="button" id="subir" v-on:click="buscar" class="btn btn-danger">Buscar</button>
+        </div>
+        
+        <div class="mx-5">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre del aeropuerto</th>
+                            <th>Ciudad - País</th>
+                            <th>Estado</th>
+                            <th>Teléfono</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contenido" v-for="aeropuerto of aeropuertos">
+                        <tr>
+                            <td>
+                                {{aeropuerto.nombre_aeropuerto}}
+                            </td>
+                            <td>
+                                {{aeropuerto.ciudad_pais}}
+                            </td>
+                            <td>
+                                {{aeropuerto.estado}}
+                            </td>
+                            <td>
+                                {{aeropuerto.telefono}}
+                            </td>
+                        </tr>
+                    </tbody>
+            </table>
+        </div>
+        </div>
+        
+        <div class="opciones d-flex justify-content-between flex-wrap mx-5">
+            <div class=" my-2">
+                <button type="button" id="subir" OnClick=toTop() class="btn">Subir</button>
             </div>
-        </li>
-    </div>
-
-    <div class="busqueda d-flex justify-content-start align-items-center my-3 mx-5 py-2 px-2">
-        <h5 class="mt-2 py-2 px-3">Buscar: </h5>
-        <input class="aeropuerto py-1 px-2 border-0 mr-4 text-capitalize flex-fill bd-highlight col-md-12" type="text">
-    </div>
-
-    <div class="mx-5">
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Nombre del aeropuerto</th>
-                        <th>Ciudad - País</th>
-                        <th>Estado</th>
-                        <th>Teléfono</th>
-                    </tr>
-                </thead>
-                <tbody id="contenido">
-                    <tr>
-                        <td>
-                            Aeropuerto perales (IBE)
-                        </td>
-                        <td>
-                            Ibagué-Tolima
-                        </td>
-                        <td>
-                            Operando
-                        </td>
-                        <td>
-                            3213735529
-                        </td>
-                    </tr>
-                </tbody>
-        </table>
-    </div>
-    </div>
-
-    <div class="opciones d-flex justify-content-between flex-wrap mx-5">
-        <div class=" my-2">
-            <button type="button" id="subir" OnClick=toTop() class="btn">Subir</button>
-            <button type="button" id="listar" onclick="traer()" class="btn">Listar</button>
-        </div>
-
-        <div class="d-flex flex-wrap my-2">
-            <div class=" btn-group" role="group">
-                <button type="button" class="btn">Anterior</button>
-                <h6 id="header6" class="d-flex align-items-center text-center m-0 px-3">1</h6>
-                <button type="button" class="btn">Siguiente</button>
+        
+            <div class="d-flex flex-wrap my-2">
+                <div class=" btn-group" role="group">
+                    <button type="button" class="btn">Anterior</button>
+                    <h6 id="header6" class="d-flex align-items-center text-center m-0 px-3">1</h6>
+                    <button type="button" class="btn">Siguiente</button>
+                </div>
+            </div>
+        
+            <div class=" my-2">
+                <button type="button" class="btn subir" OnClick="location.href='registrar_aeropuerto.html'">Agregar
+                    Aeropuerto</button>
             </div>
         </div>
-
-        <div class=" my-2">
-            <button type="button" class="btn subir" OnClick="location.href='registrar_aeropuerto.html'">Agregar
-                Aeropuerto</button>
-        </div>
     </div>
 
-    <script>
-        var contenido = document.querySelector('#contenido')
-        function traer() 
-        {
-            fetch('tabla.json')
-            .then(res => res.json())
-            .then(data => {
-                tabla(data)
-            })
-        }
-
-        function tabla(data)
-        {
-            contenido.innerHTML = ''
-            for(let valor of data)
-            {
-                contenido.innerHTML += `
-                
-                <tr>
-                    <td>${ valor.nombre_aeropuerto }</td>
-                    <td>${ valor.ciudad_pais }</td>
-                    <td>${ valor.estado }</td>
-                    <td>${ valor.telefono }</td>
-                </tr>
-
-                `
-            }
-        }
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="aeropuertos.js"></script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
