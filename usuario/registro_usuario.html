@@ -122,8 +122,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
 
 
-
     <!--TODO:Validar si el email es válido -->
+    <!--TODO:Validar si las contraseñas coinciden -->
+
     <script>
 
 
@@ -170,16 +171,20 @@
 
                     var xhr = new XMLHttpRequest();
 
-                    var url = 
-                    
-                    xhr.open("POST", url);
+                    /*URL DEL REGISTRAR AEROPUERTO.JAVA*/
+
+                    var url =
+
+                        xhr.open("POST", url);
                     xhr.setRequestHeader("Content-type", "application/json");
 
                     xhr.send(jsonData);
 
+                    /*PROBAR SI ENVÍA*/
+                    alert('Registro exitoso')
 
 
-                    },
+                },
 
 
 
@@ -190,7 +195,7 @@
 
 
 
-            })
+        })
 
     </script>
 

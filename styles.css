@@ -50,9 +50,15 @@ table, tr, td, thead {
 
 
 .informacion-aeropuerto {
-  background-color: #00ADB5;
   font-size: 20px;
 }
+#items-formulario-aeropuerto,#items-perfil-aeropuerto
+{
+  background-color: #00ADB5;
+}
+
+
+
 
 .formulario-registro {
   margin-top: 5%;
