@@ -29,73 +29,84 @@
         </li>
     </div>
 
-    <div class="informacion-aeropuerto  mt-3 mx-5" id="items-perfil-aeropuerto">
+    <div class="informacion-aeropuerto  mt-3 mx-5" >
         <div class="encabezado text-center">
             <h2 class="py-2 m-0">Información del aeropuerto</h2>
         </div>
 
-        <form>
-            <div class=" form-row mx-5" >
-                <div class="form-group col-md-4 my-3">
-                    <label>Nombre del aeropuerto:</label>
-                    <input type="text" class="form-control" placeholder="Nombre">
-                </div>
-                <div class="col-md-2 my-3">
-                    <label>Código:</label>
-                    <input type="text" class="form-control" placeholder="Codigo">
-                </div>
-                <div class="form-group col-md-3 my-3">
-                    <label>Ciudad:</label>
-                    <select class="custom-select">
-                        <option selected>Elegir la ciudad de origen</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                </div>
-
-                <div class="form-group col-md-3 my-3">
-                    <label>País:</label>
-                    <select class="custom-select">
-                        <option selected>Elegir el páis de origen</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                </div>
+        <form id="formulario-perfil-aeropuerto" @submit.prevent="procesarFormulario">
+           
+            <div id="items-perfil-aeropuerto">
+                    <div class=" form-row mx-5">
+                            <div class="form-group col-md-4 my-3">
+                                <label>Nombre del aeropuerto:</label>
+                                <input type="text" class="form-control" name="nombreAeropuerto" id="nombreAeropuerto"
+                                    v-model="nombreAeropuerto" placeholder="Nombre">
+                            </div>
+                            <div class="col-md-2 my-3">
+                                <label>Código:</label>
+                                <input type="text" class="form-control" name="codigoAeropuerto" id="codigoAeropuerto"
+                                    v-model="codigoAeropuerto" placeholder="Codigo">
+                            </div>
+                            <div class="form-group col-md-3 my-3">
+                                <label>Ciudad:</label>
+                                <select class="custom-select" name="ciudadAeropuerto" id="ciudadAeropuerto"
+                                    v-model="ciudadAeropuerto">
+                                    <option selected>Elegir la ciudad de origen</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+            
+                            <div class="form-group col-md-3 my-3">
+                                <label>País:</label>
+                                <select class="custom-select" name="paisAeropuerto" id="paisAeropuerto"
+                                    v-model="paisAeropuerto">
+                                    <option selected>Elegir el páis de origen</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+            
+                        <div class="form-row mx-5">
+                            <div class="form-group col-md-4 my-3">
+                                <label>Dirección del aeropuerto:</label>
+                                <input type="text" class="form-control" name="direccionAeropuerto" id="direccionAeropuerto"
+                                    v-model="direccionAeropuerto" placeholder="Dirección">
+                            </div>
+                            <div class="col-md-2 my-3">
+                                <label>Telefono:</label>
+                                <input type="text" class="form-control" name="telefonoAeropuerto" id="telefonoAeropuerto"
+                                    v-model="telefonoAeropuerto" placeholder="Telefono">
+                            </div>
+                            <div class="col-md-3 my-3">
+                                <label>Estado:</label>
+                                <select class="custom-select" name="estadoAeropuerto" id="estadoAeropuerto"
+                                    v-model="estadoAeropuerto">
+                                    <option selected>Estado del aeropuerto</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
             </div>
-
-            <div class="form-row mx-5">
-                <div class="form-group col-md-4 my-3">
-                    <label>Dirección del aeropuerto:</label>
-                    <input type="text" class="form-control" placeholder="Dirección">
+            <div class="d-flex justify-content-center flex-wrap my-2 mx-5" id="registrar_aeropuertos">
+                    <div class="botones mx-2 my-2">
+                        <!--ENVIAR TODA LA INFORMACION DEL AEROPUERTO ACTUAL-->
+                        <button type="submit" class="btn">Actualizar</button>
+                    </div>
+                    <div class="botones mx-2 my-2">
+                        <button type="button" class="btn" OnClick="location.href='aeropuertos.html'">Salir</button>
+                    </div>
                 </div>
-                <div class="col-md-2 my-3">
-                    <label>Telefono:</label>
-                    <input type="text" class="form-control" placeholder="Telefono">
-                </div>
-                <div class="col-md-3 my-3">
-                    <label>Estado:</label>
-                    <select class="custom-select">
-                        <option selected>Estado del aeropuerto</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                </div>
-            </div>
         </form>
     </div>
+
     
-    <div class="d-flex justify-content-center flex-wrap my-2 mx-5" id="registrar_aeropuertos">
-        <div class="botones mx-2 my-2">
-            <!--ENVIAR TODA LA INFORMACION DEL AEROPUERTO ACTUAL-->
-            <button type="submit" class="btn"  >Actualizar</button>
-        </div>
-        <div class="botones mx-2 my-2">
-            <button type="button" class="btn">Salir</button>
-        </div>
-    </div>
 
 </body>
 <!-- Optional JavaScript -->
@@ -109,5 +120,60 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+
+<script>
+    var app = new Vue({
+        el: '#formulario-perfil-aeropuerto',
+        data:
+        {
+            nombreAeropuerto: '',
+            codigoAeropuerto: '',
+            ciudadAeropuerto: '',
+            paisAeropuerto: '',
+            direccionAeropuerto: '',
+            telefonoAeropuerto: '',
+            estadoAeropuerto: '',
+
+        },
+        methods: {
+            procesarFormulario: function () {
+
+                var obj = {
+                    "nombreAeropuerto": this.nombreAeropuerto,
+                    "codigoAeropuerto": this.codigoAeropuerto,
+                    "ciudadAeropuerto": this.ciudadAeropuerto,
+                    "paisAeropuerto": this.paisAeropuerto,
+                    "direccionAeropuerto": this.direccionAeropuerto,
+                    "telefonoAeropuerto": this.telefonoAeropuerto,
+                    "estadoAeropuerto": this.estadoAeropuerto,
+                }
+
+                var jsonData = JSON.stringify(obj)
+                console.log(jsonData)
+
+
+                var xhr = new XMLHttpRequest();
+
+                /*URL DEL PERFIL AEROPUERTO.JAVA*/
+
+                var url =
+
+                    xhr.open("POST", url);
+                xhr.setRequestHeader("Content-type", "application/json");
+
+                xhr.send(jsonData);
+
+                /*PROBAR SI ENVÍA*/
+                alert('Actualización exitosa')
+
+
+            },
+        },
+    })
+
+</script>
+
 
 </html>
