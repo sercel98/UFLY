@@ -1,0 +1,29 @@
+[
+    {
+        "nombre_aeropuerto": "Aeropuerto2",
+        "ciudad_pais": "Ibagué-Tolima2",
+        "estado": "Operando2",
+        "telefono": 2222222
+    },
+
+    {
+        "nombre_aeropuerto": "Aeropuerto3",
+        "ciudad_pais": "Ibagué-Tolima3",
+        "estado": "Operando3",
+        "telefono": 33333333
+    },
+
+    {
+        "nombre_aeropuerto": "Aeropuerto4",
+        "ciudad_pais": "Ibagué-Tolima4",
+        "estado": "Operando4",
+        "telefono": 44444444
+    },
+
+    {
+        "nombre_aeropuerto": "Aeropuerto5",
+        "ciudad_pais": "Ibagué-Tolima5",
+        "estado": "Operando5",
+        "telefono": 555555555
+    }
+]
