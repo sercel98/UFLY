@@ -16,7 +16,7 @@
 </head>
 
 <body class="body-admin">
-    	<span class="ir-arriba icon-arrow-up2"></span>
+    <span class="ir-arriba icon-arrow-up2"></span>
 
     <div class="header d-flex justify-content-between align-items-center flex-wrap-reverse py-2 px-2">
         <img src="/img/logo.png" width="8%" height="8%" class="img-fluid px-1 py-1">
@@ -64,8 +64,8 @@
                         </td>
                     </tr>
                 </tbody>
-        </table>
-    </div>
+            </table>
+        </div>
     </div>
 
     <div class="opciones d-flex justify-content-between flex-wrap mx-5">
@@ -90,27 +90,24 @@
 
     <script>
         var contenido = document.querySelector('#contenido')
-        function traer() 
-        {
+        function traer() {
             fetch('tabla.json')
-            .then(res => res.json())
-            .then(data => {
-                tabla(data)
-            })
+                .then(res => res.json())
+                .then(data => {
+                    tabla(data)
+                })
         }
 
-        function tabla(data)
-        {
+        function tabla(data) {
             contenido.innerHTML = ''
-            for(let valor of data)
-            {
+            for (let valor of data) {
                 contenido.innerHTML += `
                 
                 <tr>
-                    <td>${ valor.nombre_aeropuerto }</td>
-                    <td>${ valor.ciudad_pais }</td>
-                    <td>${ valor.estado }</td>
-                    <td>${ valor.telefono }</td>
+                    <td>${ valor.nombre_aeropuerto}</td>
+                    <td>${ valor.ciudad_pais}</td>
+                    <td>${ valor.estado}</td>
+                    <td>${ valor.telefono}</td>
                 </tr>
 
                 `
@@ -131,24 +128,13 @@
         crossorigin="anonymous"></script>
 
     <script type="text/javascript">
- 
- function toTop() {
-     window.scrollTo(0, 0)
- }
-  
- </script>
 
+        function toTop() {
+            window.scrollTo(0, 0)
+        }
 
-
-
-
-
-
-
-
-
+    </script>
 
 </body>
-
 
 </html>

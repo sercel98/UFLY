@@ -14,241 +14,92 @@
 
 <body class="body-admin">
 
-    <div class="header d-flex justify-content-between align-items-center flex-wrap-reverse py-2 px-2">
-        <img src="/img/logo.png" width="8%" height="8%" class="img-fluid px-1 py-1">
-        <h1 class="text-center m-0">Usuarios</h1>
-        <li class="nav-item dropdown d-flex align-items-center px-1 py-1">
-            <a class="nav-link dropdown-toggle  text-white" data-toggle="dropdown" href="#" role="button"
-                aria-haspopup="true" aria-expanded="false">Configuración</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#one">Ver mi perfil</a>
-                <div role="separator" class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#two">Cerrar sesión</a>
+    <div id="app">
+        <div class="header d-flex justify-content-between align-items-center flex-wrap-reverse py-2 px-2">
+            <img src="/img/logo.png" width="8%" height="8%" class="img-fluid px-1 py-1">
+            <h1 class="text-center m-0">Usuarios</h1>
+            <li class="nav-item dropdown d-flex align-items-center px-1 py-1">
+                <a class="nav-link dropdown-toggle  text-white" data-toggle="dropdown" href="#" role="button"
+                    aria-haspopup="true" aria-expanded="false">Configuración</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#one">Ver mi perfil</a>
+                    <div role="separator" class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#two">Cerrar sesión</a>
+                </div>
+            </li>
+        </div>
+
+        <div class="container col-md-12">
+
+            <div class="busqueda d-flex justify-content-start align-items-center my-3 mx-5 py-2 px-2">
+                <h5 class="m-0 py-2 px-3">buscar usuario</h5>
+                <input v-model="documentoBuscado" class="caja-buscar-usuario text-capitalize" type="text">
+                <a class="buscar-btn-usuario" href="#">
+                    <i class="fas fa-search"></i>
+                </a>
             </div>
-        </li>
-    </div>
 
-    <div class="container col-md-12">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Documento
+                            </th>
+                            <th>
+                                Nombre
+                            </th>
+                            <th>
+                                Correo electrónico
+                            </th>
+                            <th>
+                                Teléfono
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="contenido" v-for="usuario of searchUser">
+                        <tr>
+                            <td>
+                                {{usuario.documento}}
+                            </td>
+                            <td>
+                                {{usuario.nombre}}
+                            </td>
+                            <td>
+                                {{usuario.correo}}
+                            </td>
+                            <td>
+                                {{usuario.phone}}
+                            </td>
+                        </tr>
 
-        <div class="busqueda d-flex justify-content-start align-items-center my-3 mx-5 py-2 px-2">
-            <h5 class="m-0 py-2 px-3">Buscar usuario: </h5>
-            <input class="caja-buscar-usuario text-capitalize" type="text">
-            <a class="buscar-btn-usuario" href="#">
-                <i class="fas fa-search"></i>
-            </a>
+
+                    </tbody>
+
+                </table>
+            </div>
+
+
         </div>
+        <div class="d-flex justify-content-between flex-wrap mx-5">
+            <div class="botones my-2">
+                <button type="button" OnClick=toTop() class="btn">Subir</button>
+            </div>
 
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>
-                            Documento
-                        </th>
-                        <th>
-                            Nombre
-                        </th>
-                        <th>
-                            Correo electrónico
-                        </th>
-                        <th>
-                            Teléfono
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            1234642135
-                        </td>
-                        <td>
-                            Sergio andres Celemin
-                        </td>
-                        <td>
-                            sergiocelemin1998@gmail.com
-                        </td>
-                        <td>
-                            3213735529
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1234642135
-                        </td>
-                        <td>
-                            Sergio andres Celemin
-                        </td>
-                        <td>
-                            sergiocelemin1998@gmail.com
-                        </td>
-                        <td>
-                            3213735529
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1234642135
-                        </td>
-                        <td>
-                            Sergio andres Celemin
-                        </td>
-                        <td>
-                            sergiocelemin1998@gmail.com
-                        </td>
-                        <td>
-                            3213735529
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1234642135
-                        </td>
-                        <td>
-                            Sergio andres Celemin
-                        </td>
-                        <td>
-                            sergiocelemin1998@gmail.com
-                        </td>
-                        <td>
-                            3213735529
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1234642135
-                        </td>
-                        <td>
-                            Sergio andres Celemin
-                        </td>
-                        <td>
-                            sergiocelemin1998@gmail.com
-                        </td>
-                        <td>
-                            3213735529
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1234642135
-                        </td>
-                        <td>
-                            Sergio andres Celemin
-                        </td>
-                        <td>
-                            sergiocelemin1998@gmail.com
-                        </td>
-                        <td>
-                            3213735529
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1234642135
-                        </td>
-                        <td>
-                            Sergio andres Celemin
-                        </td>
-                        <td>
-                            sergiocelemin1998@gmail.com
-                        </td>
-                        <td>
-                            3213735529
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1234642135
-                        </td>
-                        <td>
-                            Sergio andres Celemin
-                        </td>
-                        <td>
-                            sergiocelemin1998@gmail.com
-                        </td>
-                        <td>
-                            3213735529
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1234642135
-                        </td>
-                        <td>
-                            Sergio andres Celemin
-                        </td>
-                        <td>
-                            sergiocelemin1998@gmail.com
-                        </td>
-                        <td>
-                            3213735529
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1234642135
-                        </td>
-                        <td>
-                            Sergio andres Celemin
-                        </td>
-                        <td>
-                            sergiocelemin1998@gmail.com
-                        </td>
-                        <td>
-                            3213735529
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1234642135
-                        </td>
-                        <td>
-                            Sergio andres Celemin
-                        </td>
-                        <td>
-                            sergiocelemin1998@gmail.com
-                        </td>
-                        <td>
-                            3213735529
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1234642135
-                        </td>
-                        <td>
-                            Sergio andres Celemin
-                        </td>
-                        <td>
-                            sergiocelemin1998@gmail.com
-                        </td>
-                        <td>
-                            3213735529
-                        </td>
-                    </tr>
-                </tbody>
+            <div class="d-flex flex-wrap my-2">
+                <div class="botones btn-group" role="group">
+                    <button type="button" class="btn">Anterior</button>
+                    <button type="button" class="btn">1</button>
+                    <button type="button" class="btn">Siguiente</button>
+                </div>
+            </div>
 
-            </table>
-        </div>
-
-
-    </div>
-    <div class="d-flex justify-content-between flex-wrap mx-5">
-        <div class="botones my-2">
-            <button type="button" OnClick=toTop() class="btn">Subir</button>
-        </div>
-
-        <div class="d-flex flex-wrap my-2">
-            <div class="botones btn-group" role="group">
-                <button type="button" class="btn">Anterior</button>
-                <button type="button" class="btn">1</button>
-                <button type="button" class="btn">Siguiente</button>
+            <div class="botones my-2">
+                <button type="button" class="btn">Agregar usuario</button>
             </div>
         </div>
-
-        <div class="botones my-2">
-            <button type="button" class="btn">Agregar usuario</button>
-        </div>
     </div>
+
 
     <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js"
         integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ"
@@ -266,6 +117,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+
+
     <script type="text/javascript">
 
         function toTop() {
@@ -273,6 +128,47 @@
         }
 
     </script>
+
+
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+
+                usuarios: [],
+                documentoBuscado: ''
+
+
+
+            },
+            methods: {
+            },
+            computed: {
+
+                searchUser: function () {
+
+                    return this.usuarios.filter((usuario) => usuario.nombre.includes(this.documentoBuscado));
+                }
+            },
+
+
+            mounted() {
+                fetch('usuarios.json')
+                    .then(response => response.json())
+                    .then(usuarios => {
+                        this.usuarios = usuarios;
+                    });
+            },
+        });
+    </script>
+
+
+
+
+
+
+
 
 </body>
 

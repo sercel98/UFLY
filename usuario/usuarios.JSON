@@ -1,0 +1,32 @@
+[
+    {
+      "documento": "0",
+      "nombre": "Marlene Tate",
+      "correo": "marlenetate@freakin.com",
+      "phone": "+1 (840) 482-3935"
+    },
+    {
+      "documento": "1",
+      "nombre": "Imelda Quinn",
+      "correo": "imeldaquinn@freakin.com",
+      "phone": "+1 (979) 476-3020"
+    },
+    {
+      "documento": "2",
+      "nombre": "Silva Stark",
+      "correo": "silvastark@freakin.com",
+      "phone": "+1 (850) 457-2469"
+    },
+    {
+      "documento": "3",
+      "nombre": "Lula Strickland",
+      "correo": "lulastrickland@freakin.com",
+      "phone": "+1 (826) 508-2632"
+    },
+    {
+      "documento": "4",
+      "nombre": "Patterson Acevedo",
+      "correo": "pattersonacevedo@freakin.com",
+      "phone": "+1 (962) 493-2698"
+    }
+  ]
