@@ -1,28 +1,28 @@
 [
     {
         "nombre_aeropuerto": "Aeropuerto Perales",
-        "ciudad_pais": "1Ibagué-Tolima",
+        "ciudad_pais": "Ibagué - Tolima",
         "estado": "1Operando",
         "telefono": 1111111
     },
 
     {
-        "nombre_aeropuerto": "Aeropuerto internacional jose maria córdova",
-        "ciudad_pais": "2Ibagué-Tolima",
+        "nombre_aeropuerto": "Aeropuerto Internacional Jose Maria Córdova",
+        "ciudad_pais": "Rionegro - Antioquia",
         "estado": "2Operando",
         "telefono": 22222222
     },
 
     {
-        "nombre_aeropuerto": "Aeropuerto la dorada",
-        "ciudad_pais": "3Ibagué-Tolima",
+        "nombre_aeropuerto": "Aeropuerto la Dorada",
+        "ciudad_pais": "Bogotá - Cundinamarca",
         "estado": "3Operando",
         "telefono": 33333333
     },
 
     {
         "nombre_aeropuerto": "Aeropuerto Olaya Herrera",
-        "ciudad_pais": "12Ibagué-Tolima",
+        "ciudad_pais": "Medellin - Antioquía",
         "estado": "12Operando",
         "telefono": 12121212
     }

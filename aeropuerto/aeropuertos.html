@@ -35,8 +35,7 @@
         
         <div class="busqueda d-flex justify-content-start align-items-center my-3 mx-5 py-2 px-2">
             <h5 class="mt-2 py-2 px-3">Buscar: </h5>
-            <input id="buscarAeropuerto" class="aeropuerto py-1 px-2 border-0 mr-4 text-capitalize flex-fill bd-highlight col-md-12" type="text">
-            <button type="button" id="subir" v-on:click="buscar" class="btn btn-danger">Buscar</button>
+            <input v-model="buscarAeropuerto" class="aeropuerto py-1 px-2 border-0 mr-4 text-capitalize flex-fill bd-highlight col-md-12" type="text">
         </div>
         
         <div class="mx-5">
@@ -50,7 +49,7 @@
                             <th>Teléfono</th>
                         </tr>
                     </thead>
-                    <tbody id="contenido" v-for="aeropuerto of aeropuertos">
+                    <tbody id="contenido" v-for="aeropuerto of searchAirport">
                         <tr>
                             <td>
                                 {{aeropuerto.nombre_aeropuerto}}
