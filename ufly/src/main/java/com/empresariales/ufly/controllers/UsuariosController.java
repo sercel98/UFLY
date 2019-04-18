@@ -19,7 +19,7 @@ import com.empresariales.ufly.exception.ResourceNotFoundException;
 import com.empresariales.ufly.repository.UsuariosRepository;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/users")
 public class UsuariosController 
 {
 	@Autowired
@@ -39,14 +39,14 @@ public class UsuariosController
 	}
 	
 	@GetMapping("/usuarios/{id_usuarios}")
-	public Usuarios getUserById(@PathVariable(value = "id_usuario") int id_usuario)
+	public Usuarios getUserById(@PathVariable(value = "id_usuario") Integer id_usuario)
 	{
 		return usuariosRepository.findById(id_usuario)
 	            .orElseThrow(() -> new ResourceNotFoundException("Usuarios", "id_usuarios", id_usuario));
 	}
 	
 	@PutMapping("/usuarios/{id_usuarios}")
-	public Usuarios updateUser(@PathVariable(value = "id_usuario") int id_usuario, @Valid @RequestBody Usuarios usuarioDetalles)
+	public Usuarios updateUser(@PathVariable(value = "id_usuario") Integer id_usuario, @Valid @RequestBody Usuarios usuarioDetalles)
 	{
 		Usuarios user = usuariosRepository.findById(id_usuario)
 	            .orElseThrow(() -> new ResourceNotFoundException("Usuarios", "id_usuarios", id_usuario));

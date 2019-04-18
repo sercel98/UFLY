@@ -2,7 +2,6 @@ package com.empresariales.ufly.estructure;
 
 import java.math.BigInteger;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,13 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "usuarios")
-public class Usuarios 
+public class Usuarios
 {
 	
 	private int id_usuario;
@@ -37,24 +34,10 @@ public class Usuarios
 	
 	private String telefono;
 	
-	private TiposUsuarios FKTipoUsuario;
-	
-	
+	private TiposUsuario FKTipoUsuario;
 
-	public Usuarios(int id_usuario, BigInteger cedula, String contrasenia, String primer_nombre,
-			String segundo_nombre, String primer_apellido, String segundo_apellido, String correo_electronico,
-			String telefono, TiposUsuarios fKTipoUsuario) {
+	public Usuarios() {
 		super();
-		this.id_usuario = id_usuario;
-		this.cedula = cedula;
-		this.contrasenia = contrasenia;
-		this.primer_nombre = primer_nombre;
-		this.segundo_nombre = segundo_nombre;
-		this.primer_apellido = primer_apellido;
-		this.segundo_apellido = segundo_apellido;
-		this.correo_electronico = correo_electronico;
-		this.telefono = telefono;
-		FKTipoUsuario = fKTipoUsuario;
 	}
 
 	@Id
@@ -139,13 +122,13 @@ public class Usuarios
 		this.telefono = telefono;
 	}
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "FKTipoUsuario")
-	public TiposUsuarios getFKTipoUsuario() {
+	public TiposUsuario getFKTipoUsuario() {
 		return FKTipoUsuario;
 	}
 
-	public void setFKTipoUsuario(TiposUsuarios fKTipoUsuario) {
+	public void setFKTipoUsuario(TiposUsuario fKTipoUsuario) {
 		FKTipoUsuario = fKTipoUsuario;
 	}
 

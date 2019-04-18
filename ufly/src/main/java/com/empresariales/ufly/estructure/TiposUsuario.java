@@ -1,32 +1,34 @@
 package com.empresariales.ufly.estructure;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.mapping.Set;
+import java.io.Serializable;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 
 @Entity
-@Table(name = "tiposusuarios")
-public class TiposUsuarios 
+@Table(name = "tiposusuario")
+public class TiposUsuario
 {
 	private short id_tipo_usuario;
 	
 	private String tipo_usuario;
-	
-	private Usuarios usuario;
 
-	
-	public TiposUsuarios() {
+	@OneToMany(mappedBy = "FKTipoUsuario", cascade = CascadeType.ALL)
+	private Set<Usuarios> usuarios;
+
+	public TiposUsuario() {
 		super();
 	}
-	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)	
@@ -39,11 +41,6 @@ public class TiposUsuarios
 		return tipo_usuario;
 	}
 
-	@OneToOne(mappedBy = "FKTipoUsuario")
-	public Usuarios getUsuario() {
-		return usuario;
-	}
-
 	public void setId_tipo_usuario(short id_tipo_usuario) {
 		this.id_tipo_usuario = id_tipo_usuario;
 	}
@@ -52,9 +49,6 @@ public class TiposUsuarios
 		this.tipo_usuario = tipo_usuario;
 	}
 
-	public void setUsuario(Usuarios usuario) {
-		this.usuario = usuario;
-	}
 	
 	
 	
