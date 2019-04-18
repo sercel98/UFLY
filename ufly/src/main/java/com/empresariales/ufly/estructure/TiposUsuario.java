@@ -1,18 +1,16 @@
 package com.empresariales.ufly.estructure;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import java.io.Serializable;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -23,8 +21,9 @@ public class TiposUsuario
 	
 	private String tipo_usuario;
 
-	@OneToMany(mappedBy = "FKTipoUsuario", cascade = CascadeType.ALL)
-	private Set<Usuarios> usuarios;
+	@OneToMany
+	@JoinColumn(name = "FKTipoUsuario")
+	private List<Usuarios> usuarios = new ArrayList<>();
 
 	public TiposUsuario() {
 		super();
