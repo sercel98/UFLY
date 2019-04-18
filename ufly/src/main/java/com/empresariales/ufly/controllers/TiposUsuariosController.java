@@ -25,7 +25,7 @@ public class TiposUsuariosController
 	@Autowired
 	private TiposUsuariosRepository tiposRepository;
 
-	@GetMapping("/tipousuario")
+	@GetMapping("/list")
 	public List<TiposUsuario> getAllTypesUsers()
 	{
 		System.out.println(tiposRepository.findAll());
@@ -33,7 +33,7 @@ public class TiposUsuariosController
 		return tiposRepository.findAll();
 	}
 
-	@PostMapping("/tipousuario")
+	@PostMapping("/add")
 	public TiposUsuario createTypeUser(@Valid @RequestBody TiposUsuario tipoUsuario)
 	{
 		System.out.println(tipoUsuario);

@@ -26,13 +26,13 @@ public class UsuariosController
 	private UsuariosRepository usuariosRepository;
 	
 	
-	@GetMapping("/usuarios")
+	@GetMapping("/list")
 	public List<Usuarios> getAllUsers()
 	{
 		return usuariosRepository.findAll();
 	}
 	
-	@PostMapping("/usuarios")
+	@PostMapping("/add")
 	public Usuarios createUsers(@Valid @RequestBody Usuarios usuario)
 	{
 		return usuariosRepository.save(usuario);
