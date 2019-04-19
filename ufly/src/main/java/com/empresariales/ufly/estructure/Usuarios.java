@@ -132,6 +132,14 @@ public class Usuarios
 		FKTipoUsuario = fKTipoUsuario;
 	}
 
+	@Override
+	public String toString() {
+		return "Usuarios [id_usuario=" + id_usuario + ", cedula=" + cedula + ", contrasenia=" + contrasenia
+				+ ", primer_nombre=" + primer_nombre + ", segundo_nombre=" + segundo_nombre + ", primer_apellido="
+				+ primer_apellido + ", segundo_apellido=" + segundo_apellido + ", correo_electronico="
+				+ correo_electronico + ", telefono=" + telefono + ", FKTipoUsuario=" + FKTipoUsuario + "]";
+	}
+
 	
 	
 	

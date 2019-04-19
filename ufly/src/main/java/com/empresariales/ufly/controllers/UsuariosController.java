@@ -29,12 +29,14 @@ public class UsuariosController
 	@GetMapping("/list")
 	public List<Usuarios> getAllUsers()
 	{
+		System.out.println(usuariosRepository.findAll().get(0));
 		return usuariosRepository.findAll();
 	}
 	
 	@PostMapping("/add")
 	public Usuarios createUsers(@Valid @RequestBody Usuarios usuario)
 	{
+		System.out.println(usuario);
 		return usuariosRepository.save(usuario);
 	}
 	
