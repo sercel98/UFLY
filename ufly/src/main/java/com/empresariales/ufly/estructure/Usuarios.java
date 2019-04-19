@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "usuarios")
@@ -40,7 +41,7 @@ public class Usuarios
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int getId_usuario() {
 		return id_usuario;
 	}
@@ -122,6 +123,7 @@ public class Usuarios
 	}
 	
 	@ManyToOne
+	@NotNull
 	public TiposUsuario getFKTipoUsuario() {
 		return FKTipoUsuario;
 	}
