@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Aeropuerto implements Serializable
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_aeropuerto")
 	private short id_aeropuerto;
 	

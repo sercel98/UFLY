@@ -20,14 +20,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Pais implements Serializable
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_pais")
-	private short idPais;
+	private short id_pais;
 	
 	@Column(name = "nombre_pais")
-	private String nombrePais;
+	private String nombre_pais;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fkpais")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fkpaises")
 	@JsonIgnore
     private List<Ciudad> ciudades = new ArrayList<>();
 
@@ -35,39 +35,39 @@ public class Pais implements Serializable
 		super();
 	}
 
-	public Pais(short idPais, String nombrePais) {
+	public Pais(short id_pais, String nombre_pais) {
 		super();
-		this.idPais = idPais;
-		this.nombrePais = nombrePais;
+		this.id_pais = id_pais;
+		this.nombre_pais = nombre_pais;
 	}
 
-	public short getIdPais() {
-		return idPais;
+	public short getId_pais() {
+		return id_pais;
 	}
 
-	public void setIdPais(short idPais) {
-		this.idPais = idPais;
+	public void setId_pais(short id_pais) {
+		this.id_pais = id_pais;
 	}
 
-	public String getNombrePais() {
-		return nombrePais;
+	public String getNombre_pais() {
+		return nombre_pais;
 	}
 
-	public void setNombrePais(String nombrePais) {
-		this.nombrePais = nombrePais;
+	public void setNombre_pais(String nombre_pais) {
+		this.nombre_pais = nombre_pais;
 	}
-	
+
 	public List<Ciudad> getCiudades() {
-        return ciudades;
-    }
+		return ciudades;
+	}
 
-    public void setCiudades(List<Ciudad> ciudades) {
-        this.ciudades = ciudades;
-    }
+	public void setCiudades(List<Ciudad> ciudades) {
+		this.ciudades = ciudades;
+	}
 
 	@Override
 	public String toString() {
-		return "Pais [idPais=" + idPais + ", nombrePais=" + nombrePais + "]";
+		return "Pais [id_pais=" + id_pais + ", nombre_pais=" + nombre_pais + ", ciudades=" + ciudades + "]";
 	}
 
 	

@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Usuarios implements Serializable
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_usuario;
 	
 	@Column(name = "cedula")

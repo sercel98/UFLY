@@ -25,18 +25,18 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Ciudad implements Serializable
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_ciudad")
-	private short idCiudad;
+	private short id_ciudad;
 	
 	@Column(name = "nombre_ciudad")
-	private String nombreCiudad;
+	private String nombre_ciudad;
 	
 	@ManyToOne
-    @JoinColumn(name = "fkpais", nullable = false)
+    @JoinColumn(name = "fkpaises", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private Pais FKPais;
+    private Pais fkpaises;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fkciudades")
 	@JsonIgnore
@@ -46,37 +46,36 @@ public class Ciudad implements Serializable
 		super();
 	}
 
-	public Ciudad(short idCiudad, String nombreCiudad, Pais fKPais) {
+	public Ciudad(short id_ciudad, String nombre_ciudad) {
 		super();
-		this.idCiudad = idCiudad;
-		this.nombreCiudad = nombreCiudad;
-		FKPais = fKPais;
+		this.id_ciudad = id_ciudad;
+		this.nombre_ciudad = nombre_ciudad;
 	}
 
-	public short getIdCiudad() {
-		return idCiudad;
+	public short getId_ciudad() {
+		return id_ciudad;
 	}
 
-	public void setIdCiudad(short idCiudad) {
-		this.idCiudad = idCiudad;
+	public void setId_ciudad(short id_ciudad) {
+		this.id_ciudad = id_ciudad;
 	}
 
-	public String getNombreCiudad() {
-		return nombreCiudad;
+	public String getNombre_ciudad() {
+		return nombre_ciudad;
 	}
 
-	public void setNombreCiudad(String nombreCiudad) {
-		this.nombreCiudad = nombreCiudad;
+	public void setNombre_ciudad(String nombre_ciudad) {
+		this.nombre_ciudad = nombre_ciudad;
 	}
 
 	public Pais getFKPais() {
-		return FKPais;
+		return fkpaises;
 	}
 
 	public void setFKPais(Pais fKPais) {
-		FKPais = fKPais;
+		fkpaises = fKPais;
 	}
-	
+
 	public List<Aeropuerto> getAeropuertos() {
 		return aeropuertos;
 	}
@@ -85,9 +84,5 @@ public class Ciudad implements Serializable
 		this.aeropuertos = aeropuertos;
 	}
 
-	@Override
-	public String toString() {
-		return "Ciudad [idCiudad=" + idCiudad + ", nombreCiudad=" + nombreCiudad + ", FKPais=" + FKPais + "]";
-	}
 	
 }

@@ -21,7 +21,7 @@ public class EstadosAeropuerto implements Serializable
 {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_estado_aeropuerto")
 	private Short id_estado_aeropuerto;
 	

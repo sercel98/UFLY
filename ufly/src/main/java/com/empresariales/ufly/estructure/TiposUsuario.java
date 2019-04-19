@@ -22,7 +22,7 @@ import java.util.List;
 public class TiposUsuario implements Serializable
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private short id_tipo_usuario;
 	
 	@Column(name = "tipo_usuario")
