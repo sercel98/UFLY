@@ -31,7 +31,6 @@ public class TiposUsuario
 		return id_tipo_usuario;
 	}
 
-	@Column(name = "tipo_usuario")
 	public String getTipo_usuario() {
 		return tipo_usuario;
 	}

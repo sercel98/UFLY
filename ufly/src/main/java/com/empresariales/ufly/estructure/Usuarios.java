@@ -50,7 +50,6 @@ public class Usuarios
 		this.id_usuario = id_usuario;
 	}
 
-	@Column(name = "cedula")
 	public BigInteger getCedula() {
 		return cedula;
 	}
@@ -59,7 +58,6 @@ public class Usuarios
 		this.cedula = cedula;
 	}
 	
-	@Column(name = "contrasenia")
 	public String getContrasenia() {
 		return contrasenia;
 	}
@@ -68,7 +66,6 @@ public class Usuarios
 		this.contrasenia = contrasenia;
 	}
 
-	@Column(name = "primer_nombre")
 	public String getPrimer_nombre() {
 		return primer_nombre;
 	}
@@ -77,7 +74,6 @@ public class Usuarios
 		this.primer_nombre = primer_nombre;
 	}
 
-	@Column(name = "segundo_nombre")
 	public String getSegundo_nombre() {
 		return segundo_nombre;
 	}
@@ -86,7 +82,6 @@ public class Usuarios
 		this.segundo_nombre = segundo_nombre;
 	}
 
-	@Column(name = "primer_apellido")
 	public String getPrimer_apellido() {
 		return primer_apellido;
 	}
@@ -95,7 +90,6 @@ public class Usuarios
 		this.primer_apellido = primer_apellido;
 	}
 
-	@Column(name = "segundo_apellido")
 	public String getSegundo_apellido() {
 		return segundo_apellido;
 	}
@@ -104,7 +98,6 @@ public class Usuarios
 		this.segundo_apellido = segundo_apellido;
 	}
 
-	@Column(name = "correo_electronico")
 	public String getCorreo_electronico() {
 		return correo_electronico;
 	}
@@ -113,7 +106,6 @@ public class Usuarios
 		this.correo_electronico = correo_electronico;
 	}
 
-	@Column(name = "telefono")
 	public String getTelefono() {
 		return telefono;
 	}
