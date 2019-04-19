@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.empresariales.ufly.estructure.TiposUsuario;
-import com.empresariales.ufly.estructure.Usuarios;
 import com.empresariales.ufly.exception.ResourceNotFoundException;
 import com.empresariales.ufly.repository.TiposUsuariosRepository;
 
