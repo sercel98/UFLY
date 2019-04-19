@@ -11,27 +11,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.empresariales.ufly.estructure.Ciudad;
-import com.empresariales.ufly.repository.CiudadRepository;
+import com.empresariales.ufly.estructure.Aeropuerto;
+import com.empresariales.ufly.repository.AeropuertoRepository;
 
 @RestController
-@RequestMapping("/ciudades")
-public class CiudadController
+@RequestMapping("/aeropuerto")
+public class AeropuertoController 
 {
 	@Autowired
-	private CiudadRepository ciudadRepository;
+	private AeropuertoRepository aeropuertoRepository;
 	
 	@GetMapping("/listar")
-	public List<Ciudad> listarCiudades()
+	public List<Aeropuerto> listarAeropuertos()
 	{
-		System.out.println(ciudadRepository.findAll());
-		return ciudadRepository.findAll();
+		return aeropuertoRepository.findAll();
+	}
+	
+	@PostMapping("/agregar")
+	public Aeropuerto crearAeropuerto(@Valid @RequestBody Aeropuerto aeropuerto)
+	{
+		System.out.println(aeropuerto);
+		return aeropuertoRepository.save(aeropuerto);
 	}
 
-	@PostMapping("/agregar")
-	public Ciudad crearCiudad(@Valid @RequestBody Ciudad ciudad)
-	{
-		System.out.println(ciudad);
-		return ciudadRepository.save(ciudad);	
-	}
 }

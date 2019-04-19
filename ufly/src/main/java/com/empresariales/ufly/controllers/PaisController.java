@@ -22,14 +22,14 @@ public class PaisController
 	private PaisRepository paisRepository;
 	
 	@GetMapping("/listar")
-	public List<Pais> getAllPaises()
+	public List<Pais> listarPaises()
 	{
 		System.out.println(paisRepository.findAll());
 		return paisRepository.findAll();
 	}
 
 	@PostMapping("/agregar")
-	public Pais createPais(@Valid @RequestBody Pais pais)
+	public Pais crearPais(@Valid @RequestBody Pais pais)
 	{
 		System.out.println(pais);
 		return paisRepository.save(pais);	

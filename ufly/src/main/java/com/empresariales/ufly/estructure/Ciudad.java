@@ -1,7 +1,10 @@
 package com.empresariales.ufly.estructure;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.OnDelete;
@@ -29,10 +33,14 @@ public class Ciudad implements Serializable
 	private String nombreCiudad;
 	
 	@ManyToOne
-    @JoinColumn(name = "FKPais", nullable = false)
+    @JoinColumn(name = "fkpais", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Pais FKPais;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fkciudades")
+	@JsonIgnore
+	private List<Aeropuerto> aeropuertos = new ArrayList<>();
 
 	public Ciudad() {
 		super();
@@ -67,6 +75,14 @@ public class Ciudad implements Serializable
 
 	public void setFKPais(Pais fKPais) {
 		FKPais = fKPais;
+	}
+	
+	public List<Aeropuerto> getAeropuertos() {
+		return aeropuertos;
+	}
+
+	public void setAeropuertos(List<Aeropuerto> aeropuertos) {
+		this.aeropuertos = aeropuertos;
 	}
 
 	@Override

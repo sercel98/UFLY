@@ -27,7 +27,7 @@ public class Pais implements Serializable
 	@Column(name = "nombre_pais")
 	private String nombrePais;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "FKPais")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fkpais")
 	@JsonIgnore
     private List<Ciudad> ciudades = new ArrayList<>();
 

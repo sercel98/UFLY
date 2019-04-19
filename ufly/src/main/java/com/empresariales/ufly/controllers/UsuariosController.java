@@ -16,36 +16,36 @@ import com.empresariales.ufly.exception.ResourceNotFoundException;
 import com.empresariales.ufly.repository.UsuariosRepository;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/usuarios")
 public class UsuariosController 
 {
 	@Autowired
 	private UsuariosRepository usuariosRepository;
 	
 	
-	@GetMapping("/list")
-	public List<Usuarios> getAllUsers()
+	@GetMapping("/listar")
+	public List<Usuarios> listarUsuarios()
 	{
 		System.out.println(usuariosRepository.findAll().get(0));
 		return usuariosRepository.findAll();
 	}
 	
-	@PostMapping("/add")
-	public Usuarios createUsers(@Valid @RequestBody Usuarios usuario)
+	@PostMapping("/agregar")
+	public Usuarios crearUsuarios(@Valid @RequestBody Usuarios usuario)
 	{
 		System.out.println(usuario);
 		return usuariosRepository.save(usuario);
 	}
 	
-	@GetMapping("/usuarios/{id_usuarios}")
-	public Usuarios getUserById(@PathVariable(value = "id_usuario") Integer id_usuario)
+	@GetMapping("/buscar/{id_usuarios}")
+	public Usuarios darUsuarioPorId(@PathVariable(value = "id_usuario") Integer id_usuario)
 	{
 		return usuariosRepository.findById(id_usuario)
 	            .orElseThrow(() -> new ResourceNotFoundException("Usuarios", "id_usuarios", id_usuario));
 	}
 	
-	@PutMapping("/usuarios/{id_usuarios}")
-	public Usuarios updateUser(@PathVariable(value = "id_usuario") Integer id_usuario, @Valid @RequestBody Usuarios usuarioDetalles)
+	@PutMapping("/modificar/{id_usuarios}")
+	public Usuarios modificarUsuario(@PathVariable(value = "id_usuario") Integer id_usuario, @Valid @RequestBody Usuarios usuarioDetalles)
 	{
 		Usuarios user = usuariosRepository.findById(id_usuario)
 	            .orElseThrow(() -> new ResourceNotFoundException("Usuarios", "id_usuarios", id_usuario));
@@ -62,9 +62,4 @@ public class UsuariosController
 		return actualizado;
 	}
 	
-	
-	
-	
-	
-
 }
