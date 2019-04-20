@@ -7,12 +7,14 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.empresariales.ufly.estructure.Ciudad;
+import com.empresariales.ufly.exception.ResourceNotFoundException;
 import com.empresariales.ufly.repository.CiudadRepository;
 
 @CrossOrigin
@@ -36,4 +38,11 @@ public class CiudadController
 		System.out.println(ciudad);
 		return ciudadRepository.save(ciudad);	
 	}
+	
+	@GetMapping("/{id_ciudad}")
+	public Ciudad buscarCiudadPorId(@PathVariable (value = "id_ciudad")  Short id_ciudad) {
+		return ciudadRepository.findById(id_ciudad)
+	            .orElseThrow(() -> new ResourceNotFoundException("Ciudad", "id_ciudad", id_ciudad));
+	}
+	
 }

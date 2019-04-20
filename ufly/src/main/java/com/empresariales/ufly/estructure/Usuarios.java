@@ -3,6 +3,7 @@ package com.empresariales.ufly.estructure;
 import java.io.Serializable;
 import java.math.BigInteger;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,12 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "usuarios")
@@ -50,11 +48,10 @@ public class Usuarios implements Serializable
 	@Column(name = "telefono")
 	private String telefono;
 	
-	@ManyToOne
-    @JoinColumn(name = "FKTipoUsuario", nullable = false)
+	@ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "fktipo_usuario", nullable = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-	private TiposUsuario FKTipoUsuario;
+	private TiposUsuario fktipo_usuario;
 
 	public Usuarios() {
 		super();
@@ -73,7 +70,7 @@ public class Usuarios implements Serializable
 		this.segundo_apellido = segundo_apellido;
 		this.correo_electronico = correo_electronico;
 		this.telefono = telefono;
-		FKTipoUsuario = fKTipoUsuario;
+		fktipo_usuario = fKTipoUsuario;
 	}
 	
 	public int getId_usuario() {
@@ -149,11 +146,11 @@ public class Usuarios implements Serializable
 	}
 
 	public TiposUsuario getFKTipoUsuario() {
-		return FKTipoUsuario;
+		return fktipo_usuario;
 	}
 
 	public void setFKTipoUsuario(TiposUsuario fKTipoUsuario) {
-		FKTipoUsuario = fKTipoUsuario;
+		fktipo_usuario = fKTipoUsuario;
 	}
 
 	@Override
@@ -161,7 +158,7 @@ public class Usuarios implements Serializable
 		return "Usuarios [id_usuario=" + id_usuario + ", cedula=" + cedula + ", contrasenia=" + contrasenia
 				+ ", primer_nombre=" + primer_nombre + ", segundo_nombre=" + segundo_nombre + ", primer_apellido="
 				+ primer_apellido + ", segundo_apellido=" + segundo_apellido + ", correo_electronico="
-				+ correo_electronico + ", telefono=" + telefono + ", FKTipoUsuario=" + FKTipoUsuario + "]";
+				+ correo_electronico + ", telefono=" + telefono + ", FKTipoUsuario=" + fktipo_usuario + "]";
 	}
 	
 	

@@ -1,7 +1,6 @@
 package com.empresariales.ufly.estructure;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -20,6 +19,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 @Entity
 @Table (name = "ciudades")
 public class Ciudad implements Serializable
@@ -35,12 +35,11 @@ public class Ciudad implements Serializable
 	@ManyToOne
     @JoinColumn(name = "fkpaises", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
     private Pais fkpaises;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fkciudades")
 	@JsonIgnore
-	private List<Aeropuerto> aeropuertos = new ArrayList<>();
+	private List<Aeropuerto> aeropuertos;
 
 	public Ciudad() {
 		super();

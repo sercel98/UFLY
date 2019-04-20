@@ -28,7 +28,6 @@ public class UsuariosController
 	@GetMapping("/listar")
 	public List<Usuarios> listarUsuarios()
 	{
-		System.out.println(usuariosRepository.findAll().get(0));
 		return usuariosRepository.findAll();
 	}
 	

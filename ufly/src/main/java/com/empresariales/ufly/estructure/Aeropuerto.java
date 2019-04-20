@@ -2,6 +2,7 @@ package com.empresariales.ufly.estructure;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,16 +35,14 @@ public class Aeropuerto implements Serializable
 	@Column(name = "telefono")
 	private String telefono;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "fkestados_aeropuerto", nullable = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
 	private EstadosAeropuerto fkestados_aeropuerto;
 	
-	@ManyToOne
-    @JoinColumn(name = "fkciudades", nullable = false)
+	@ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "fkciudades", nullable = false, referencedColumnName="id_ciudad")
 	@OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
 	private Ciudad fkciudades;
 	
 	
@@ -104,13 +103,14 @@ public class Aeropuerto implements Serializable
 	}
 
 	public void setFkciudades(Ciudad fkciudades) {
+		System.out.println(fkciudades);
 		this.fkciudades = fkciudades;
 	}
 
 	@Override
 	public String toString() {
 		return "Aeropuerto [id_aeropuerto=" + id_aeropuerto + ", nombre_aeropuerto=" + nombre_aeropuerto
-				+ ", direccion_aeropuerto=" + direccion_aeropuerto + ", telefono=" + telefono + "]";
+				+ ", direccion_aeropuerto=" + direccion_aeropuerto + ", telefono=" + telefono + ", ciudades =" + this.fkciudades + "]";
 	}
 
 }

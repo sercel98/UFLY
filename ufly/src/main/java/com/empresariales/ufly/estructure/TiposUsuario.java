@@ -6,10 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -28,9 +26,9 @@ public class TiposUsuario implements Serializable
 	@Column(name = "tipo_usuario")
 	private String tipo_usuario;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "FKTipoUsuario")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fktipo_usuario")
 	@JsonIgnore
-	private List<Usuarios> usuarios = new ArrayList<>();
+	private List<Usuarios> usuarios;
 
 	public TiposUsuario() {
 		super();
