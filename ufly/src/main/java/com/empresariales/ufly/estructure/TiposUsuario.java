@@ -21,7 +21,7 @@ public class TiposUsuario implements Serializable
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
-	private short id_tipo_usuario;
+	private Short id_tipo_usuario;
 	
 	@Column(name = "tipo_usuario")
 	private String tipo_usuario;
@@ -34,14 +34,14 @@ public class TiposUsuario implements Serializable
 		super();
 	}
 
-	public TiposUsuario(short id_tipo_usuario, String tipo_usuario, List<Usuarios> usuarios) {
+	public TiposUsuario(Short id_tipo_usuario, String tipo_usuario, List<Usuarios> usuarios) {
 		super();
 		this.id_tipo_usuario = id_tipo_usuario;
 		this.tipo_usuario = tipo_usuario;
 		this.usuarios = usuarios;
 	}
 	
-	public short getId_tipo_usuario() {
+	public Short getId_tipo_usuario() {
 		return id_tipo_usuario;
 	}
 	

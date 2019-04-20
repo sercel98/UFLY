@@ -59,7 +59,7 @@ public class Usuarios implements Serializable
 	
 	public Usuarios(int id_usuario, BigInteger cedula, String contrasenia, String primer_nombre, String segundo_nombre,
 			String primer_apellido, String segundo_apellido, String correo_electronico, String telefono,
-			TiposUsuario fKTipoUsuario) {
+			TiposUsuario fktipo_usuario) {
 		super();
 		this.id_usuario = id_usuario;
 		this.cedula = cedula;
@@ -70,9 +70,9 @@ public class Usuarios implements Serializable
 		this.segundo_apellido = segundo_apellido;
 		this.correo_electronico = correo_electronico;
 		this.telefono = telefono;
-		fktipo_usuario = fKTipoUsuario;
+		this.fktipo_usuario = fktipo_usuario;
 	}
-	
+
 	public int getId_usuario() {
 		return id_usuario;
 	}
@@ -145,12 +145,12 @@ public class Usuarios implements Serializable
 		this.telefono = telefono;
 	}
 
-	public TiposUsuario getFKTipoUsuario() {
+	public TiposUsuario getFktipo_usuario() {
 		return fktipo_usuario;
 	}
 
-	public void setFKTipoUsuario(TiposUsuario fKTipoUsuario) {
-		fktipo_usuario = fKTipoUsuario;
+	public void setFktipo_usuario(TiposUsuario fktipo_usuario) {
+		this.fktipo_usuario = fktipo_usuario;
 	}
 
 	@Override
@@ -158,8 +158,6 @@ public class Usuarios implements Serializable
 		return "Usuarios [id_usuario=" + id_usuario + ", cedula=" + cedula + ", contrasenia=" + contrasenia
 				+ ", primer_nombre=" + primer_nombre + ", segundo_nombre=" + segundo_nombre + ", primer_apellido="
 				+ primer_apellido + ", segundo_apellido=" + segundo_apellido + ", correo_electronico="
-				+ correo_electronico + ", telefono=" + telefono + ", FKTipoUsuario=" + fktipo_usuario + "]";
+				+ correo_electronico + ", telefono=" + telefono + ", fktipo_usuario=" + fktipo_usuario + "]";
 	}
-	
-	
 }

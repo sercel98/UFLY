@@ -17,7 +17,7 @@ import com.empresariales.ufly.repository.AeropuertoRepository;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/aeropuerto")
+@RequestMapping("/aeropuertos")
 public class AeropuertoController 
 {
 	@Autowired
@@ -37,13 +37,10 @@ public class AeropuertoController
 	}
 	
 	
-	@GetMapping("/{id_usuarios}")
+	@GetMapping("/{id_aeropuerto}")
 	public Aeropuerto darAeropuertoPorId(@PathVariable(value = "id_aeropuerto") Short id_aeropuerto)
 	{
 		return aeropuertoRepository.findById(id_aeropuerto)
 	            .orElseThrow(() -> new ResourceNotFoundException("Aeropuerto", "id_aeropuerto", id_aeropuerto));
 	}
-	
-	
-
 }

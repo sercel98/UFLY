@@ -19,7 +19,7 @@ import com.empresariales.ufly.repository.EstadosAeropuertoRepository;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/estadoaeropuerto")
+@RequestMapping("/estadosaeropuerto")
 public class EstadosAeropuertoController 
 {
 	@Autowired

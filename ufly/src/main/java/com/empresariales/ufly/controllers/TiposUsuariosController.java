@@ -20,7 +20,7 @@ import com.empresariales.ufly.repository.TiposUsuariosRepository;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/tipousuario")
+@RequestMapping("/tiposusuario")
 public class TiposUsuariosController 
 {
 	@Autowired
@@ -29,14 +29,12 @@ public class TiposUsuariosController
 	@GetMapping("/listar")
 	public List<TiposUsuario> listarUsuarios()
 	{
-		System.out.println(tiposRepository.findAll());
 		return tiposRepository.findAll();
 	}
 
 	@PostMapping("/agregar")
 	public TiposUsuario crearTipoUsuario(@Valid @RequestBody TiposUsuario tipoUsuario)
 	{
-		System.out.println(tipoUsuario);
 		return tiposRepository.save(tipoUsuario);	
 	}
 	
