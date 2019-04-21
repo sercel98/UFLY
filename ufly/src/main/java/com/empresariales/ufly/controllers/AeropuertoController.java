@@ -15,15 +15,18 @@ import com.empresariales.ufly.estructure.Aeropuerto;
 import com.empresariales.ufly.exception.ResourceNotFoundException;
 import com.empresariales.ufly.repository.AeropuertoRepository;
 
+import io.swagger.annotations.Api;
+
 @CrossOrigin
 @RestController
-@RequestMapping("/aeropuertos")
+@RequestMapping("/rest/aeropuertos")
+@Api(description = "Operaciones de aeropuertos")
 public class AeropuertoController 
 {
 	@Autowired
 	private AeropuertoRepository aeropuertoRepository;
 	
-	@GetMapping("/listar")
+	@GetMapping
 	public List<Aeropuerto> listarAeropuertos()
 	{
 		return aeropuertoRepository.findAll();

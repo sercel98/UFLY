@@ -16,16 +16,21 @@ import com.empresariales.ufly.estructure.Usuarios;
 import com.empresariales.ufly.exception.ResourceNotFoundException;
 import com.empresariales.ufly.repository.UsuariosRepository;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 @CrossOrigin
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/rest/usuarios")
+@Api(description = "Operaciones de usuarios")
 public class UsuariosController 
 {
 	@Autowired
 	private UsuariosRepository usuariosRepository;
 	
 	
-	@GetMapping("/listar")
+	@GetMapping
 	public List<Usuarios> listarUsuarios()
 	{
 		return usuariosRepository.findAll();

@@ -17,15 +17,18 @@ import com.empresariales.ufly.estructure.Ciudad;
 import com.empresariales.ufly.exception.ResourceNotFoundException;
 import com.empresariales.ufly.repository.CiudadRepository;
 
+import io.swagger.annotations.Api;
+
 @CrossOrigin
 @RestController
-@RequestMapping("/ciudades")
+@RequestMapping("/rest/ciudades")
+@Api(description = "Operaciones de Ciudades")
 public class CiudadController
 {
 	@Autowired
 	private CiudadRepository ciudadRepository;
 	
-	@GetMapping("/listar")
+	@GetMapping
 	public List<Ciudad> listarCiudades()
 	{
 		System.out.println(ciudadRepository.findAll());

@@ -18,15 +18,18 @@ import com.empresariales.ufly.estructure.TiposUsuario;
 import com.empresariales.ufly.exception.ResourceNotFoundException;
 import com.empresariales.ufly.repository.TiposUsuariosRepository;
 
+import io.swagger.annotations.Api;
+
 @CrossOrigin
 @RestController
-@RequestMapping("/tiposusuario")
+@RequestMapping("/rest/tiposusuario")
+@Api(description = "Operaciones de tipos de usuario")
 public class TiposUsuariosController 
 {
 	@Autowired
 	private TiposUsuariosRepository tiposRepository;
 
-	@GetMapping("/listar")
+	@GetMapping
 	public List<TiposUsuario> listarUsuarios()
 	{
 		return tiposRepository.findAll();

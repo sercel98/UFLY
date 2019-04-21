@@ -18,15 +18,18 @@ import com.empresariales.ufly.estructure.Pais;
 import com.empresariales.ufly.exception.ResourceNotFoundException;
 import com.empresariales.ufly.repository.PaisRepository;
 
+import io.swagger.annotations.Api;
+
 @CrossOrigin
 @RestController
-@RequestMapping("/paises")
+@RequestMapping("/rest/paises")
+@Api(description = "Operaciones de país")
 public class PaisController
 {
 	@Autowired
 	private PaisRepository paisRepository;
 	
-	@GetMapping("/listar")
+	@GetMapping
 	public List<Pais> listarPaises()
 	{
 		System.out.println(paisRepository.findAll());

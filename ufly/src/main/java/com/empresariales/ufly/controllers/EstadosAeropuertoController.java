@@ -17,15 +17,18 @@ import com.empresariales.ufly.estructure.EstadosAeropuerto;
 import com.empresariales.ufly.exception.ResourceNotFoundException;
 import com.empresariales.ufly.repository.EstadosAeropuertoRepository;
 
+import io.swagger.annotations.Api;
+
 @CrossOrigin
 @RestController
-@RequestMapping("/estadosaeropuerto")
+@RequestMapping("/rest/estadosaeropuerto")
+@Api(description = "Operaciones de los estados de aeropuerto")
 public class EstadosAeropuertoController 
 {
 	@Autowired
 	private EstadosAeropuertoRepository estadosAeroRepository;
 	
-	@GetMapping("/listar")
+	@GetMapping
 	public List<EstadosAeropuerto> listarEstadosAeropuerto()
 	{
 		return estadosAeroRepository.findAll();
