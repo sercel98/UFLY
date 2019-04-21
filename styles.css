@@ -23,7 +23,7 @@ CONTENIDO GENERAL
 
 /*AGREGAR AQUÍ SI QUIERES QUE LA FUENTE SEA BOLD*/
 
-.header h1, .encabezado h2, .informacion-aeropuerto, thead, #titulo-perfil {
+.header h1, .encabezado h2, .informacion-aeropuerto, thead, #titulo-perfil,.label-perfil {
   font-weight: bold;
 }
 

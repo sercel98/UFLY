@@ -14,97 +14,180 @@
 
 <body class="perfil-usuario">
 
+    <div id="app">
 
-    <div id="wrapper">
+        <div id="wrapper">
 
-        <!--SIDEBAR-->
+            <!--SIDEBAR-->
 
-        <div id="sidebar-wrapper">
-            <div id="border-logo">
-                <img src="/img/logo.png" class="img-fluid">
+            <div id="sidebar-wrapper">
+                <div id="border-logo">
+                    <img src="/img/logo.png" class="img-fluid">
+                </div>
+                <ul class="sidebar-nav">
+
+                    <li>
+                        <a href="#">Mi informacion</a>
+                    </li>
+                    <li>
+                        <a href="#">Mis tiquetes</a>
+                    </li>
+                </ul>
             </div>
-            <ul class="sidebar-nav">
+            <!--CONTENIDO-->
 
-                <li>
-                    <a href="#">Mi informacion</a>
-                </li>
-                <li>
-                    <a href="#">Mis tiquetes</a>
-                </li>
-            </ul>
-        </div>
-        <!--CONTENIDO-->
-        <div class="container-fluid" id="navegation">
-            <div class="row">
-                <div class="col-lg-2 xs-12 ">
-                    <button type="button" id="menu-toggle" class="btn">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <div id="panel-imagen" class="row">
-                        <img src="/img/hombre.png" class="img-fluid">
+            <div class="container-fluid" id="navegation">
 
-                    </div>
-                    <div class="row panel d-flex justify-content-start align-items-center my-3 mx-5 py-2 px-2 ">
+                <div class="row">
 
-                        <button type="button" id="btn-editar" class="btn">
-                            Editar
+                    <div class="col-lg-2 xs-12 ">
+
+                        <button type="button" id="menu-toggle" @click.prevent="abrirMenu" class="btn">
+                            <i class="fas fa-bars"></i>
                         </button>
+
+                        <div id="panel-imagen" class="row">
+                            <img src="/img/hombre.png" class="img-fluid">
+
+                        </div>
+
+                        <div class="row panel d-flex justify-content-start align-items-center my-3 mx-5 py-2 px-2 ">
+
+                            <button type="button" id="btn-editar" @click.prevent="procesarFormulario" class="btn">
+                                Editar
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-10 md-10 xs-12">
+                        <h1 id="titulo-perfil">Mi información</h1>
+
+                        <h5 id="titulo-perfil">Datos personales</h5>
+
+                        <form action="">
+                            <div class="form-group ">
+                                <label class="label-perfil" for="nombre">Nombre completo</label>
+                                <div>{{usuario.nombre}}</div>
+                            </div>
+
+
+                            <div class="form-group ">
+                                <label class="label-perfil" for="identificacion">Identificación</label>
+                                <div>{{usuario.identificacion}}</div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label class="label-perfil" for="correo">Correo electrónico</label>
+                                <div>{{usuario.correo}}</div>
+                            </div>
+
+
+                            <div class="form-group ">
+                                <label class="label-perfil" for="fecha-nacimiento">Fecha de nacimiento</label>
+                                <div>{{usuario.fechaNacimiento}}</div>
+
+                            </div>
+
+                            <div class="form-group ">
+                                <label class="label-perfil" for="telefono">Teléfono</label>
+                                <input type="text" name="telefono" id="telefono" v-model="usuario.telefono"
+                                    class="form-control input-group-text">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="label-perfil" for="direccion">Dirección</label>
+                                <input type="text" name="direccion" id="direccion" v-model="usuario.direccion"
+                                    class="form-control input-group-text">
+                            </div>
+
+                        </form>
+
                     </div>
 
                 </div>
 
-                <div class="col-lg-10 md-10 xs-12">
-                    <h1 id="titulo-perfil">Mi información</h1>
-
-                    <h6 id="titulo-perfil">Datos personales</h6>
-
-                    <form action="">
-                        <div class="form-group ">
-                            <label for="nombre">Nombre completo</label>
-                            <input type="text" name="nombre" id="nombre" class="form-control input-group-text">
-                        </div>
-
-                        <div class="form-group ">
-                            <label for="idenficiacion">Idenficación</label>
-                            <input type="text" name="idenficiacion" id="idenficiacion"
-                                class="form-control input-group-text">
-                        </div>
-
-                        <div class="form-group ">
-                            <label for="correo">Correo electrónico</label>
-                            <input type="text" name="correo" id="correo" class="form-control input-group-text">
-                        </div>
-                        <div class="form-group ">
-                            <label for="telefono">Teléfono</label>
-                            <input type="text" name="telefono" id="telefono" class="form-control input-group-text">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="direccion">Dirección</label>
-                            <input type="text" name="direccion" id="direccion" class="form-control input-group-text">
-                        </div>
-
-                        <div class="form-group ">
-                            <label for="fecha-nacimiento">Fecha de nacimiento</label>
-                            <input type="text" name="fecha-nacimiento" id="fecha-nacimiento"
-                                class="form-control input-group-text">
-                        </div>
-
-                    </form>
-                </div>
             </div>
-        </div>
-    </div>
 
+        </div>
+
+    </div>
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"
         integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
 
+
     <script>
-        $("#menu-toggle").click(function (e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("menuDisplayed");
-        });
+
 
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+
+                usuario: [{
+
+                    identificacion: "",
+                    nombre: "",
+                    correo: "",
+                    telefono: "",
+                    direccion: "",
+                    fechaNacimiento: ""
+
+
+                }]
+
+            },
+            methods: {
+                abrirMenu: function () {
+                    $("#menu-toggle").click(function (e) {
+                        e.preventDefault();
+                        $("#wrapper").toggleClass("menuDisplayed");
+
+                    });
+                },
+
+                procesarFormulario: function () {
+                    var obj = {
+                        "telefono": this.usuario.telefono,
+                        "direccion": this.usuario.direccion,
+                    }
+
+                    var jsonData = JSON.stringify(obj)
+                    console.log(jsonData)
+
+                    var xhr = new XMLHttpRequest();
+
+                    /*URL DEL REGISTRAR AEROPUERTO.JAVA*/
+
+                    var url =
+
+                        xhr.open("POST", url);
+                    xhr.setRequestHeader("Content-type", "application/json");
+
+                    xhr.send(jsonData);
+
+                    /*PROBAR SI ENVÍA*/
+                    alert('Registro exitoso')
+
+
+
+                }
+
+            },
+
+            mounted() {
+                fetch('usuario.json')
+                    .then(response => response.json())
+                    .then(usuario => {
+                        this.usuario = usuario;
+                    });
+            },
+        });
+    </script>
+
 
 </body>
