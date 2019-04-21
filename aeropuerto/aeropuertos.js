@@ -20,6 +20,7 @@ const aeropuertos = new Vue({
     },
 
     mounted(){
+        //fetch('http://localhost:8080/aeropuertos/listar', {mode: cors})
         fetch('tabla.json')
         .then(response => response.json())
         .then(aeropuertos =>{

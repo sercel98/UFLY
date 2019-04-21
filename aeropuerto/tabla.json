@@ -1,29 +1,39 @@
 [
     {
-        "nombre_aeropuerto": "Aeropuerto Perales",
-        "ciudad_pais": "Ibagué - Tolima",
-        "estado": "1Operando",
-        "telefono": 1111111
+        "id_aeropuerto": "1",
+        "nombre_aeropuerto": "AeropuertoPrueba1",
+        "direccion_aeropuerto": "dfgdfg",
+        "telefono": "2343423",
+        "fkestados_aeropuerto": {
+            "id_estado_aeropuerto": 1,
+            "nombre_estado": "Activo"
+        },
+        "fkciudades": {
+            "id_ciudad": 1,
+            "nombre_ciudad": "Bogotá",
+            "fkpais": {
+                "id_pais": 1,
+                "nombre_pais": "Colombia"
+            }
+        }
     },
 
     {
-        "nombre_aeropuerto": "Aeropuerto Internacional Jose Maria Córdova",
-        "ciudad_pais": "Rionegro - Antioquia",
-        "estado": "2Operando",
-        "telefono": 22222222
-    },
-
-    {
-        "nombre_aeropuerto": "Aeropuerto la Dorada",
-        "ciudad_pais": "Bogotá - Cundinamarca",
-        "estado": "3Operando",
-        "telefono": 33333333
-    },
-
-    {
-        "nombre_aeropuerto": "Aeropuerto Olaya Herrera",
-        "ciudad_pais": "Medellin - Antioquía",
-        "estado": "12Operando",
-        "telefono": 12121212
+        "id_aeropuerto": "2",
+        "nombre_aeropuerto": "AeropuertoPrueba2",
+        "direccion_aeropuerto": "dfgdfg",
+        "telefono": "2343423",
+        "fkestados_aeropuerto": {
+            "id_estado_aeropuerto": 1,
+            "nombre_estado": "Activo"
+        },
+        "fkciudades": {
+            "id_ciudad": 1,
+            "nombre_ciudad": "Ibagué",
+            "fkpais": {
+                "id_pais": 1,
+                "nombre_pais": "Colombia"
+            }
+        }
     }
 ]

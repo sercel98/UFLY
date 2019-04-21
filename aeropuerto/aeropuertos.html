@@ -44,21 +44,26 @@
                     <thead>
                         <tr>
                             <th>Nombre del aeropuerto</th>
+                            <th>Dirección</th>
                             <th>Ciudad - País</th>
                             <th>Estado</th>
                             <th>Teléfono</th>
                         </tr>
                     </thead>
                     <tbody id="contenido" v-for="aeropuerto of searchAirport">
-                        <tr>
+                        <tr :key="aeropuerto.id_aeropuerto" onclick="location.href='registrar_aeropuerto.html'" >
                             <td>
                                 {{aeropuerto.nombre_aeropuerto}}
                             </td>
                             <td>
-                                {{aeropuerto.ciudad_pais}}
+                                {{aeropuerto.direccion_aeropuerto}}
                             </td>
                             <td>
-                                {{aeropuerto.estado}}
+                                {{aeropuerto.fkciudades.nombre_ciudad}} -
+                                {{aeropuerto.fkciudades.fkpais.nombre_pais}}
+                            </td>
+                            <td>
+                                {{aeropuerto.fkestados_aeropuerto.nombre_estado}}
                             </td>
                             <td>
                                 {{aeropuerto.telefono}}
@@ -83,8 +88,7 @@
             </div>
         
             <div class=" my-2">
-                <button type="button" class="btn subir" OnClick="location.href='registrar_aeropuerto.html'">Agregar
-                    Aeropuerto</button>
+                <button type="button" class="btn subir" OnClick="location.href='registrar_aeropuerto.html'">Agregar Aeropuerto</button>
             </div>
         </div>
     </div>

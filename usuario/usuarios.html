@@ -60,16 +60,16 @@
                     <tbody id="contenido" v-for="usuario of searchUser">
                         <tr>
                             <td>
-                                {{usuario.documento}}
+                                {{usuario.cedula}}
                             </td>
                             <td>
-                                {{usuario.nombre}}
+                                {{usuario.primer_nombre}} {{usuario.segundo_nombre}} {{usuario.primer_apellido}} {{usuario.segundo_apellido}}
                             </td>
                             <td>
-                                {{usuario.correo}}
+                                {{usuario.correo_electronico}}
                             </td>
                             <td>
-                                {{usuario.phone}}
+                                {{usuario.telefono}}
                             </td>
                         </tr>
 
@@ -145,16 +145,14 @@
             methods: {
             },
             computed: {
-
                 searchUser: function () {
-
-                    return this.usuarios.filter((usuario) => usuario.nombre.includes(this.documentoBuscado));
+                    return this.usuarios.filter((usuario) => usuario.primer_nombre.toLowerCase().includes(this.documentoBuscado.toLowerCase()));
                 }
             },
 
 
             mounted() {
-                fetch('usuarios.json')
+                fetch('http://localhost:8080/usuarios/listar/', {mode: 'cors'})
                     .then(response => response.json())
                     .then(usuarios => {
                         this.usuarios = usuarios;
