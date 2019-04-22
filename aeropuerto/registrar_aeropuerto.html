@@ -63,7 +63,7 @@
                             v-model="ciudadAeropuerto">
                             <option selected>Elegir la ciudad de origen</option>
                             <option v-for="ciudad of buscarCiudades">
-                                {{ ciudad.nombre_ciudadx }}
+                                {{ ciudad.nombre_ciudad }}
                             </option>
                         </select>
                     </div>
@@ -85,8 +85,8 @@
                         <select class="custom-select" name="estadoAeropuerto" id="estadoAeropuerto"
                             v-model="estadoAeropuerto">
                             <option selected>Elegir el estado del aeropuerto</option>
-                            <option v-for="estadoAeropuerto of estadosAeropuerto">
-                                {{ estadoAeropuerto.nombre_estado }}
+                            <option v-for="estado of estadosAeropuerto">
+                                {{ estado.nombre_estado }}
                             </option>
                         </select>
                     </div>
@@ -95,7 +95,7 @@
          
             <div class="d-flex justify-content-center flex-wrap my-2 mx-5" id="registrar_aeropuertos">
                 <div class="botones mx-2 my-2">
-                    <button type="submit" class="btn" onclick="procesarFormulario()">Registrar</button>
+                    <button type="submit" class="btn" :onclick="procesarFormulario">Registrar</button>
                 </div>
                 <div class="botones mx-2 my-2">
                     <button type="button" class="btn" OnClick="location.href='aeropuertos.html'">Salir</button>

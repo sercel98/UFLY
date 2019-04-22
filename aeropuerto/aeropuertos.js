@@ -8,8 +8,8 @@ const aeropuertos = new Vue({
     },
 
     methods: {
-        verificarBusqueda(){
-            
+        actualizarAeropuerto(id){
+            location.href='perfil_aeropuerto.html?' + id;
         }
     },
 
@@ -20,8 +20,7 @@ const aeropuertos = new Vue({
     },
 
     mounted(){
-        //fetch('http://localhost:8080/aeropuertos/listar', {mode: cors})
-        fetch('tabla.json')
+        fetch('http://localhost:8080/rest/aeropuertos')
         .then(response => response.json())
         .then(aeropuertos =>{
             this.aeropuertos = aeropuertos;
