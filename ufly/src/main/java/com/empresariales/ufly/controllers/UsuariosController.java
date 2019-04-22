@@ -43,14 +43,14 @@ public class UsuariosController
 		return usuariosRepository.save(usuario);
 	}
 	
-	@GetMapping("/buscar/{id_usuario}")
+	@GetMapping("/{id_usuario}")
 	public Usuarios darUsuarioPorId(@PathVariable(value = "id_usuario") Integer id_usuario)
 	{
 		return usuariosRepository.findById(id_usuario)
 	            .orElseThrow(() -> new ResourceNotFoundException("Usuarios", "id_usuarios", id_usuario));
 	}
 	
-	@PutMapping("/modificar/{id_usuario}")
+	@PutMapping("/{id_usuario}")
 	public Usuarios modificarUsuario(@PathVariable(value = "id_usuario") Integer id_usuario, @Valid @RequestBody Usuarios usuarioDetalles)
 	{
 		Usuarios user = usuariosRepository.findById(id_usuario)
