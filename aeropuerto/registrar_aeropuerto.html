@@ -34,69 +34,70 @@
             <h2 class="py-2 m-0">Información del aeropuerto</h2>
         </div>
 
-        <form id="formulario-registro-aeropuerto" @submit.prevent="procesarFormulario">
-         
+        <form id="formulario-registro-aeropuerto" @submit.prevent="validarCampos">
+
             <div id="items-formulario-aeropuerto">
+
                 <div class=" form-row mx-5">
-                    <div class="form-group col-md-4 my-3">
+
+                    <div class="form-group col-md-6 my-3">
                         <label>Nombre del aeropuerto:</label>
                         <input type="text" class="form-control" name="nombreAeropuerto" id="nombreAeropuerto"
                             v-model="nombreAeropuerto" placeholder="Nombre" required>
                     </div>
-                    <div class="col-md-2 my-3">
-                        <label>Código:</label>
-                        <input type="text" class="form-control" placeholder="Codigo" v-model="codigoAeropuerto"
-                            name="codigoAeropuerto" id="codigoAeropuerto" required>
-                    </div>
-                    <div class="form-group col-md-3 my-3">
-                        <label>País:</label>
-                        <select class="custom-select" name="paisAeropuerto" id="paisAeropuerto" 
-                        v-model="paisAeropuerto" required>
-                            <option selected>Elegir el páis de origen</option>
-                            <option v-for="pais of paises">
-                                {{ pais.nombre_pais }}
-                            </option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-3 my-3">
-                        <label>Ciudad:</label>
-                        <select class="custom-select" name="ciudadAeropuerto" id="ciudadAeropuerto"
-                            v-model="ciudadAeropuerto" required>
-                            <option selected>Elegir la ciudad de origen</option>
-                            <option v-for="ciudad of buscarCiudades">
-                                {{ ciudad.nombre_ciudad }}
-                            </option>
-                        </select>
-                    </div>
-                </div>
 
-                <div class="form-row mx-5">
                     <div class="form-group col-md-4 my-3">
                         <label>Dirección del aeropuerto:</label>
                         <input type="text" class="form-control" name="direccionAeropuerto" id="direccionAeropuerto"
                             v-model="direccionAeropuerto" placeholder="Dirección" required>
                     </div>
+
                     <div class="col-md-2 my-3">
-                        <label>Telefono:</label>
+                        <label>Teléfono:</label>
                         <input type="text" class="form-control" name="telefonoAeropuerto" id="telefonoAeropuerto"
                             v-model="telefonoAeropuerto" placeholder="Telefono" required>
                     </div>
-                    <div class="col-md-3 my-3">
-                        <label>Estado:</label>
-                        <select class="custom-select" name="estadoAeropuerto" id="estadoAeropuerto"
-                            v-model="estadoAeropuerto" required>
-                            <option selected>Elegir el estado del aeropuerto</option>
-                            <option v-for="estado of estadosAeropuerto">
-                                {{ estado.nombre_estado }}
-                            </option>
-                        </select>
+
+                    <div class="form-row mx-5">
+                        <div class="form-group col-md-2 my-2">
+                            <label>País:</label>
+                            <select class="custom-select" name="paisAeropuerto" id="paisAeropuerto"
+                                v-model="paisAeropuerto" required>
+                                <option selected>Elegir el páis de origen</option>
+                                <option v-for="pais of paises">
+                                    {{ pais.nombre_pais }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-2 my-2">
+                            <label>Ciudad:</label>
+                            <select class="custom-select" name="ciudadAeropuerto" id="ciudadAeropuerto"
+                                v-model="ciudadAeropuerto" required>
+                                <option selected>Elegir la ciudad de origen</option>
+                                <option v-for="ciudad of buscarCiudades">
+                                    {{ ciudad.nombre_ciudad }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-2 my-2">
+                            <label>Estado:</label>
+                            <select class="custom-select" name="estadoAeropuerto" id="estadoAeropuerto"
+                                v-model="estadoAeropuerto" required>
+                                <option selected>Elegir el estado del aeropuerto</option>
+                                <option v-for="estado of estadosAeropuerto">
+                                    {{ estado.nombre_estado }}
+                                </option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
-         
+
             <div class="d-flex justify-content-center flex-wrap my-2 mx-5" id="registrar_aeropuertos">
                 <div class="botones mx-2 my-2">
-                    <button type="submit" class="btn" :onclick="procesarFormulario">Registrar</button>
+                    <button type="submit" class="btn" :onclick="validarCampos">Registrar</button>
                 </div>
                 <div class="botones mx-2 my-2">
                     <button type="button" class="btn" OnClick="location.href='aeropuertos.html'">Salir</button>
@@ -122,4 +123,5 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+
 </html>

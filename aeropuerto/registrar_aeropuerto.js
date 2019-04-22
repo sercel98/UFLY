@@ -52,6 +52,21 @@ const aeropuertos = new Vue({
             .then(response => response.json())
             .catch(error => alert('No se ha podido registrar el aeropuerto: ' + error))
             .then(response => alert('Se ha registrado el aeropuerto exitosamente: ' + response))
+        },
+
+        validarCampos:function()
+        {
+            if (this.nombreAeropuerto.length > 3 && !this.nombreAeropuerto.startsWith(" ") &&
+            this.direccionAeropuerto.length > 5 && !this.direccionAeropuerto.startsWith(" ") &&
+            !this.telefonoAeropuerto.startsWith(" ") && this.telefonoAeropuerto.toString().length > 5 ) 
+            {
+                this.procesarFormulario();
+
+            } 
+            else 
+            {
+                alert("LA INFORMACIÓN DEL AEROPUERTO ES INCOMPLETA!"); 
+            }
         }
     },
 
