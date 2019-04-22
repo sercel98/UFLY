@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Aeropuerto implements Serializable
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_aeropuerto")
 	private short id_aeropuerto;
 	
@@ -35,13 +35,13 @@ public class Aeropuerto implements Serializable
 	@Column(name = "telefono")
 	private String telefono;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne //(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "fkestados_aeropuerto", nullable = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private EstadosAeropuerto fkestados_aeropuerto;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "fkciudades", nullable = false, referencedColumnName="id_ciudad")
+	@ManyToOne //(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "fkciudades", nullable = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Ciudad fkciudades;
 	
@@ -110,7 +110,7 @@ public class Aeropuerto implements Serializable
 	@Override
 	public String toString() {
 		return "Aeropuerto [id_aeropuerto=" + id_aeropuerto + ", nombre_aeropuerto=" + nombre_aeropuerto
-				+ ", direccion_aeropuerto=" + direccion_aeropuerto + ", telefono=" + telefono + ", ciudades =" + this.fkciudades + "]";
+				+ ", direccion_aeropuerto=" + direccion_aeropuerto + ", telefono=" + telefono + ", estados" + this.fkestados_aeropuerto +", ciudades =" + this.fkciudades + "]";
 	}
 
 }

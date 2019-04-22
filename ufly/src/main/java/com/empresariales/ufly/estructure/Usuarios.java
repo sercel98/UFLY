@@ -21,7 +21,7 @@ import org.hibernate.annotations.OnDeleteAction;
 public class Usuarios implements Serializable
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id_usuario;
 	
 	@Column(name = "cedula")
@@ -48,7 +48,7 @@ public class Usuarios implements Serializable
 	@Column(name = "telefono")
 	private String telefono;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne//(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "fktipo_usuario", nullable = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private TiposUsuario fktipo_usuario;
