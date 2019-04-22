@@ -40,16 +40,17 @@
                         <div class="form-group col-md-6 my-3">
                             <label>Nombre del aeropuerto:</label>
                             <input type="text" class="form-control" name="nombreAeropuerto" id="nombreAeropuerto"
-                                v-model="nombreAeropuerto" placeholder="Nombre">
+                                v-model="nombreAeropuerto" placeholder="Nombre" required>
                         </div>
                         <div class="form-group col-md-4 my-3">
                             <label>Dirección del aeropuerto:</label>
-                            <input type="text" class="form-control" name="direccionAeropuerto" id="direccionAeropuerto" v-model="direccionAeropuerto" placeholder="Dirección">
+                            <input type="text" class="form-control" name="direccionAeropuerto"   id="direccionAeropuerto" 
+                            v-model="direccionAeropuerto" placeholder="Dirección" required>
                         </div>
                         <div class="col-md-2 my-3">
                             <label>Telefono:</label>
                             <input type="text" class="form-control" name="telefonoAeropuerto" id="telefonoAeropuerto"
-                                v-model="telefonoAeropuerto" placeholder="Telefono">
+                                v-model="telefonoAeropuerto" placeholder="Telefono" required>
                         </div>
                     </div>
 
@@ -57,7 +58,7 @@
                         <div class="form-group col-md-2 my-2">
                             <label>País:</label>
                             <select class="custom-select" name="paisAeropuerto" id="paisAeropuerto"
-                                v-model="paisAeropuerto">
+                                v-model="paisAeropuerto" required>
                                 <option selected>{{paisAeropuerto}}</option>
                                 <option v-for="pais of paises">
                                     {{ pais.nombre_pais }}
@@ -67,7 +68,7 @@
                         <div class="form-group col-md-2 my-2">
                             <label>Ciudad:</label>
                             <select class="custom-select" name="ciudadAeropuerto" id="ciudadAeropuerto"
-                                v-model="ciudadAeropuerto">
+                                v-model="ciudadAeropuerto" required>
                                 <option selected>{{ciudadAeropuerto}}</option>
                                 <option v-for="ciudad of buscarCiudades">
                                     {{ ciudad.nombre_ciudad }}
@@ -78,7 +79,7 @@
                         <div class="col-md-2 my-2">
                             <label>Estado:</label>
                             <select class="custom-select" name="estadoAeropuerto" id="estadoAeropuerto"
-                                v-model="estadoAeropuerto">
+                                v-model="estadoAeropuerto" required>
                                 <option selected>{{estadoAeropuerto}}</option>
                                 <option v-for="estado of estadosAeropuerto">
                                     {{ estado.nombre_estado }}
