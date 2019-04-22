@@ -51,7 +51,7 @@ public class AeropuertoController
 	            .orElseThrow(() -> new ResourceNotFoundException("Aeropuerto", "id_aeropuerto", id_aeropuerto));
 	}
 	
-	@PutMapping("/{id_aeropuerto}")
+	@PutMapping("/modificar/{id_aeropuerto}")
 	public Aeropuerto modificarUsuario(@PathVariable(value = "id_aeropuerto") Short id_aeropuerto, @Valid @RequestBody Aeropuerto aeropuertoDetalle)
 	{
 		Aeropuerto aero=  aeropuertoRepository.findById(id_aeropuerto)
@@ -61,7 +61,7 @@ public class AeropuertoController
 		aero.setDireccion_aeropuerto(aeropuertoDetalle.getDireccion_aeropuerto());
 		aero.setTelefono(aeropuertoDetalle.getTelefono());
 		aero.setFkestados_aeropuerto(aeropuertoDetalle.getFkestados_aeropuerto());
-		aero.setFkciudades(aero.getFkciudades());
+		aero.setFkciudades(aeropuertoDetalle.getFkciudades());
 		
 		
 		Aeropuerto actualizado = aeropuertoRepository.save(aero);
