@@ -34,7 +34,7 @@
             <h2 class="py-2 m-0">Información del aeropuerto</h2>
         </div>
 
-        <form id="formulario-perfil-aeropuerto" @submit.prevent="procesarFormulario">
+        <form id="formulario-perfil-aeropuerto" @submit.prevent="validarCampos">
             <div id="items-perfil-aeropuerto">
                 <div class=" form-row mx-5">
                     <div class="form-group col-md-6 my-3">
@@ -48,7 +48,7 @@
                             v-model="direccionAeropuerto" placeholder="Dirección" required>
                     </div>
                     <div class="col-md-2 my-3">
-                        <label>Telefono:</label>
+                        <label>Teléfono:</label>
                         <input type="text" class="form-control" name="telefonoAeropuerto" id="telefonoAeropuerto"
                             v-model="telefonoAeropuerto" placeholder="Telefono" required>
                     </div>
@@ -91,7 +91,7 @@
             <div class="d-flex justify-content-center flex-wrap my-2 mx-5" id="registrar_aeropuertos">
                 <div class="botones mx-2 my-2">
                     <!--ENVIAR TODA LA INFORMACION DEL AEROPUERTO ACTUAL-->
-                    <button type="submit" class="btn" @click="procesarFormulario()">Actualizar</button>
+                    <button type="submit" class="btn" @click="validarCampos">Actualizar</button>
                 </div>
                 <div class="botones mx-2 my-2">
                     <button type="button" class="btn" OnClick="location.href='aeropuertos.html'">Salir</button>
