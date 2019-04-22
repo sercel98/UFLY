@@ -57,8 +57,13 @@ public class AeropuertoController
 		Aeropuerto aero=  aeropuertoRepository.findById(id_aeropuerto)
 	            .orElseThrow(() -> new ResourceNotFoundException("Aeropuerto", "id_aeropuerto", id_aeropuerto));
 
+		aero.setNombre_aeropuerto(aeropuertoDetalle.getNombre_aeropuerto());
+		aero.setDireccion_aeropuerto(aeropuertoDetalle.getDireccion_aeropuerto());
 		aero.setTelefono(aeropuertoDetalle.getTelefono());
-
+		aero.setFkestados_aeropuerto(aeropuertoDetalle.getFkestados_aeropuerto());
+		aero.setFkciudades(aero.getFkciudades());
+		
+		
 		Aeropuerto actualizado = aeropuertoRepository.save(aero);
 		
 		return actualizado;
