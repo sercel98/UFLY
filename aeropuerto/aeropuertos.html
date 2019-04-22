@@ -16,7 +16,7 @@
 </head>
 
 <body class="body-admin">
-    
+
     <div id="aeropuertos">
         <span class="ir-arriba icon-arrow-up2"></span>
         <div class="header d-flex justify-content-between align-items-center flex-wrap-reverse py-2 px-2">
@@ -32,15 +32,16 @@
                 </div>
             </li>
         </div>
-        
+
         <div class="busqueda d-flex justify-content-start align-items-center my-3 mx-5 py-2 px-2">
             <h5 class="mt-2 py-2 px-3">Buscar: </h5>
-            <input v-model="buscarAeropuerto" class="aeropuerto py-1 px-2 border-0 mr-4 text-capitalize flex-fill bd-highlight col-md-12" type="text">
+            <input v-model="buscarAeropuerto"
+                class="aeropuerto py-1 px-2 border-0 mr-4 text-capitalize flex-fill bd-highlight col-md-12" type="text">
         </div>
-        
+
         <div class="mx-5">
             <div class="table-responsive">
-                <table class="table">   
+                <table class="table">
                     <thead>
                         <tr>
                             <th>Nombre del aeropuerto</th>
@@ -51,7 +52,7 @@
                         </tr>
                     </thead>
                     <tbody id="contenido" v-for="aeropuerto of searchAirport">
-                        <tr @click="actualizarAeropuerto(aeropuerto.id_aeropuerto)" >
+                        <tr @click="actualizarAeropuerto(aeropuerto.id_aeropuerto)">
                             <td>
                                 {{aeropuerto.nombre_aeropuerto}}
                             </td>
@@ -70,17 +71,18 @@
                             </td>
                         </tr>
                     </tbody>
-            </table>
+                </table>
+            </div>
         </div>
-        </div>
-        
+
         <div class="opciones d-flex justify-content-around flex-wrap mx-5">
             <div class=" my-2">
                 <button type="button" id="subir" OnClick=toTop() class="btn">Subir</button>
             </div>
-        
+
             <div class=" my-2">
-                <button type="button" class="btn subir" OnClick="location.href='registrar_aeropuerto.html'">Agregar Aeropuerto</button>
+                <button type="button" class="btn subir" OnClick="location.href='registrar_aeropuerto.html'">Agregar
+                    Aeropuerto</button>
             </div>
         </div>
     </div>

@@ -28,7 +28,7 @@
                 <div class="form-group col-md-6">
                     <label for="segundo-nombre">Segundo nombre</label>
                     <input type="text" name="segundo-nombre" id="segundo-nombre" v-model="segundoNombre"
-                        class="form-control input-group-text" >
+                        class="form-control input-group-text">
                 </div>
             </div>
 
@@ -54,13 +54,13 @@
 
                 <div class="form-group col-md-3">
                     <label for="genero">Género</label>
-                    <select name="genero" id="genero" v-model="genero"  class="form-control input-group-text" required>
+                    <select name="genero" id="genero" v-model="genero" class="form-control input-group-text" required>
                         <option>Masculino</option>
                         <option>Femenino</option>
                     </select>
                 </div>
 
-            </div>
+            </div>  
 
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -113,13 +113,13 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
+
+        
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+    <script src="registrar_usuario.js"></script>
 
 
     <!--TODO:Validar si el email es válido -->
@@ -128,74 +128,6 @@
 
 
     <script>
-        var app = new Vue({
-            el: '#formulario-registro-usuario',
-            data:
-            {
-                primerNombre: '',
-                segundoNombre: '',
-                primerApellido: '',
-                segundoApellido: '',
-                identificacion: '',
-                genero: '',
-                correoElectronico: '',
-                telefono: '',
-                direccion: '',
-                fechaNacimiento: '',
-                contrasena: '',
-
-
-            },
-            methods: {
-                procesarFormulario: function () {
-
-                    var obj = {
-                        "primerNombre": this.primerNombre,
-                        "segundoNombre": this.segundoNombre,
-                        "primerApellido": this.primerApellido,
-                        "segundoApellido": this.segundoApellido,
-                        "identificacion": this.identificacion,
-                        "genero": this.genero,
-                        "correoElectronico": this.correoElectronico,
-                        "telefono": this.telefono,
-                        "direccion": this.direccion,
-                        "fechaNacimiento": this.fechaNacimiento,
-                        "contrasena": this.contrasena
-                    }
-
-                    var jsonData = JSON.stringify(obj)
-                    console.log(jsonData)
-
-
-                    var xhr = new XMLHttpRequest();
-
-                    /*URL DEL REGISTRAR AEROPUERTO.JAVA*/
-
-                    var url =
-
-                        xhr.open("POST", url);
-                    xhr.setRequestHeader("Content-type", "application/json");
-
-                    xhr.send(jsonData);
-
-                    /*PROBAR SI ENVÍA*/
-                    alert('Registro exitoso')
-
-
-
-                    
-                },
-
-
-
-
-
-
-            },
-
-
-
-        })
 
     </script>
 
