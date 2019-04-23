@@ -39,7 +39,6 @@ public class UsuariosController
 	@PostMapping("/agregar")
 	public Usuarios crearUsuarios(@Valid @RequestBody Usuarios usuario)
 	{
-		System.out.println(usuario);
 		return usuariosRepository.save(usuario);
 	}
 	
@@ -62,6 +61,9 @@ public class UsuariosController
 		user.setPrimer_apellido(usuarioDetalles.getPrimer_apellido());
 		user.setSegundo_apellido(usuarioDetalles.getSegundo_apellido());
 		user.setTelefono(usuarioDetalles.getTelefono());
+		user.setGenero(usuarioDetalles.getGenero());
+		user.setDireccion(usuarioDetalles.getDireccion());
+		user.setFecha_nacimiento(usuarioDetalles.getFecha_nacimiento());
 
 		Usuarios actualizado = usuariosRepository.save(user);
 		

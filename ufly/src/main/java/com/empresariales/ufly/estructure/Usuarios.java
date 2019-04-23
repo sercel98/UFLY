@@ -2,6 +2,7 @@ package com.empresariales.ufly.estructure;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,6 +16,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "usuarios")
@@ -48,6 +51,16 @@ public class Usuarios implements Serializable
 	@Column(name = "telefono")
 	private String telefono;
 	
+	@Column(name = "genero")
+	private short genero;
+	
+	@Column(name = "direccion")
+	private String direccion;
+	
+	@Column(name = "fecha_nacimiento")
+	@JsonFormat(pattern="yyyy-MM-dd")
+	private Date fecha_nacimiento;
+	
 	@ManyToOne//(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "fktipo_usuario", nullable = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
@@ -57,9 +70,11 @@ public class Usuarios implements Serializable
 		super();
 	}
 	
+	
+
 	public Usuarios(int id_usuario, BigInteger cedula, String contrasenia, String primer_nombre, String segundo_nombre,
-			String primer_apellido, String segundo_apellido, String correo_electronico, String telefono,
-			TiposUsuario fktipo_usuario) {
+			String primer_apellido, String segundo_apellido, String correo_electronico, String telefono, short genero,
+			String direccion, Date fecha_nacimiento, TiposUsuario fktipo_usuario) {
 		super();
 		this.id_usuario = id_usuario;
 		this.cedula = cedula;
@@ -70,6 +85,9 @@ public class Usuarios implements Serializable
 		this.segundo_apellido = segundo_apellido;
 		this.correo_electronico = correo_electronico;
 		this.telefono = telefono;
+		this.genero = genero;
+		this.direccion = direccion;
+		this.fecha_nacimiento = fecha_nacimiento;
 		this.fktipo_usuario = fktipo_usuario;
 	}
 
@@ -143,6 +161,30 @@ public class Usuarios implements Serializable
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+
+	public short getGenero() {
+		return genero;
+	}
+
+	public void setGenero(short genero) {
+		this.genero = genero;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public Date getFecha_nacimiento() {
+		return fecha_nacimiento;
+	}
+
+	public void setFecha_nacimiento(Date fecha_nacimiento) {
+		this.fecha_nacimiento = fecha_nacimiento;
 	}
 
 	public TiposUsuario getFktipo_usuario() {
