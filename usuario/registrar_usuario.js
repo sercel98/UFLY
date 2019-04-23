@@ -2,17 +2,17 @@ var app = new Vue({
     el: '#formulario-registro-usuario',
     data:
     {
+        identificacion: '',
+        contrasenia: '',
         primerNombre: '',
         segundoNombre: '',
         primerApellido: '',
         segundoApellido: '',
-        identificacion: '',
-        genero: '',
-        correoElectronico: '',
         telefono: '',
+        genero: '',
         direccion: '',
+        correoElectronico: '',
         fechaNacimiento: '',
-        contrasena: '',
 
 
     },
@@ -27,13 +27,18 @@ var app = new Vue({
                 "segundo_nombre": this.segundoNombre,
                 "primer_apellido": this.primerApellido,
                 "segundo_apellido": this.segundoApellido,
-                "genero": this.genero,
                 "correo_electronico": this.correoElectronico,
                 "telefono": this.telefono,
-                "fktipo_usuario": '1'
+                "genero": this.genero,
+                "direccion": this.direccion,
+                "fecha_nacimiento": this.fechaNacimiento,
+
+                //AL SER ESTA LA VISTA DE CLIENTE, ESTO SERÁ CONSTANTE
+                "fktipo_usuario": {
+                    "id_tipo_usuario": 2,
+                    "tipo_usuario": "Cliente"
+                }
             }
-
-
 
             console.log(obj);
             var url = 'http://localhost:8080/rest/usuarios/agregar';

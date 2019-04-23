@@ -8,8 +8,9 @@ const usuarios = new Vue({
     },
     methods: {
 
-        actualizarUsuario(id) {
-            location.href = 'perfil_usuario.html?' + id;
+        actualizarUsuario:function(id) {
+            
+          location.href = 'perfil_usuario.html?' + id;
         }
 
     },

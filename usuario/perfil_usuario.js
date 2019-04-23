@@ -4,12 +4,13 @@ var app = new Vue({
 
         usuario: [{
 
+            idUsuario: "",
             identificacion: "",
             primerNombre: "",
             segundoNombre: "",
             primerApellido: "",
             segundoApellido: "",
-            nombre: primerNombre + " " + segundoNombre + " " + primerApellido + " " + segundoApellido,
+            nombre: this.primerNombre + " " + this.segundoNombre + " " + this.primerApellido + " " + this.segundoApellido,
             correo: "",
             telefono: "",
             direccion: "",
@@ -50,7 +51,7 @@ var app = new Vue({
 
             //REVISAR
             var obj = {
-                "id_usuario": "",
+                "id_usuario": this.idUsuario,
                 "cedula": this.identificacion,
                 "contrasenia": this.contrasena,
                 "primer_nombre": this.primerNombre,
@@ -59,18 +60,25 @@ var app = new Vue({
                 "segundo_apellido": this.segundoApellido,
                 "correo_electronico": this.correoElectronico,
                 "telefono": this.telefono,
-                "fecha_nacimiento": this.fechaNacimiento,
                 "genero": this.genero,
                 "direccion": this.direccion,
-                "fktipo_usuario": '1'
+                "fecha_nacimiento": this.fechaNacimiento,
+
+                //AL SER ESTA LA VISTA DE CLIENTE, ESTO SERÁ CONSTANTE
+                "fktipo_usuario": {
+                    "id_tipo_usuario": 2,
+                    "tipo_usuario": "Cliente"
+                }
+
+
             }
 
-
-
             console.log(obj);
-            var url = 'http://localhost:8080/rest/usuarios/agregar';
+
+            //
+            var url = 'http://localhost:8080/rest/usuarios/modificar/' + this.usuarioActual.id_usuario;
             var init = {
-                method: 'POST', body: JSON.stringify(obj), headers: {
+                method: 'PUT', body: JSON.stringify(obj), headers: {
                     'Content-Type': 'application/json'
                 }
             };
@@ -78,8 +86,8 @@ var app = new Vue({
 
             fetch(request)
                 .then(response => response.json())
-                .catch(error => alert('No se ha podido registrar el usuario: ' + error))
-                .then(response => alert('Se ha registrado el usuario exitosamente: ' + response))
+                .catch(error => alert('No se ha podido  el usuario: ' + error))
+                .then(response => alert('Se ha actualizado el usuario exitosamente: ' + response))
 
 
 
@@ -99,7 +107,8 @@ var app = new Vue({
             .then(response => response.json())
             .then(usuarioActual => {
 
-                this.identificacion = usuarioActual.cedula,
+                this.idUsuario = usuarioActual.id_usuario,
+                    this.identificacion = usuarioActual.cedula,
                     this.contrasenia = usuarioActual.direccion_aeropuerto,
                     this.primerNombre = usuarioActual.primer_nombre,
                     this.segundoNombre = usuarioActual.segundo_nombre,
