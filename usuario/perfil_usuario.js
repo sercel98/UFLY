@@ -2,26 +2,22 @@ var app = new Vue({
     el: "#perfil-usuario",
     data: {
 
-        usuario: [{
+        idUsuario: '',
+        identificacion: '',
+        primerNombre: '',
+        segundoNombre: '',
+        primerApellido: '',
+        segundoApellido: '',
+        nombre: '',
+        correo: '',
+        telefono: '',
+        direccion: '',
+        fkTipoUsuario: '',
+        fechaNacimiento: '',
+        genero: '',
+        contrasenia: '',
 
-            idUsuario: '',
-            identificacion: '',
-            primerNombre: '',
-            segundoNombre:'',
-            primerApellido: '',
-            segundoApellido: '',
-            nombre: this.primerNombre + " " + this.segundoNombre + " " + this.primerApellido + " " + this.segundoApellido,
-            correo: '',
-            telefono: '',
-            direccion: '',
-            fkTipoUsuario: '',
-            fechaNacimiento:'',
-            genero:'',
-            contrasenia:'',
-
-            usuarioActual: {},
-
-        }]
+        usuarioActual: {}
 
     },
     methods: {
@@ -75,9 +71,10 @@ var app = new Vue({
             }
 
             console.log(obj);
+            console.log(this.idUsuario);
 
             //
-            var url = 'http://localhost:8080/rest/usuarios/modificar/' + this.usuarioActual.id_usuario;
+            var url = 'http://localhost:8080/rest/usuarios/' + this.idUsuario;
             var init = {
                 method: 'PUT', body: JSON.stringify(obj), headers: {
                     'Content-Type': 'application/json'
@@ -104,10 +101,13 @@ var app = new Vue({
         //revisar
         var url = 'http://localhost:8080/rest/usuarios/' + idUsuario;
 
+
+
         fetch(url)
             .then(response => response.json())
             .then(usuario => {
 
+                this.idUsuario = usuario.id_usuario,
                     this.identificacion = usuario.cedula,
                     this.contrasenia = usuario.contrasenia,
 
@@ -124,8 +124,12 @@ var app = new Vue({
                     this.genero = usuario.genero,
                     this.direccion = usuario.direccion,
                     this.fechaNacimiento = usuario.fecha_nacimiento,
-                    
+
+                    this.nombre = this.primerNombre + " " + this.segundoNombre + " " + this.primerApellido + " " + this.segundoApellido,
+
                     this.usuarioActual = usuario;
+
+                console.log(this.usuarioActual);
             });
 
 
