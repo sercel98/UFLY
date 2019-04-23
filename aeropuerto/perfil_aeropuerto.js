@@ -36,7 +36,7 @@ var app = new Vue({
             this.aeropuertoActual.fkciudades.fkpais.id_pais = pais.id_pais;
             this.aeropuertoActual.fkciudades.fkpais.nombre_pais = this.paisAeropuerto;
 
-            var url = 'http://localhost:8080/rest/aeropuertos/modificar/' + this.aeropuertoActual.id_aeropuerto;
+            var url = 'http://localhost:8080/rest/aeropuertos/' + this.aeropuertoActual.id_aeropuerto;
             var init = {
                 method: 'PUT',
                 body: JSON.stringify(this.aeropuertoActual),

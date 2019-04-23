@@ -1,5 +1,5 @@
-    var app = new Vue({
-    el: '#formulario-registro-usuario',
+var app = new Vue({
+    el: '#app',
     data:
     {
         identificacion: '',
@@ -13,6 +13,9 @@
         direccion: '',
         correoElectronico: '',
         fechaNacimiento: '',
+        tipoUsuario: '',
+        tiposUsuarios: [],
+
 
 
     },
@@ -33,15 +36,11 @@
             else {
                 alert("Los datos ingresados no son válidos!");
             }
-
-
-
-
         },
 
-
-
         procesarFormulario: function () {
+
+            var tiposUsuarios = this.tiposUsuarios.find(tiposUsuarios => tiposUsuarios.id_tipo_usuario === this.tipoUsuario)
 
             var obj = {
                 "id_usuario": "",
@@ -57,11 +56,12 @@
                 "direccion": this.direccion,
                 "fecha_nacimiento": this.fechaNacimiento,
 
-                //AL SER ESTA LA VISTA DE CLIENTE, ESTO SERÁ CONSTANTE
                 "fktipo_usuario": {
-                    "id_tipo_usuario": 2,
-                    "tipo_usuario": "Cliente"
+                    "id_tipo_usuario": tiposUsuarios.id_tipo_usuario,
+                    "tipo_usuario": tiposUsuarios.tipoUsuario
                 }
+
+
             }
 
             console.log(obj);
@@ -78,17 +78,16 @@
                 .catch(error => alert('No se ha podido registrar el usuario: ' + error))
                 .then(response => alert('Se ha registrado el usuario exitosamente: ' + response))
 
-
-
         },
 
-
-
-
-
-
     },
-
-
+    mounted() {
+        fetch('http://localhost:8080/rest/tiposusuario')
+            .then(response => response.json())
+            .then(tiposUsuarios => {
+                this.tiposUsuarios = tiposUsuarios;
+                console.log(tiposUsuarios)
+            });
+    },
 
 })
