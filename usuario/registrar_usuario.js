@@ -19,10 +19,10 @@ var app = new Vue({
     methods: {
         procesarFormulario: function () {
 
-            var obj = {
+            var obj = { 
                 "id_usuario": "",
                 "cedula": this.identificacion,
-                "contrasenia": this.contrasena,
+                "contrasenia": this.contrasenia,
                 "primer_nombre": this.primerNombre,
                 "segundo_nombre": this.segundoNombre,
                 "primer_apellido": this.primerApellido,
