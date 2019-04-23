@@ -17,9 +17,33 @@ var app = new Vue({
 
     },
     methods: {
+
+        validarCampos: function () {
+
+            if (this.primerNombre.length > 2 && !this.primerNombre.startsWith(" ") &&
+                this.primerApellido.length > 3 && !this.primerNombre.startsWith(" ") &&
+                this.segundoApellido.length > 3 && !this.segundoApellido.startsWith(" ") &&
+                this.direccion.length > 5 && !this.direccion.startsWith(" ") &&
+                this.correoElectronico.length > 5 && !this.direccion.startsWith(" ") &&
+                !this.telefono.startsWith(" ") && this.telefono.toString().length > 5 &&
+                this.identificacion.toString().length > 7 && !this.identificacion.startsWith(" ")) {
+                this.procesarFormulario();
+
+            }
+            else {
+                alert("Los datos ingresados no son válidos!");
+            }
+
+
+
+
+        },
+
+
+
         procesarFormulario: function () {
 
-            var obj = { 
+            var obj = {
                 "id_usuario": "",
                 "cedula": this.identificacion,
                 "contrasenia": this.contrasenia,
