@@ -59,7 +59,7 @@ var app = new Vue({
                 "fktipo_usuario": {
                     "id_tipo_usuario": tiposUsuarios.id_tipo_usuario,
                     "tipo_usuario": tiposUsuarios.tipoUsuario
-                }
+                    }
 
 
             }
