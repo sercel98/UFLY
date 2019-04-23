@@ -14,7 +14,7 @@
 
 <body class="perfil-usuario">
 
-    <div id="app">
+    <div id="perfil-usuario">
 
         <div id="wrapper">
 
@@ -53,7 +53,7 @@
 
                         <div class="row panel d-flex justify-content-start align-items-center my-3 mx-5 py-2 px-2 ">
 
-                            <button type="button" id="btn-editar" @click.prevent="procesarFormulario" class="btn">
+                            <button type="button" id="btn-editar" @click.prevent="validarCampos" class="btn">
                                 Editar
                             </button>
                         </div>
@@ -67,26 +67,31 @@
 
                         <form action="">
                             <div class="form-group ">
-                                <label class="label-perfil" for="nombre">Nombre completo</label>
+                                <label class="label-perfil">Nombre completo</label>
                                 <div>{{usuario.nombre}}</div>
                             </div>
 
 
                             <div class="form-group ">
-                                <label class="label-perfil" for="identificacion">Identificación</label>
+                                <label class="label-perfil">Identificación</label>
                                 <div>{{usuario.identificacion}}</div>
                             </div>
 
                             <div class="form-group ">
-                                <label class="label-perfil" for="correo">Correo electrónico</label>
+                                <label class="label-perfil">Correo electrónico</label>
                                 <div>{{usuario.correo}}</div>
                             </div>
 
 
                             <div class="form-group ">
-                                <label class="label-perfil" for="fecha-nacimiento">Fecha de nacimiento</label>
+                                <label class="label-perfil">Fecha de nacimiento</label>
                                 <div>{{usuario.fechaNacimiento}}</div>
 
+                            </div>
+
+                            <div class="form-group ">
+                                <label class="label-perfil">Género</label>
+                                <div>{{usuario.genero}}</div>
                             </div>
 
                             <div class="form-group ">
@@ -116,78 +121,9 @@
         integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
 
 
-    <script>
-
-
-    </script>
-
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-    <script>
-        var app = new Vue({
-            el: "#app",
-            data: {
-
-                usuario: [{
-
-                    identificacion: "",
-                    nombre: "",
-                    correo: "",
-                    telefono: "",
-                    direccion: "",
-                    fechaNacimiento: ""
-
-
-                }]
-
-            },
-            methods: {
-                abrirMenu: function () {
-                    $("#menu-toggle").click(function (e) {
-                        e.preventDefault();
-                        $("#wrapper").toggleClass("menuDisplayed");
-
-                    });
-                },
-
-                procesarFormulario: function () {
-                    var obj = {
-                        "telefono": this.usuario.telefono,
-                        "direccion": this.usuario.direccion,
-                    }
-
-                    var jsonData = JSON.stringify(obj)
-                    console.log(jsonData)
-
-                    var xhr = new XMLHttpRequest();
-
-                    /*URL DEL REGISTRAR AEROPUERTO.JAVA*/
-
-                    var url =
-
-                        xhr.open("POST", url);
-                    xhr.setRequestHeader("Content-type", "application/json");
-
-                    xhr.send(jsonData);
-
-                    /*PROBAR SI ENVÍA*/
-                    alert('Registro exitoso')
-
-
-
-                }
-
-            },
-
-            mounted() {
-                fetch('usuario.json')
-                    .then(response => response.json())
-                    .then(usuario => {
-                        this.usuario = usuario;
-                    });
-            },
-        });
-    </script>
+    <script src="perfil_usuario.js"></script>
 
 
 </body>

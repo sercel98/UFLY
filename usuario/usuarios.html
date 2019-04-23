@@ -58,7 +58,7 @@
                         </tr>
                     </thead>
                     <tbody id="contenido" v-for="usuario of searchUser">
-                        <tr>
+                        <tr @click="actualizarUsuario(usuario.id_usuario)"></tr>>
                             <td>
                                 {{usuario.cedula}}
                             </td>

@@ -21,17 +21,15 @@ var app = new Vue({
 
             var obj = {
                 "id_usuario": "",
-                "primerNombre": this.primerNombre,
-                "segundoNombre": this.segundoNombre,
-                "primerApellido": this.primerApellido,
-                "segundoApellido": this.segundoApellido,
-                "identificacion": this.identificacion,
+                "cedula": this.identificacion,
+                "contrasenia": this.contrasena,
+                "primer_nombre": this.primerNombre,
+                "segundo_nombre": this.segundoNombre,
+                "primer_apellido": this.primerApellido,
+                "segundo_apellido": this.segundoApellido,
                 "genero": this.genero,
-                "correoElectronico": this.correoElectronico,
+                "correo_electronico": this.correoElectronico,
                 "telefono": this.telefono,
-                "direccion": this.direccion,
-                "fechaNacimiento": this.fechaNacimiento,
-                "contrasena": this.contrasena,
                 "fktipo_usuario": '1'
             }
 
