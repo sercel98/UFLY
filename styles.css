@@ -8,22 +8,19 @@ CONTENIDO GENERAL
 
 /* AGREGAR AQUÍ SI QUIERES QUE EL COLOR SEA BLANCO*/
 
-.busqueda, .informacion-aeropuerto, table, thead, td, .opciones button, h6, th,
- .botones button, #btn-editar, .sidebar-nav li a, .encabezado h2, .header h1, .opciones button:hover,
-  .buscar-btn-usuario {
+.busqueda, .informacion-aeropuerto, .registro-usuario-admin, table, thead, td, .opciones button, h6, th, .botones button, #btn-editar, .sidebar-nav li a, .encabezado h2, .header h1, .opciones button:hover, .buscar-btn-usuario {
   color: white;
 }
 
 /*AGREGAR AQUÍ SI QUIERES QUE EL COLOR SEA EL GRIS*/
 
-.header, .busqueda, th, .botones button, #btn-editar, 
-#sidebar-wrapper, .encabezado h2, thead, .opciones button, #header6 {
+.header, .busqueda, th, .botones button, #btn-editar, #sidebar-wrapper, .encabezado h2, thead, .opciones button, #header6 {
   background-color: #393E46;
 }
 
 /*AGREGAR AQUÍ SI QUIERES QUE LA FUENTE SEA BOLD*/
 
-.header h1, .encabezado h2, .informacion-aeropuerto, thead, #titulo-perfil,.label-perfil {
+.header h1, .encabezado h2, .informacion-aeropuerto, .registro-usuario-admin, thead, #titulo-perfil, .label-perfil {
   font-weight: bold;
 }
 
@@ -48,17 +45,13 @@ table, tr, td, thead {
   width: 80%;
 }
 
-
-.informacion-aeropuerto {
+.informacion-aeropuerto, .registro-usuario-admin {
   font-size: 20px;
 }
-#items-formulario-aeropuerto,#items-perfil-aeropuerto
-{
+
+#items-formulario-aeropuerto, #items-perfil-aeropuerto, #formulario-admin-registro{
   background-color: #00ADB5;
 }
-
-
-
 
 .formulario-registro {
   margin-top: 5%;
@@ -164,9 +157,9 @@ td {
   background-color: rgb(108, 115, 128);
 }
 
-#registrar_aeropuertos button{
+#registrar_aeropuertos button {
   font-size: 24px;
-  font-weight:bold;
+  font-weight: bold;
 }
 
 #registrar_usuario {

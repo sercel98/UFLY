@@ -4,19 +4,20 @@ var app = new Vue({
 
         usuario: [{
 
-            idUsuario: "",
-            identificacion: "",
-            primerNombre: "",
-            segundoNombre: "",
-            primerApellido: "",
-            segundoApellido: "",
+            idUsuario: '',
+            identificacion: '',
+            primerNombre: '',
+            segundoNombre:'',
+            primerApellido: '',
+            segundoApellido: '',
             nombre: this.primerNombre + " " + this.segundoNombre + " " + this.primerApellido + " " + this.segundoApellido,
-            correo: "",
-            telefono: "",
-            direccion: "",
-            fkTipoUsuario: "",
-            fechaNacimiento: "",
-            genero: "",
+            correo: '',
+            telefono: '',
+            direccion: '',
+            fkTipoUsuario: '',
+            fechaNacimiento:'',
+            genero:'',
+            contrasenia:'',
 
             usuarioActual: {},
 
@@ -34,7 +35,7 @@ var app = new Vue({
 
         validarCampos: function () {
             if (this.telefono.toString().length > 7 && !this.telefono.startsWith(" ") &&
-                this.direccion.length > 5 && !this.direccionstartsWith(" ")) {
+                this.direccion.length > 5 && !this.direccion.startsWith(" ")) {
                 this.procesarFormulario();
 
             }
@@ -53,7 +54,7 @@ var app = new Vue({
             var obj = {
                 "id_usuario": this.idUsuario,
                 "cedula": this.identificacion,
-                "contrasenia": this.contrasena,
+                "contrasenia": this.contrasenia,
                 "primer_nombre": this.primerNombre,
                 "segundo_nombre": this.segundoNombre,
                 "primer_apellido": this.primerApellido,
@@ -105,22 +106,26 @@ var app = new Vue({
 
         fetch(url)
             .then(response => response.json())
-            .then(usuarioActual => {
+            .then(usuario => {
 
-                this.idUsuario = usuarioActual.id_usuario,
-                    this.identificacion = usuarioActual.cedula,
-                    this.contrasenia = usuarioActual.direccion_aeropuerto,
-                    this.primerNombre = usuarioActual.primer_nombre,
-                    this.segundoNombre = usuarioActual.segundo_nombre,
-                    this.primerApellido = usuarioActual.primer_apellido,
-                    this.segundoApellido = usuarioActual.segundo_apellido,
-                    this.correo = usuarioActual.correo_electronico,
-                    this.telefono = usuarioActual.telefono,
-                    this.genero = usuarioActual.genero,
-                    this.fechaNacimiento = usuarioActual.fecha_nacimiento,
-                    this.direccion = usuarioActual.direccion,
-                    this.fkTipoUsuario = usuarioActual.fktipo_usuario,
-                    this.usuarioActual = usuarioActual;
+                    this.identificacion = usuario.cedula,
+                    this.contrasenia = usuario.contrasenia,
+
+                    this.primerNombre = usuario.primer_nombre,
+                    this.segundoNombre = usuario.segundo_nombre,
+
+                    this.primerApellido = usuario.primer_apellido,
+                    this.segundoApellido = usuario.segundo_apellido,
+
+                    this.correo = usuario.correo_electronico,
+                    this.telefono = usuario.telefono,
+
+
+                    this.genero = usuario.genero,
+                    this.direccion = usuario.direccion,
+                    this.fechaNacimiento = usuario.fecha_nacimiento,
+                    
+                    this.usuarioActual = usuario;
             });
 
 

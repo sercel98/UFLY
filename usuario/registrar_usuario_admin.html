@@ -14,7 +14,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
-<body class="registro-usuario-admin">
+<body class="body-admin">
     <div class="header d-flex justify-content-between align-items-center flex-wrap-reverse py-2 px-2">
         <img src="/img/logo.png" width="8%" height="8%" class="img-fluid px-1 py-1">
         <h1 class="text-center m-0">Registrar Usuario</h1>
@@ -29,100 +29,107 @@
         </li>
     </div>
 
-    <div class="informacion-aeropuerto mt-3 mx-5">
+    <div class="registro-usuario-admin mt-3 mx-5">
         <div class="encabezado text-center">
             <h2 class="py-2 m-0">Información del Usuario</h2>
         </div>
 
-        <form id="formulario-registro-aeropuerto" @submit.prevent="validarCampos">
+        <form @submit.prevent="validarCampos" id="formulario-admin-registro">
 
+            <div class="mx-5 my-3">
 
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="primer-nombre">Primer nombre</label>
+                        <input type="text" name="primer-nombre" id="primer-nombre" v-model="primerNombre"
+                            class="form-control input-group-text" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="segundo-nombre">Segundo nombre</label>
+                        <input type="text" name="segundo-nombre" id="segundo-nombre" v-model="segundoNombre"
+                            class="form-control input-group-text">
+                    </div>
+                </div>
 
-            <div id="items-formulario-aeropuerto">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="primer-apellido">Primer apellido</label>
+                        <input type="text" name="primer-apellido" id="primer-apellido" v-model="primerApellido"
+                            class="form-control input-group-text" required>
+                    </div>
+                    <div class="form-group col-md-6 ">
+                        <label for="segundo-apellido">Segundo apellido</label>
+                        <input type="text" name="segundo-apellido" id="segundo-apellido" v-model="segundoApellido"
+                            class="form-control input-group-text" required>
+                    </div>
+                </div>
 
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="identificacion">Identificación</label>
+                        <input type="text" name="identificacion" id="identificacion" v-model="identificacion"
+                            class="form-control input-group-text" required>
+                    </div>
 
+                    <div class="form-group col-md-3">
+                        <label for="genero">Género</label>
+                        <select name="genero" id="genero" v-model="genero" class="form-control input-group-text"
+                            required>
+                            <option>Masculino</option>
+                            <option>Femenino</option>
+                        </select>
+                    </div>
 
-                    <div class="mx-5 my-3">
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="primer-nombre">Primer nombre</label>
-                                    <input type="text" name="primer-nombre" id="primer-nombre" v-model="primerNombre"
-                                        class="form-control input-group-text" required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="segundo-nombre">Segundo nombre</label>
-                                    <input type="text" name="segundo-nombre" id="segundo-nombre" v-model="segundoNombre"
-                                        class="form-control input-group-text">
-                                </div>
-                            </div>
-                
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="primer-apellido">Primer apellido</label>
-                                    <input type="text" name="primer-apellido" id="primer-apellido" v-model="primerApellido"
-                                        class="form-control input-group-text" required>
-                                </div>
-                                <div class="form-group col-md-6 ">
-                                    <label for="segundo-apellido">Segundo apellido</label>
-                                    <input type="text" name="segundo-apellido" id="segundo-apellido" v-model="segundoApellido"
-                                        class="form-control input-group-text" required>
-                                </div>
-                            </div>
-                
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="identificacion">Identificación</label>
-                                    <input type="text" name="identificacion" id="identificacion" v-model="identificacion"
-                                        class="form-control input-group-text" required>
-                                </div>
-                
-                                <div class="form-group col-md-3">
-                                    <label for="genero">Género</label>
-                                    <select name="genero" id="genero" v-model="genero" class="form-control input-group-text" required>
-                                        <option>Masculino</option>
-                                        <option>Femenino</option>
-                                    </select>
-                                </div>
-                
-                            </div>  
-                
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="correo">Correo electrónico</label>
-                                    <input type="email" name="correo" id="correo" v-model="correoElectronico"
-                                        class="form-control input-group-text" required>
-                                </div>  
-                                <div class="form-group col-md-6">
-                                    <label for="telefono">Teléfono</label>
-                                    <input type="text" name="telefono" id="telefono" v-model="telefono"
-                                        class="form-control input-group-text" required>
-                                </div>
-                
-                            </div>
-                
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="direccion">Dirección</label>
-                                    <input type="text" name="direccion" id="direccion" v-model="direccion"
-                                        class="form-control input-group-text" required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="fecha-nacimiento">Fecha de nacimiento</label>
-                                    <input type="date" name="fecha-nacimiento" id="fecha-nacimiento" v-model="fechaNacimiento"
-                                        class="form-control input-group-text" required>
-                                </div>
-                            </div>
-                
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="contrasena">Contraseña</label>
-                                    <input type="password" name="contrasena" id="contrasena" v-model="contrasena"
-                                        class="form-control input-group-text" required>
-                                </div>
-               
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="correo">Correo electrónico</label>
+                        <input type="email" name="correo" id="correo" v-model="correoElectronico"
+                            class="form-control input-group-text" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="telefono">Teléfono</label>
+                        <input type="text" name="telefono" id="telefono" v-model="telefono"
+                            class="form-control input-group-text" required>
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="direccion">Dirección</label>
+                        <input type="text" name="direccion" id="direccion" v-model="direccion"
+                            class="form-control input-group-text" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="fecha-nacimiento">Fecha de nacimiento</label>
+                        <input type="date" name="fecha-nacimiento" id="fecha-nacimiento" v-model="fechaNacimiento"
+                            class="form-control input-group-text" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="contrasena">Contraseña</label>
+                        <input type="password" name="contrasena" id="contrasena" v-model="contrasena"
+                            class="form-control input-group-text" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Tipo usuario</label>
+                        <select name="tipoUsuario" id="tipoUsuario" v-model="tipoUsuario"
+                            class="form-control input-group-text" required>
+                            <option></option>
+                        </select>
+
+                    </div>
+                </div>
             </div>
+           
+        </form>
+    </div>
 
-            <div class="d-flex justify-content-center flex-wrap my-2 mx-5" id="registrar_aeropuertos">
+        <div class="d-flex justify-content-center flex-wrap my-2 mx-5" id="registrar_aeropuertos">
                 <div class="botones mx-2 my-2">
                     <button type="submit" class="btn" :onclick="validarCampos">Registrar</button>
                 </div>
@@ -130,11 +137,9 @@
                     <button type="button" class="btn" OnClick="location.href='aeropuertos.html'">Salir</button>
                 </div>
             </div>
-        </form>
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="registrar_aeropuerto.js"></script>
+    <script src="registrar_usuario_admin.js"></script>
 </body>
 
 
@@ -144,9 +149,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
+
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
