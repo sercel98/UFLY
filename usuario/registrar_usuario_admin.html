@@ -45,12 +45,12 @@
                         <div class="form-group col-md-6">
                             <label for="primer-nombre">Primer nombre</label>
                             <input type="text" name="primer-nombre" id="primer-nombre" v-model="primerNombre"
-                                class="form-control input-group-text" required>
+                                class="form-control input-group-text" maxlength="20" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="segundo-nombre">Segundo nombre</label>
                             <input type="text" name="segundo-nombre" id="segundo-nombre" v-model="segundoNombre"
-                                class="form-control input-group-text">
+                                class="form-control input-group-text" maxlength="20">
                         </div>
                     </div>
 
@@ -58,12 +58,12 @@
                         <div class="form-group col-md-6">
                             <label for="primer-apellido">Primer apellido</label>
                             <input type="text" name="primer-apellido" id="primer-apellido" v-model="primerApellido"
-                                class="form-control input-group-text" required>
+                                class="form-control input-group-text" maxlength="20" required>
                         </div>
                         <div class="form-group col-md-6 ">
                             <label for="segundo-apellido">Segundo apellido</label>
                             <input type="text" name="segundo-apellido" id="segundo-apellido" v-model="segundoApellido"
-                                class="form-control input-group-text" required>
+                                class="form-control input-group-text" maxlength="20" required>
                         </div>
                     </div>
 
@@ -71,7 +71,7 @@
                         <div class="form-group col-md-6">
                             <label for="identificacion">Identificación</label>
                             <input type="text" name="identificacion" id="identificacion" v-model="identificacion"
-                                class="form-control input-group-text" required>
+                                class="form-control input-group-text" maxlength="15" required>
                         </div>
 
                         <div class="form-group col-md-3">
@@ -89,12 +89,12 @@
                         <div class="form-group col-md-6">
                             <label for="correo">Correo electrónico</label>
                             <input type="email" name="correo" id="correo" v-model="correoElectronico"
-                                class="form-control input-group-text" required>
+                                class="form-control input-group-text" maxlength="50" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="telefono">Teléfono</label>
                             <input type="text" name="telefono" id="telefono" v-model="telefono"
-                                class="form-control input-group-text" required>
+                                class="form-control input-group-text" maxlength="14" required>
                         </div>
 
                     </div>
@@ -103,7 +103,7 @@
                         <div class="form-group col-md-6">
                             <label for="direccion">Dirección</label>
                             <input type="text" name="direccion" id="direccion" v-model="direccion"
-                                class="form-control input-group-text" required>
+                                class="form-control input-group-text" maxlength="40" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="fecha-nacimiento">Fecha de nacimiento</label>
@@ -116,7 +116,7 @@
                         <div class="form-group col-md-6">
                             <label for="contrasena">Contraseña</label>
                             <input type="password" name="contrasena" id="contrasena" v-model="contrasenia"
-                                class="form-control input-group-text" required>
+                                class="form-control input-group-text" maxlength="15" required>
                         </div>
                         <div class="form-group col-md-3">
 
