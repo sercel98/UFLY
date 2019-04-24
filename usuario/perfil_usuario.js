@@ -96,7 +96,10 @@ var app = new Vue({
     mounted() {
 
         var urlPagina = window.location.href;
-        idUsuario = urlPagina.charAt(urlPagina.length - 1);
+
+        var posicion = urlPagina.indexOf('?');
+        idUsuario = urlPagina.substr(posicion+1,urlPagina.length);
+         
 
         //revisar
         var url = 'http://localhost:8080/rest/usuarios/' + idUsuario;
