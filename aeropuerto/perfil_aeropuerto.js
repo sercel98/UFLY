@@ -55,15 +55,13 @@ var app = new Vue({
         validarCampos: function () {
             if (this.nombreAeropuerto.length > 3 && !this.nombreAeropuerto.startsWith(" ") &&
                 this.direccionAeropuerto.length > 5 && !this.direccionAeropuerto.startsWith(" ") &&
-                !this.telefonoAeropuerto.startsWith(" ") && this.telefonoAeropuerto.toString().length > 5 ) 
-                {
-                    this.procesarFormulario();
+                !this.telefonoAeropuerto.startsWith(" ") && this.telefonoAeropuerto.toString().length > 5) {
+                this.procesarFormulario();
 
-                } 
-                else 
-                {
-                    alert("LA INFORMACIÓN DEL AEROPUERTO ES INCOMPLETA!"); 
-                }
+            }
+            else {
+                alert("LA INFORMACIÓN DEL AEROPUERTO ES INCOMPLETA!");
+            }
 
         }
 
@@ -94,8 +92,10 @@ var app = new Vue({
                 this.estadosAeropuerto = estadosaeropuerto;
             });
 
+
         var urlPagina = window.location.href;
-        idAeropuerto = urlPagina.charAt(urlPagina.length - 1);
+        var posicion = urlPagina.indexOf('?');
+        idAeropuerto = urlPagina.substr(posicion + 1, urlPagina.length);
 
         var url = 'http://localhost:8080/rest/aeropuertos/' + idAeropuerto;
 
