@@ -14,7 +14,7 @@ var app = new Vue({
         correoElectronico: '',
         fechaNacimiento: '',
         tipoUsuario: '',
-        tiposUsuarios: [],
+        tiposUsuarios: []
 
 
 
@@ -40,7 +40,9 @@ var app = new Vue({
 
         procesarFormulario: function () {
 
-            var tiposUsuarios = this.tiposUsuarios.find(tiposUsuarios => tiposUsuarios.id_tipo_usuario === this.tipoUsuario)
+            var tiposUsuarios = this.tiposUsuarios.find(tiposUsuarios => tiposUsuarios.tipo_usuario === this.tipoUsuario);
+            console.log(this.tiposUsuarios)
+
 
             var obj = {
                 "id_usuario": "",
@@ -58,7 +60,7 @@ var app = new Vue({
 
                 "fktipo_usuario": {
                     "id_tipo_usuario": tiposUsuarios.id_tipo_usuario,
-                    "tipo_usuario": tiposUsuarios.tipoUsuario
+                    "tipo_usuario": tiposUsuarios.tipo_usuario
                     }
 
 
@@ -78,7 +80,7 @@ var app = new Vue({
                 .catch(error => alert('No se ha podido registrar el usuario: ' + error))
                 .then(response => alert('Se ha registrado el usuario exitosamente: ' + response))
 
-        },
+        }
 
     },
     mounted() {
