@@ -31,22 +31,17 @@ var app = new Vue({
 
         validarCampos: function () {
             if (this.telefono.toString().length > 7 && !this.telefono.startsWith(" ") &&
-                this.direccion.length > 5 && !this.direccion.startsWith(" ")) {
+                this.direccion.length > 5 && !this.direccion.startsWith(" ")) 
+            {
                 this.procesarFormulario();
 
             }
             else {
                 alert("La información del usuario está incompleta!");
             }
-
-
-
         },
 
         procesarFormulario: function () {
-
-
-            //REVISAR
             var obj = {
                 "id_usuario": this.idUsuario,
                 "cedula": this.identificacion,
@@ -66,8 +61,6 @@ var app = new Vue({
                     "id_tipo_usuario": 2,
                     "tipo_usuario": "Cliente"
                 }
-
-
             }
 
             console.log(obj);
@@ -83,59 +76,42 @@ var app = new Vue({
             var request = new Request(url, init);
 
             fetch(request)
-                .then(response => response.json())
-                .catch(error => alert('No se ha podido  el usuario: ' + error))
-                .then(response => alert('Se ha actualizado el usuario exitosamente: ' + response))
-
-
-
+            .then(response => response.json())
+            .catch(error => alert('No se ha podido  el usuario: ' + error))
+            .then(response => alert('Se ha actualizado el usuario exitosamente: ' + response.primer_nombre))
         }
-
     },
 
     mounted() {
-
         var urlPagina = window.location.href;
-
         var posicion = urlPagina.indexOf('?');
         idUsuario = urlPagina.substr(posicion+1,urlPagina.length);
-         
-
-        //revisar
         var url = 'http://localhost:8080/rest/usuarios/' + idUsuario;
 
-
-
         fetch(url)
-            .then(response => response.json())
-            .then(usuario => {
+        .then(response => response.json())
+        .then(usuario => {
+        
+            this.idUsuario = usuario.id_usuario,
+            this.identificacion = usuario.cedula,
+            this.contrasenia = usuario.contrasenia,
 
-                this.idUsuario = usuario.id_usuario,
-                    this.identificacion = usuario.cedula,
-                    this.contrasenia = usuario.contrasenia,
+            this.primerNombre = usuario.primer_nombre,
+            this.segundoNombre = usuario.segundo_nombre,
 
-                    this.primerNombre = usuario.primer_nombre,
-                    this.segundoNombre = usuario.segundo_nombre,
+            this.primerApellido = usuario.primer_apellido,
+            this.segundoApellido = usuario.segundo_apellido,
 
-                    this.primerApellido = usuario.primer_apellido,
-                    this.segundoApellido = usuario.segundo_apellido,
-
-                    this.correo = usuario.correo_electronico,
-                    this.telefono = usuario.telefono,
-
-
-                    this.genero = usuario.genero,
-                    this.direccion = usuario.direccion,
-                    this.fechaNacimiento = usuario.fecha_nacimiento,
-
-                    this.nombre = this.primerNombre + " " + this.segundoNombre + " " + this.primerApellido + " " + this.segundoApellido,
-
-                    this.usuarioActual = usuario;
-
-                console.log(this.usuarioActual);
-            });
+            this.correo = usuario.correo_electronico,
+            this.telefono = usuario.telefono,
 
 
+            this.genero = usuario.genero,
+            this.direccion = usuario.direccion,
+            this.fechaNacimiento = usuario.fecha_nacimiento,
 
+            this.nombre = this.primerNombre + " " + this.segundoNombre + " " + this.primerApellido + " " + this.segundoApellido,
+            this.usuarioActual = usuario;
+        });
     },
 });

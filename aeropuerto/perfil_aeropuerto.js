@@ -47,9 +47,9 @@ var app = new Vue({
             var request = new Request(url, init);
 
             fetch(request)
-                .then(response => response.json())
-                .catch(error => alert('No se ha podido actualizar el aeropuerto: ' + error))
-                .then(response => alert('Se ha actualizado el aeropuerto exitosamente: '))
+            .then(response => response.json())
+            .catch(error => alert('No se ha podido actualizar el aeropuerto: ' + error))
+            .then(response => alert('Se ha actualizado el aeropuerto exitosamente: ' + response.nombre_aeropuerto))
         },
 
         validarCampos: function () {

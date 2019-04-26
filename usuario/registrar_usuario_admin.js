@@ -78,7 +78,7 @@ var app = new Vue({
             fetch(request)
                 .then(response => response.json())
                 .catch(error => alert('No se ha podido registrar el usuario: ' + error))
-                .then(response => alert('Se ha registrado el usuario exitosamente: ' + response))
+                .then(response => alert('Se ha registrado el usuario exitosamente: ' + response.primer_nombre))
 
         }
 
