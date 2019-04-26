@@ -21,10 +21,10 @@ public class Pais implements Serializable
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_pais")
+	@Column(name = "id_pais", length = 3)
 	private short id_pais;
 	
-	@Column(name = "nombre_pais")
+	@Column(name = "nombre_pais", unique = true, length = 25)
 	private String nombre_pais;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fkpaises")

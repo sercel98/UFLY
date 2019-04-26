@@ -26,10 +26,10 @@ public class Ciudad implements Serializable
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_ciudad")
+	@Column(name = "id_ciudad", length = 4)
 	private short id_ciudad;
 	
-	@Column(name = "nombre_ciudad")
+	@Column(name = "nombre_ciudad", unique = true, length = 25)
 	private String nombre_ciudad;
 	
 	@ManyToOne

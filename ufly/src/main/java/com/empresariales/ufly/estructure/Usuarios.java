@@ -25,39 +25,40 @@ public class Usuarios implements Serializable
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_usuario", length = 10)
 	private int id_usuario;
 	
-	@Column(name = "cedula")
+	@Column(name = "cedula", unique = true, length = 15)
 	private BigInteger cedula;
 	
-	@Column(name = "contrasenia")
+	@Column(name = "contrasenia", nullable = false, length = 15)
 	private String contrasenia;
 	
-	@Column(name = "primer_nombre")
+	@Column(name = "primer_nombre", nullable = false, length = 20)
 	private String primer_nombre;
 	
-	@Column(name = "segundo_nombre")
+	@Column(name = "segundo_nombre", nullable = true, length = 20)
 	private String segundo_nombre;
 	
-	@Column(name = "primer_apellido")
+	@Column(name = "primer_apellido", nullable = false, length = 20)
 	private String primer_apellido;
 	
-	@Column(name = "segundo_apellido")
+	@Column(name = "segundo_apellido", nullable = false, length = 20)
 	private String segundo_apellido;
 	
-	@Column(name = "correo_electronico")
+	@Column(name = "correo_electronico", nullable = false, length = 50)
 	private String correo_electronico;
 	
-	@Column(name = "telefono")
+	@Column(name = "telefono", nullable = false, length = 14)
 	private String telefono;
 	
-	@Column(name = "genero")
+	@Column(name = "genero", nullable = false, length = 2)
 	private short genero;
 	
-	@Column(name = "direccion")
+	@Column(name = "direccion", nullable = false, length = 50)
 	private String direccion;
 	
-	@Column(name = "fecha_nacimiento")
+	@Column(name = "fecha_nacimiento", nullable = false)
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date fecha_nacimiento;
 	

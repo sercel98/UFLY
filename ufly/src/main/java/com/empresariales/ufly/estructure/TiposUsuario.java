@@ -20,10 +20,11 @@ import java.util.List;
 public class TiposUsuario implements Serializable
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column (name = "id_tipo_usuario", length = 1)
 	private Short id_tipo_usuario;
 	
-	@Column(name = "tipo_usuario")
+	@Column(name = "tipo_usuario", unique = true, length = 15)
 	private String tipo_usuario;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fktipo_usuario")

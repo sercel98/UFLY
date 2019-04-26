@@ -1,4 +1,4 @@
-package com.empresariales.ufly.estructure;
+	package com.empresariales.ufly.estructure;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -22,10 +22,10 @@ public class EstadosAeropuerto implements Serializable
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_estado_aeropuerto")
+	@Column(name = "id_estado_aeropuerto", length = 1)
 	private Short id_estado_aeropuerto;
 	
-	@Column(name = "nombre_estado")
+	@Column(name = "nombre_estado", unique = true, length = 12)
 	private String nombre_estado;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fkestados_aeropuerto")

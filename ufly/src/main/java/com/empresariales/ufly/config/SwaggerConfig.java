@@ -30,7 +30,7 @@ public class SwaggerConfig
 				"UFly, hacemos lo que se puede", 
 				"1.0", 
 				"Terms of Service", 
-				new Contact("No me acuerdo", "", ""),
+				new Contact("PSG Enterprise Software", "", ""),
 				"Apache License Version 2.0",
 				"https://apache.org/licenses/LICENSE-2.0");
 		return apiInfo;

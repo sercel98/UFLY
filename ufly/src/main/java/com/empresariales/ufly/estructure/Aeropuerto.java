@@ -26,13 +26,13 @@ public class Aeropuerto implements Serializable
 	@Column(name = "id_aeropuerto")
 	private short id_aeropuerto;
 	
-	@Column(name = "nombre_aeropuerto")
+	@Column(name = "nombre_aeropuerto", unique = true, length = 50)
 	private String nombre_aeropuerto;
 
-	@Column(name = "direccion_aeropuerto")
+	@Column(name = "direccion_aeropuerto", nullable = false, length = 25)
 	private String direccion_aeropuerto;
 
-	@Column(name = "telefono")
+	@Column(name = "telefono", nullable = false, length = 14)
 	private String telefono;
 	
 	@ManyToOne //(cascade = CascadeType.PERSIST)
