@@ -31,56 +31,74 @@
 
         <div class="container col-md-12">
 
-            <div class="busqueda d-flex justify-content-start align-items-center my-3 mx-5 py-2 px-2">
-                <h5 class="m-0 py-2 px-3">buscar usuario</h5>
-                <input v-model="documentoBuscado" class="caja-buscar-usuario text-capitalize" type="text">
-                <a class="buscar-btn-usuario" href="#">
-                    <i class="fas fa-search"></i>
-                </a>
+            <div class="busqueda d-flex justify-content-start align-items-center mt-3 mx-5 py-4 px-2">
+                <h5 class="m-0 py-2 px-3">Buscar: </h5>
+                <input v-model="buscado"
+                    class="caja-buscar-usuario py-1 px-2 border-0 mr-4 text-capitalize flex-fill bd-highlight col-md-12"
+                    type="text">
             </div>
 
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>
-                                Documento
-                            </th>
-                            <th>
-                                Nombre
-                            </th>
-                            <th>
-                                Correo electrónico
-                            </th>
-                            <th>
-                                Teléfono
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody id="contenido" v-for="usuario of searchUser">
-                        <tr @click="actualizarUsuario(usuario.id_usuario)">
-                            <td>
-                                {{usuario.cedula}}
-                            </td>
-                            <td>
-                                {{usuario.primer_nombre}} {{usuario.segundo_nombre}} {{usuario.primer_apellido}}
-                                {{usuario.segundo_apellido}}
-                            </td>
-                            <td>
-                                {{usuario.correo_electronico}}
-                            </td>
-                            <td>
-                                {{usuario.telefono}}
-                            </td>
-                        </tr>
-
-
-                    </tbody>
-
-                </table>
+            <div class="busqueda d-flex justify-content-start align-items-center flex-wrap mx-5 pb-3 px-2">
+                <h5 class="m-0 py-2 px-3">Filtro: </h5>
+                <div class="ml-3 custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline1" name="customRadioInline1" value='cedula'
+                        class="custom-control-input" checked>
+                    <label class="custom-control-label" for="customRadioInline1">Cedula</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline2" name="customRadioInline1" value='nombre'
+                        class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline2">Nombre</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline3" name="customRadioInline1" value='correo'
+                        class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline3">Correo </label>
+                </div>
             </div>
 
+            <div class="mx-5 my-3">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Documento
+                                </th>
+                                <th>
+                                    Nombre
+                                </th>
+                                <th>
+                                    Correo electrónico
+                                </th>
+                                <th>
+                                    Teléfono
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="contenido" v-for="usuario of searchUser">
+                            <tr @click="actualizarUsuario(usuario.id_usuario)">
+                                <td>
+                                    {{usuario.cedula}}
+                                </td>
+                                <td>
+                                    {{usuario.primer_nombre}} {{usuario.segundo_nombre}} {{usuario.primer_apellido}}
+                                    {{usuario.segundo_apellido}}
+                                </td>
+                                <td>
+                                    {{usuario.correo_electronico}}
+                                </td>
+                                <td>
+                                    {{usuario.telefono}}
+                                </td>
+                            </tr>
 
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
         </div>
         <div class="opciones d-flex justify-content-around flex-wrap mx-5">
             <div class=" my-2">

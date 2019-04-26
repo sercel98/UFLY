@@ -27,8 +27,13 @@ var app = new Vue({
                 this.correoElectronico.length > 5 && !this.direccion.startsWith(" ") &&
                 !this.telefono.startsWith(" ") && this.telefono.toString().length > 5 &&
                 this.identificacion.toString().length > 7 && !this.identificacion.startsWith(" ")) {
-                this.procesarFormulario();
 
+                if (this.verificarCedula) {
+                    alert("El documento ya existe");
+                }
+                else {
+                    this.procesarFormulario();
+                }
             }
             else {
                 alert("Los datos ingresados no son válidos!");
@@ -40,6 +45,16 @@ var app = new Vue({
         },
 
 
+        verificarCedula() {
+            var existe = false;
+            fetch('http://localhost:8080/rest/usuarios/buscar/' + this.identificacion)
+                .then(response => response.json())
+                .then(result => {
+                    existe = result;
+                });
+
+            return existe;
+        },
 
         procesarFormulario: function () {
 
