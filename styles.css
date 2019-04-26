@@ -1,0 +1,168 @@
+/*
+CONTENIDO GENERAL
+*/
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* AGREGAR AQUÍ SI QUIERES QUE EL COLOR SEA BLANCO*/
+
+.busqueda, .informacion-aeropuerto, .registro-usuario-admin, table, thead, td, .opciones button, h6, th, .botones button, #btn-editar, .sidebar-nav li a, .encabezado h2, .header h1, .opciones button:hover, .buscar-btn-usuario {
+  color: white;
+}
+
+/*AGREGAR AQUÍ SI QUIERES QUE EL COLOR SEA EL GRIS*/
+
+.header, .busqueda, th, .botones button, #btn-editar, #sidebar-wrapper, .encabezado h2, thead, .opciones button, #header6 {
+  background-color: #393E46;
+}
+
+/*AGREGAR AQUÍ SI QUIERES QUE LA FUENTE SEA BOLD*/
+
+.header h1, .encabezado h2, .informacion-aeropuerto, .registro-usuario-admin, thead, #titulo-perfil, .label-perfil {
+  font-weight: bold;
+}
+
+.body-admin {
+  background-color: #eeeeee;
+  margin: 0;
+}
+
+.opciones button:hover {
+  background-color: #676A6F;
+}
+
+.perfil-usuario {
+  background-color: #ffffff;
+}
+
+table, tr, td, thead {
+  text-align: center;
+}
+
+.form-control {
+  width: 80%;
+}
+
+.informacion-aeropuerto, .registro-usuario-admin {
+  font-size: 20px;
+}
+
+#items-formulario-aeropuerto, #items-perfil-aeropuerto, #formulario-admin-registro{
+  background-color: #00ADB5;
+}
+
+.formulario-registro {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: rgba(255, 255, 255, 0.75);
+  ;
+}
+
+#titulo-perfil {
+  color: black;
+}
+
+.registro-usuario {
+  background: url(/img/fondo-cielo.png);
+}
+
+tr:hover td {
+  background-color: #007D83;
+}
+
+#panel-imagen {
+  align-items: center;
+  padding-left: 10px;
+}
+
+td {
+  background-color: #00ADB5;
+}
+
+#btn-editar {
+  border-radius: 30px;
+}
+
+#menu-toggle {
+  background: #EEEEEE
+}
+
+.caja-buscar-usuario {
+  align-content: center;
+  width: 75%;
+}
+
+.buscar-btn-usuario {
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.buscar-btn>i {
+  font-size: 30px;
+}
+
+#sidebar-wrapper {
+  position: absolute;
+  width: 0;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+#border-logo {
+  margin: 30px;
+}
+
+#navegation {
+  width: 100%;
+  position: absolute;
+  padding: 15px;
+}
+
+#wrapper.menuDisplayed #sidebar-wrapper {
+  width: 250px;
+}
+
+#wrapper.menuDisplayed #navegation {
+  padding-left: 260px;
+}
+
+.sidebar-nav {
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-nav li {
+  text-indent: 20px;
+  line-height: 40px;
+}
+
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+}
+
+.sidebar-nav li a:hover {
+  background-color: rgb(108, 115, 128);
+}
+
+#registrar_aeropuertos button {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#registrar_usuario {
+  font-size: 24px;
+  border: 0px;
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>UFLY</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
+</head>
+
+<body class="registro-usuario">
+
+    <form action="" class="formulario-registro" @submit.prevent="validarCampos" id="formulario-registro-usuario">
+        <div class="d-flex justify-content-center">
+            <img src="/img/logo.png" class="my-3" width="15%" height="15%">
+        </div>
+
+        <div class="mx-5 my-3">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="primer-nombre">Primer nombre</label>
+                    <input type="text" name="primer-nombre" maxlength="20" id="primer-nombre" v-model="primerNombre"
+                        class="form-control input-group-text" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="segundo-nombre">Segundo nombre</label>
+                    <input type="text" name="segundo-nombre" maxlength="20" id="segundo-nombre" v-model="segundoNombre"
+                        class="form-control input-group-text">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="primer-apellido">Primer apellido</label>
+                    <input type="text" name="primer-apellido" id="primer-apellido" v-model="primerApellido"
+                        class="form-control input-group-text" maxlength="20" required>
+                </div>
+                <div class="form-group col-md-6 ">
+                    <label for="segundo-apellido">Segundo apellido</label>
+                    <input type="text" name="segundo-apellido" id="segundo-apellido" v-model="segundoApellido"
+                        class="form-control input-group-text" maxlength="20" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="identificacion">Identificación</label>
+                    <input type="number" name="identificacion" id="identificacion" v-model="identificacion"
+                        class="form-control input-group-text" maxlength="15" required>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="genero">Género</label>
+                    <select name="genero" id="genero" v-model="genero" class="form-control input-group-text" required>
+                        <option value="1">Masculino</option>
+                        <option value="2">Femenino</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="correo">Correo electrónico</label>
+                    <input type="email" name="correo" id="correo" v-model="correoElectronico"
+                        class="form-control input-group-text" maxlength="50" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="telefono">Teléfono</label>
+                    <input type="number" name="telefono" id="telefono" v-model="telefono"
+                        class="form-control input-group-text" maxlength="14" required>
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="direccion">Dirección</label>
+                    <input type="text" name="direccion" id="direccion" v-model="direccion"
+                        class="form-control input-group-text" maxlength="40" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="fecha-nacimiento">Fecha de nacimiento</label>
+                    <input type="date" name="fecha-nacimiento" id="fecha-nacimiento" v-model="fechaNacimiento"
+                        class="form-control input-group-text" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="contrasenia">Contraseña</label>
+                    <input type="password" name="contrasenia" id="contrasenia" v-model="contrasenia"
+                        class="form-control input-group-text" minlength=6 required>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <button id="registrar_usuario" class="btn btn-danger mb-3">Registrar usuario</button>
+        </div>
+    </form>
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+    <script src="registrar_usuario.js"></script>
+
+
+    <!--TODO:Validar si el email es válido -->
+    <!--TODO:Validar si las contraseñas coinciden -->
+    <!--TODO:Validar si los campos son diferentes a una cadena vacía coinciden -->
+
+
+
+
+
+</body>
+
+</html>
