@@ -52,7 +52,7 @@ public class AeropuertoController
 	}
 	
 	@PutMapping("/{id_aeropuerto}")
-	public Aeropuerto modificarUsuario(@PathVariable(value = "id_aeropuerto") Short id_aeropuerto, @Valid @RequestBody Aeropuerto aeropuertoDetalle)
+	public Aeropuerto modificarAeropuerto(@PathVariable(value = "id_aeropuerto") Short id_aeropuerto, @Valid @RequestBody Aeropuerto aeropuertoDetalle)
 	{
 		Aeropuerto aero=  aeropuertoRepository.findById(id_aeropuerto)
 	            .orElseThrow(() -> new ResourceNotFoundException("Aeropuerto", "id_aeropuerto", id_aeropuerto));
