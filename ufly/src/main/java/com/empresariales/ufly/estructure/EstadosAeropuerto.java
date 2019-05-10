@@ -1,7 +1,6 @@
-	package com.empresariales.ufly.estructure;
+package com.empresariales.ufly.estructure;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -30,7 +29,7 @@ public class EstadosAeropuerto implements Serializable
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fkestados_aeropuerto")
 	@JsonIgnore
-    private List<Aeropuerto> aeropuertos = new ArrayList<>();
+    private List<Aeropuerto> aeropuertos;
 	
 	public EstadosAeropuerto() {
 		super();

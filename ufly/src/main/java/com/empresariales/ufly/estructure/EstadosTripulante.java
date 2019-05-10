@@ -1,7 +1,6 @@
 package com.empresariales.ufly.estructure;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -29,7 +28,7 @@ public class EstadosTripulante implements Serializable
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fkestados_tripulante")
 	@JsonIgnore
-	private List<Tripulantes> tripulantes = new ArrayList<>();
+	private List<Tripulantes> tripulantes;
 
 		
 	public EstadosTripulante(Short id_estado_tripulante, String nombre_estado) {

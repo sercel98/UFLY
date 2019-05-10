@@ -29,7 +29,7 @@ public class Pais implements Serializable
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fkpaises")
 	@JsonIgnore
-    private List<Ciudad> ciudades = new ArrayList<>();
+    private List<Ciudad> ciudades;
 
 	public Pais() {
 		super();

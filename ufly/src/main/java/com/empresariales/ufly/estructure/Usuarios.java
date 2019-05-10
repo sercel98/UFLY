@@ -71,8 +71,6 @@ public class Usuarios implements Serializable
 		super();
 	}
 	
-	
-
 	public Usuarios(int id_usuario, BigInteger cedula, String contrasenia, String primer_nombre, String segundo_nombre,
 			String primer_apellido, String segundo_apellido, String correo_electronico, String telefono, short genero,
 			String direccion, Date fecha_nacimiento, TiposUsuario fktipo_usuario) {
