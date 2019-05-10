@@ -47,22 +47,4 @@ public class CargoTripulanteController
 	            .orElseThrow(() -> new ResourceNotFoundException("CargoTripulante", "id_cargo_tripulante", id_cargo));
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
