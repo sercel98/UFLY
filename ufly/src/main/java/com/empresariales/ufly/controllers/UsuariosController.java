@@ -17,8 +17,6 @@ import com.empresariales.ufly.exception.ResourceNotFoundException;
 import com.empresariales.ufly.repository.UsuariosRepository;
 
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 
 @CrossOrigin
 @RestController

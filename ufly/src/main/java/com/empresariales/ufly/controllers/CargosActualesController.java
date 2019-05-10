@@ -43,7 +43,7 @@ public class CargosActualesController
 	public CargosActuales darCargosActualesPorId(@PathVariable (value = "id_cargos_actuales")  Short id_estado)
 	{
 		return cargosARepository.findById(id_estado)
-	            .orElseThrow(() -> new ResourceNotFoundException("EstadosAeropuerto", "id_estados_aeropuerto", id_estado));
+	            .orElseThrow(() -> new ResourceNotFoundException("CargosActuales", "id_cargos_actuales", id_estado));
 	}
 	
 }
