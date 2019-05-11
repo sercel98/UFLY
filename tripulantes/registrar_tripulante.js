@@ -3,7 +3,6 @@ var app = new Vue({
     data:
     {
         identificacion: '',
-        contrasenia: '',
         primerNombre: '',
         segundoNombre: '',
         primerApellido: '',

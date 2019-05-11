@@ -19,20 +19,8 @@
 
     <div id="aeropuertos">
         <span class="ir-arriba icon-arrow-up2"></span>
-        <div class="header d-flex justify-content-between align-items-center flex-wrap-reverse py-2 px-2">
-            <img src="/img/logo.png" width="8%" height="8%" class="img-fluid px-1 py-1">
-            <h1 class="text-center m-0">{{titulo}}</h1>
-            <li class="nav-item dropdown d-flex align-items-center px-1 py-1">
-                <a class="nav-link dropdown-toggle  text-white" data-toggle="dropdown" href="#" role="button"
-                    aria-haspopup="true" aria-expanded="false">Configuración</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#one">Ver mi perfil</a>
-                    <div role="separator" class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#two">Cerrar sesión</a>
-                </div>
-            </li>
-        </div>
-
+        
+        <cabecera title="Aeropuertos"> </cabecera>
         <div>
             <div class="busqueda d-flex justify-content-start align-items-center mt-3 mx-5 py-2 px-2">
                 <h5 class="mt-2 py-2 px-3">Buscar: </h5>
@@ -64,8 +52,7 @@
             </div>
         </div>
         
-        
-
+       
         
 
         <div class="mt-3 mx-5">
@@ -118,6 +105,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="aeropuertos.js"></script>
+    <script src="/headerComponent.js"></script>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
