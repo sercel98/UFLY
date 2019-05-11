@@ -157,7 +157,7 @@ td {
   background-color: rgb(108, 115, 128);
 }
 
-#registrar_aeropuertos button, #registrar_tripulantes button {
+#registrar_aeropuertos button,#registrar_usuarios button, #registrar_tripulantes button {
   font-size: 24px;
   font-weight: bold;
 }

@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="en">    
 
 <head>
-    <title>UFly - Registrar Usuario</title>
+    <title>UFly - Registrar Tripulante</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,11 +16,11 @@
 
 <body class="body-admin">
 
-    <div id="app">
+    <div id="registrar_tripulante">
 
         <div class="header d-flex justify-content-between align-items-center flex-wrap-reverse py-2 px-2">
             <img src="/img/logo.png" width="8%" height="8%" class="img-fluid px-1 py-1">
-            <h1 class="text-center m-0">Registrar Usuario</h1>
+            <h1 class="text-center m-0">Registrar Tripulante</h1>
             <li class="nav-item dropdown d-flex align-items-center px-1 py-1">
                 <a class="nav-link dropdown-toggle  text-white" data-toggle="dropdown" href="#" role="button"
                     aria-haspopup="true" aria-expanded="false">Configuración</a>
@@ -34,13 +34,10 @@
 
         <div class="registro-usuario-admin mt-3 mx-5">
             <div class="encabezado text-center">
-                <h2 class="py-2 m-0">Información del Usuario</h2>
+                <h2 class="py-2 m-0">Información del tripulante</h2>
             </div>
-
             <form @submit.prevent="validarCampos" id="formulario-admin-registro">
-
                 <div class="mx-5 my-3">
-
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="primer-nombre">Primer nombre</label>
@@ -73,19 +70,9 @@
                             <input type="text" name="identificacion" id="identificacion" v-model="identificacion"
                                 class="form-control input-group-text" maxlength="15" required>
                         </div>
+                  </div>
 
-                        <div class="form-group col-md-3">
-                            <label for="genero">Género</label>
-                            <select name="genero" id="genero" v-model="genero" class="form-control input-group-text"
-                                required>
-                                <option value="1">Masculino</option>
-                                <option value="2">Femenino</option>
-                            </select>
-                        </div>
-
-                    </div>
-
-                    <div class="form-row">
+                  <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="correo">Correo electrónico</label>
                             <input type="email" name="correo" id="correo" v-model="correoElectronico"
@@ -96,7 +83,6 @@
                             <input type="text" name="telefono" id="telefono" v-model="telefono"
                                 class="form-control input-group-text" maxlength="14" required>
                         </div>
-
                     </div>
 
                     <div class="form-row">
@@ -111,39 +97,16 @@
                                 class="form-control input-group-text" required>
                         </div>
                     </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="contrasena">Contraseña</label>
-                            <input type="password" name="contrasena" id="contrasena" v-model="contrasenia"
-                                class="form-control input-group-text" maxlength="15" required>
-                        </div>
-                        <div class="form-group col-md-3">
-
-                            <label>Tipo usuario</label>
-
-                            <select name="tipoUsuario" id="tipoUsuario" v-model="tipoUsuario"
-                                class="form-control input-group-text" required>
-                                <option selected>Elegir el tipo de usuario</option>
-                                <option v-for="usuario of tiposUsuarios">
-                                    {{ usuario.tipo_usuario }}
-                                </option>
-
-                            </select>
-
-                        </div>
-                    </div>
                 </div>
-
             </form>
         </div>
 
-        <div class="d-flex justify-content-center flex-wrap my-2 mx-5" id="registrar_usuarios">
+        <div class="d-flex justify-content-center flex-wrap my-2 mx-5" id="registrar_tripulantes">
             <div class="botones mx-2 my-2">
                 <button type="submit" class="btn" @click="validarCampos">Registrar</button>
             </div>
             <div class="botones mx-2 my-2">
-                <button type="button" class="btn" OnClick="location.href='usuarios.html'">Salir</button>
+                <button type="button" class="btn" OnClick="location.href='tripulantes.html'">Salir</button>
             </div>
         </div>
     </div>
@@ -169,9 +132,5 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-
-
-
-
 
 </html>

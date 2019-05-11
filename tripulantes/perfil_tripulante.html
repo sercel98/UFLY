@@ -48,11 +48,17 @@
                             <input type="text" class="form-control" name="direccionTripulante" id="direccionTripulante"
                                 v-model="direccionTripulante" placeholder="Dirección" maxlength="25" required>
                         </div>
-                        <div class="col-md-2 my-3">
-                            <label>Estado:</label>
-                            <input type="text" class="form-control" name="estadoTripulante" id="estadoTripulante"
-                                v-model="estadoTripulante" placeholder="Estado" maxlength="14" required>
-                        </div>
+                        <div class="form-group col-md-2 my-3">
+                                <label>Estado:</label>
+                                <select class="custom-select" name="estadoTripulante" id="estadoTripulante"
+                                    v-model="estadoTripulante" required>
+                                    <option selected>{{estadoTripulante}}</option>
+                                    <option v-for="estado of estadosTripulante"
+                                        v-show="estado.nombre_estado != estadoTripulante">
+                                        {{ estado.nombre_estado }}
+                                    </option>
+                                </select>
+                            </div>
                         <div class="col-md-3 my-3">
                             <label>Correo electrónico:</label>
                             <input type="text" class="form-control" name="correoTripulante" id="correoTripulante"
