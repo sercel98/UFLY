@@ -1,6 +1,6 @@
 const aeropuertos = new Vue({
 
-    el: '#formulario-registro-aeropuerto',
+    el: '#registro-aeropuerto',
     data:
     {
         nombreAeropuerto: '',
