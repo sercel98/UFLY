@@ -1,5 +1,5 @@
 var app = new Vue({
-    el: '#formulario-perfil-aeropuerto',
+    el: '#perfil-aeropuerto',
     data:
     {
         idAeropuerto: '',

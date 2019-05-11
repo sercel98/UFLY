@@ -12,30 +12,20 @@
     <link rel="stylesheet" type="text/css" href="/styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
+</head> 
 
 <body class="body-admin">
-    <div class="header d-flex justify-content-between align-items-center flex-wrap-reverse py-2 px-2">
-        <img src="/img/logo.png" width="8%" height="8%" class="img-fluid px-1 py-1">
-        <h1 class="text-center m-0">Aeropuerto actual</h1>
-        <li class="nav-item dropdown d-flex align-items-center px-1 py-1">
-            <a class="nav-link dropdown-toggle  text-white" data-toggle="dropdown" href="#" role="button"
-                aria-haspopup="true" aria-expanded="false">Configuración</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#one">Ver mi perfil</a>
-                <div role="separator" class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#two">Cerrar sesión</a>
-            </div>
-        </li>
-    </div>
+
+<div id="perfil-aeropuerto">
+
+    <cabecera title="Aeropuerto actual"></cabecera>
 
     <div class="informacion-aeropuerto  mt-3 mx-5">
         <div class="encabezado text-center">
             <h2 class="py-2 m-0">Información del aeropuerto</h2>
         </div>
 
-        <!--revisar-->
-        <form id="formulario-perfil-aeropuerto" @submit.prevent="validarCampos">
+        <form  @submit.prevent="validarCampos">
             <div id="items-perfil-aeropuerto">
                 <div class=" form-row mx-5">
                     <div class="form-group col-md-6 my-3">
@@ -101,13 +91,13 @@
             </div>
         </form>
     </div>
-
-
-
+</div>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
 <script src="perfil_aeropuerto.js"></script>
+<script src="/headerComponent.js"></script>
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
