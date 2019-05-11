@@ -49,7 +49,7 @@ public class Tripulantes implements Serializable
 	@Column(name = "telefono", nullable = false, length = 14)
 	private String telefono;
 	
-	@Column(name = "genero", nullable = false, length = 2)
+	@Column(name = "genero", nullable = false, length = 1)
 	private short genero;
 	
 	@Column(name = "direccion", nullable = false, length = 50)
