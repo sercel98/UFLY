@@ -18,7 +18,7 @@ var app = new Vue({
         estadosAeropuerto: []
     },
     methods: {
-        procesarFormulario: function () {
+        procesarFormulario() {
             var pais = this.paises.find(pais => pais.nombre_pais === this.paisAeropuerto)
             var ciudad = this.ciudades.find(ciudad => ciudad.nombre_ciudad === this.ciudadAeropuerto)
             var estadoAeropuerto = this.estadosAeropuerto.find(estadoAeropuerto => estadoAeropuerto.nombre_estado === this.estadoAeropuerto)
@@ -48,8 +48,18 @@ var app = new Vue({
 
             fetch(request)
             .then(response => response.json())
-            .catch(error => alert('No se ha podido actualizar el aeropuerto: ' + error))
-            .then(response => alert('Se ha actualizado el aeropuerto exitosamente: ' + response.nombre_aeropuerto))
+            .catch(error => alert('Error: ' + error))
+            .then(response => {
+                console.log(response);
+                if(response.status == 500)
+                {
+                    alert(response.message);
+                }
+                else
+                {
+                    alert('Se ha actualizado el aeropuerto exitosamente')
+                }
+            })
         },
 
         validarCampos: function () {

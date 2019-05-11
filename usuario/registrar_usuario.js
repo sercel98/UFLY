@@ -26,28 +26,11 @@ var app = new Vue({
                 !this.telefono.startsWith(" ") && this.telefono.toString().length > 5 &&
                 this.identificacion.toString().length > 7 && !this.identificacion.startsWith(" ")) {
 
-                if (this.verificarCedula) {
-                    alert("El documento ya existe");
-                }
-                else {
-                    this.procesarFormulario();
-                }
+                this.procesarFormulario();
             }
             else {
                 alert("Los datos ingresados no son válidos!");
             }
-        },
-
-
-        verificarCedula() {
-            var existe = false;
-            fetch('http://localhost:8080/rest/usuarios/buscar/' + this.identificacion)
-                .then(response => response.json())
-                .then(result => {
-                    existe = result;
-                });
-
-            return existe;
         },
 
         procesarFormulario: function () {
@@ -84,8 +67,17 @@ var app = new Vue({
 
             fetch(request)
             .then(response => response.json())
-            .catch(error => alert('No se ha podido registrar el usuario: ' + error))
-            .then(response => alert('Se ha registrado el usuario exitosamente: ' + response.primer_nombre))
+            .catch(error => alert('Error: ' + error))
+            .then(response => {
+                if(response.status == 500)
+                {
+                    alert('No se ha podido registrar el usuario: ' + response.message);
+                }
+                else
+                {
+                    alert('Se ha registrado el usuario exitosamente')
+                }
+            })
         },
     },
 })
