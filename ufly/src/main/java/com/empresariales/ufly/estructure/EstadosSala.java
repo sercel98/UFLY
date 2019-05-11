@@ -26,7 +26,7 @@ public class EstadosSala implements Serializable
 	@Column(name = "nombre_estado", unique = true, length = 15)
 	private String nombre_estado;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fksalas")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fkestado_sala")
 	@JsonIgnore
     private List<Salas> salas;
 	

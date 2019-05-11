@@ -20,7 +20,7 @@ public class Salas implements Serializable
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_sala", length = 3)
+	@Column(name = "id_salas", length = 3)
 	private Short id_sala;
 	
 	@Column(name = "nombre_sala", unique = true, length = 10)

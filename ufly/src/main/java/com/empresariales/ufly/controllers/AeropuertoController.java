@@ -36,12 +36,29 @@ public class AeropuertoController
 	}
 	
 	@PostMapping("/agregar")
-	public Aeropuerto crearAeropuerto(@RequestBody Aeropuerto aeropuerto)
+	public Aeropuerto crearAeropuerto(@RequestBody Aeropuerto aeropuerto) throws Exception
 	{
-		System.out.println(aeropuerto);
+		if(existeAeropuero(aeropuerto))
+		{
+			throw new Exception("El nombre del aeropuerto ya existe");
+		}
+		
 		return aeropuertoRepository.save(aeropuerto);
 	}
 	
+	private boolean existeAeropuero(Aeropuerto aeropuerto)
+	{
+		List<Aeropuerto> aeropuertos = listarAeropuertos();
+		for (Aeropuerto aeropuertoActual : aeropuertos)
+		{
+			if(aeropuertoActual.getNombre_aeropuerto().equals(aeropuerto.getNombre_aeropuerto()))
+			{
+				return true;
+			}
+		}
+		
+		return false;
+	}
 	
 	@GetMapping("/{id_aeropuerto}")
 	public Aeropuerto darAeropuertoPorId(@PathVariable(value = "id_aeropuerto") Short id_aeropuerto)
@@ -51,21 +68,27 @@ public class AeropuertoController
 	}
 	
 	@PutMapping("/{id_aeropuerto}")
-	public Aeropuerto modificarAeropuerto(@PathVariable(value = "id_aeropuerto") Short id_aeropuerto, @Valid @RequestBody Aeropuerto aeropuertoDetalle)
+	public Aeropuerto modificarAeropuerto(@PathVariable(value = "id_aeropuerto") Short id_aeropuerto, @Valid @RequestBody Aeropuerto aeropuertoDetalle) throws Exception
 	{
-		Aeropuerto aero=  aeropuertoRepository.findById(id_aeropuerto)
-	            .orElseThrow(() -> new ResourceNotFoundException("Aeropuerto", "id_aeropuerto", id_aeropuerto));
+		if(existeAeropuero(aeropuertoDetalle))
+		{
+			throw new Exception("El nombre del aeropuerto ya existe");
+		}
+		else
+		{
+			Aeropuerto aero=  aeropuertoRepository.findById(id_aeropuerto)
+		            .orElseThrow(() -> new ResourceNotFoundException("Aeropuerto", "id_aeropuerto", id_aeropuerto));
 
-		aero.setNombre_aeropuerto(aeropuertoDetalle.getNombre_aeropuerto());
-		aero.setDireccion_aeropuerto(aeropuertoDetalle.getDireccion_aeropuerto());
-		aero.setTelefono(aeropuertoDetalle.getTelefono());
-		aero.setFkestados_aeropuerto(aeropuertoDetalle.getFkestados_aeropuerto());
-		aero.setFkciudades(aeropuertoDetalle.getFkciudades());
-		
-		
-		Aeropuerto actualizado = aeropuertoRepository.save(aero);
-		
-		return actualizado;
+			aero.setNombre_aeropuerto(aeropuertoDetalle.getNombre_aeropuerto());
+			aero.setDireccion_aeropuerto(aeropuertoDetalle.getDireccion_aeropuerto());
+			aero.setTelefono(aeropuertoDetalle.getTelefono());
+			aero.setFkestados_aeropuerto(aeropuertoDetalle.getFkestados_aeropuerto());
+			aero.setFkciudades(aeropuertoDetalle.getFkciudades());
+			
+			
+			Aeropuerto actualizado = aeropuertoRepository.save(aero);
+			return actualizado;
+		}
 	}
 	
 }
