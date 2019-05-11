@@ -2,45 +2,38 @@ var app = new Vue({
     el: '#perfil_tripulante',
     data:
     {
-        
-        idAeropuerto: '',
-        nombreAeropuerto: '',
-        codigoAeropuerto: '',
-        ciudadAeropuerto: '',
-        paisAeropuerto: '',
-        direccionAeropuerto: '',
-        telefonoAeropuerto: '',
-        estadoAeropuerto: '',
-
-        aeropuertoActual: {},
-
-        ciudades: [],
-        paises: [],
-        estadosAeropuerto: []
+        idTripulante:'',
+        cedulaTripulante:'',
+        primerNombre: '',
+        segundoNombre: '',
+        primerApellido: '',
+        segundoApellido: '',
+        nombreTripulante:'',
+        estadoTripulante: '',
+        direccionTripulante: '',
+        correoTripulante: '',
+        fechaNacimientoTripulante: '',
+        telefonoTripulante: '',
+        tripulanteActual: {},
+      
+        estadosTripulante: []
     },
     methods: {
         procesarFormulario: function () {
-            var pais = this.paises.find(pais => pais.nombre_pais === this.paisAeropuerto)
-            var ciudad = this.ciudades.find(ciudad => ciudad.nombre_ciudad === this.ciudadAeropuerto)
-            var estadoAeropuerto = this.estadosAeropuerto.find(estadoAeropuerto => estadoAeropuerto.nombre_estado === this.estadoAeropuerto)
+           
+            var estadoTripulante = this.estadosTripulante.find(estadoTripulante => estadoTripulante.nombre_estado === this.estadoTripulante)
 
-            this.aeropuertoActual.nombre_aeropuerto = this.nombreAeropuerto;
-            this.aeropuertoActual.direccion_aeropuerto = this.direccionAeropuerto;
-            this.aeropuertoActual.telefono = this.telefonoAeropuerto;
+            //revisar json
+            this.tripulanteActual.direccion_tripulante = this.direccionTripulante;
+            this.tripulanteActual.telefono = this.telefonoTripulante;
 
-            this.aeropuertoActual.fkestados_aeropuerto.id_estado_aeropuerto = estadoAeropuerto.id_estado_aeropuerto;
-            this.aeropuertoActual.fkestados_aeropuerto.nombre_estado = this.estadoAeropuerto;
+            this.tripulanteActual.fkestados_tripulante.id_estado_tripulante = estadoTripulante.id_estado_tripulante;
+            this.tripulanteActual.fkestados_tripulante.nombre_estado = this.estadoTripulante;
 
-            this.aeropuertoActual.fkciudades.id_ciudad = ciudad.id_ciudad;
-            this.aeropuertoActual.fkciudades.nombre_ciudad = this.ciudadAeropuerto;
-
-            this.aeropuertoActual.fkciudades.fkpais.id_pais = pais.id_pais;
-            this.aeropuertoActual.fkciudades.fkpais.nombre_pais = this.paisAeropuerto;
-
-            var url = 'http://localhost:8080/rest/aeropuertos/' + this.aeropuertoActual.id_aeropuerto;
+            var url = 'http://localhost:8080/rest/tripulantes/' + this.tripulanteActual.id_tripulante;
             var init = {
                 method: 'PUT',
-                body: JSON.stringify(this.aeropuertoActual),
+                body: JSON.stringify(this.tripulanteActual),
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -49,68 +42,63 @@ var app = new Vue({
 
             fetch(request)
             .then(response => response.json())
-            .catch(error => alert('No se ha podido actualizar el aeropuerto: ' + error))
-            .then(response => alert('Se ha actualizado el aeropuerto exitosamente: ' + response.nombre_aeropuerto))
+            .catch(error => alert('No se ha podido actualizar el tripulante: ' + error))
+
+            //TODO: hacer toast en vez de alerts.
+            .then(response => alert('Se ha actualizado el tripulante exitosamente: ' + response.primer_nombre))
         },
 
+
         validarCampos: function () {
-            if (this.nombreAeropuerto.length > 3 && !this.nombreAeropuerto.startsWith(" ") &&
-                this.direccionAeropuerto.length > 5 && !this.direccionAeropuerto.startsWith(" ") &&
-                !this.telefonoAeropuerto.startsWith(" ") && this.telefonoAeropuerto.toString().length > 5) {
+        if (this.direccionTripulante.length > 5 && !this.direccionTripulante.startsWith(" ") &&
+                !this.telefonoTripulante.startsWith(" ") && this.telefonoTripulante.toString().length > 5) {
                 this.procesarFormulario();
 
             }
             else {
-                alert("LA INFORMACIÓN DEL AEROPUERTO ES INCOMPLETA!");
+                alert("LA INFORMACIÓN DEL TRIPULANTE ES INCOMPLETA!");
             }
 
         }
 
     },
 
-    computed: {
-        buscarCiudades: function () {
-            return this.ciudades.filter((ciudad) => ciudad.fkpais.nombre_pais.toLowerCase().includes(this.paisAeropuerto.toLowerCase()));
-        }
-    },
-
     mounted() {
-        fetch('http://localhost:8080/rest/paises')
+     
+        fetch('http://localhost:8080/rest/estadosTripulante')
             .then(response => response.json())
-            .then(paises => {
-                this.paises = paises;
-            });
-
-        fetch('http://localhost:8080/rest/ciudades')
-            .then(response => response.json())
-            .then(ciudades => {
-                this.ciudades = ciudades;
-            });
-
-        fetch('http://localhost:8080/rest/estadosaeropuerto')
-            .then(response => response.json())
-            .then(estadosaeropuerto => {
-                this.estadosAeropuerto = estadosaeropuerto;
+            .then(estadostripulante => {
+                this.estadosTripulante = estadostripulante;
             });
 
 
         var urlPagina = window.location.href;
         var posicion = urlPagina.indexOf('?');
-        idAeropuerto = urlPagina.substr(posicion + 1, urlPagina.length);
+        idTripulante = urlPagina.substr(posicion + 1, urlPagina.length);
 
-        var url = 'http://localhost:8080/rest/aeropuertos/' + idAeropuerto;
+        var url = 'http://localhost:8080/rest/tripulantes/' + idTripulante;
 
         fetch(url)
             .then(response => response.json())
-            .then(aeropuertoActual => {
-                this.nombreAeropuerto = aeropuertoActual.nombre_aeropuerto,
-                    this.direccionAeropuerto = aeropuertoActual.direccion_aeropuerto,
-                    this.telefonoAeropuerto = aeropuertoActual.telefono,
-                    this.estadoAeropuerto = aeropuertoActual.fkestados_aeropuerto.nombre_estado,
-                    this.ciudadAeropuerto = aeropuertoActual.fkciudades.nombre_ciudad,
-                    this.paisAeropuerto = aeropuertoActual.fkciudades.fkpais.nombre_pais
+            .then(tripulante => {
 
-                this.aeropuertoActual = aeropuertoActual;
+                //REVISAR JSON
+                this.idTripulante = tripulante.id_tripulante,
+                this.cedulaTripulante = tripulante.cedula,
+                
+                this.primerNombre = tripulante.primer_nombre,
+                this.segundoNombre = tripulante.segundo_nombre,
+                this.primerApellido = tripulante.primer_apellido,
+                this.segundoApellido = tripulante.segundo_apellido,
+    
+                this.correoTripulante = tripulante.correo_electronico,
+                this.telefonoTripulante = tripulante.telefono,
+    
+                this.direccionTripulante = tripulante.direccion,
+                this.fechaNacimientoTripulante = tripulante.fecha_nacimiento,
+    
+                this.nombreTripulante = this.primerNombre + " " + this.segundoNombre + " " + this.primerApellido + " " + this.segundoApellido,
+                this.tripulanteActual = tripulante;
             });
     }
 })
