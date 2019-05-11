@@ -100,5 +100,5 @@ var app = new Vue({
                 this.nombreTripulante = this.primerNombre + " " + this.segundoNombre + " " + this.primerApellido + " " + this.segundoApellido,
                 this.tripulanteActual = tripulante;
             });
-    }
+    }   
 })

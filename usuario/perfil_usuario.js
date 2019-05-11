@@ -37,7 +37,7 @@ var app = new Vue({
 
             }
             else {
-                alert("La información del usuario está incompleta!");
+                toastr.warning("La información del usuario está incompleta!");
             }
         },
 
@@ -77,8 +77,8 @@ var app = new Vue({
 
             fetch(request)
             .then(response => response.json())
-            .catch(error => alert('No se ha podido  el usuario: ' + error))
-            .then(response => alert('Se ha actualizado el usuario exitosamente: ' + response.primer_nombre))
+            .catch(error => toastr.error('No se ha podido  el usuario: ' + error))
+            .then(response => toastr.success('Se ha actualizado el usuario exitosamente:'+ response.primer_nombre))
         }
     },
 

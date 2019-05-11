@@ -12,16 +12,6 @@ const usuarios = new Vue({
 
             location.href = 'perfil_usuario.html?' + id;
         },
-
-        filterSelection: function (radio) {
-            if (radio === nombre) {
-
-            }
-
-
-
-        }
-
     },
     computed: {
         searchUser: function () {
@@ -43,7 +33,6 @@ const usuarios = new Vue({
             }
         }
     },
-
 
     mounted() {
         
