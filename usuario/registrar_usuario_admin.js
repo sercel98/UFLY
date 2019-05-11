@@ -1,5 +1,5 @@
 var app = new Vue({
-    el: '#app',
+    el: '#registro_usuario_admin',
     data:
     {
         identificacion: '',
