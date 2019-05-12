@@ -76,11 +76,20 @@ var app = new Vue({
             var request = new Request(url, init);
 
             fetch(request)
-                .then(response => response.json())
-                .catch(error =>   toastr.error('No se ha podido registrar el usuario: ' + error))
-                .then(response =>   toastr.success('Se ha registrado el usuario exitosamente: ' + response.primer_nombre))
-                toastr.options.onHidden = function() { location.href='usuarios.html';}
-                toastr.options.onclick = function() { location.href='usuarios.html'; }
+            .then(response => response.json())
+            .catch(error =>  toastr.error('Error: ' + error))
+            .then(response => {
+                if(response.status == 500)
+                {
+                    toastr.warning('No se ha podido registrar el usuario: ' + response.message);
+                }
+                else
+                {
+                    toastr.success('Se ha registrado el usuario exitosamente: ' + response.primer_nombre)
+                    toastr.options.onHidden = function() { location.href='usuarios.html';}
+                    toastr.options.onclick = function() { location.href='usuarios.html'; }
+                }
+            })
         }
 
     },

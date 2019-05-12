@@ -26,28 +26,11 @@ var app = new Vue({
                 !this.telefono.startsWith(" ") && this.telefono.toString().length > 5 &&
                 this.identificacion.toString().length > 7 && !this.identificacion.startsWith(" ")) {
 
-                if (this.verificarCedula) {
-                    toastr.error("El documento ya existe");
-                }
-                else {
-                    this.procesarFormulario();
-                }
+                this.procesarFormulario();
             }
             else {
                 toastr.warning("Los datos ingresados no son válidos!");
             }
-        },
-
-
-        verificarCedula() {
-            var existe = false;
-            fetch('http://localhost:8080/rest/usuarios/buscar/' + this.identificacion)
-                .then(response => response.json())
-                .then(result => {
-                    existe = result;
-                });
-
-            return existe;
         },
 
         procesarFormulario: function () {
@@ -84,10 +67,21 @@ var app = new Vue({
 
             fetch(request)
             .then(response => response.json())
-            .catch(error => toastr.error('No se ha podido registrar el usuario: ' + error))
-            .then(response => toastr.success('Se ha registrado el usuario exitosamente: ' + response.primer_nombre))
-            toastr.options.onHidden = function() { location.href='usuarios.html';}
-            toastr.options.onclick = function() { location.href='usuarios.html'; }
+            .catch(error => toastr.error('Error: ' + error))
+            .then(response => {
+                if(response.status == 500)
+                {
+                    toastr.warning('No se ha podido registrar el usuario: ' + error)
+                }
+                else
+                {
+
+                    toastr.success('Se ha registrado el usuario exitosamente: ' + response.primer_nombre)
+                    toastr.options.onHidden = function() { location.href='usuarios.html';}
+                    toastr.options.onclick = function() { location.href='usuarios.html'; }
+            
+                }
+            })
         },
     },
 })

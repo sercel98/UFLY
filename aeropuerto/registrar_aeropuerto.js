@@ -41,18 +41,30 @@ const aeropuertos = new Vue({
                 }
             }
 
-            console.log(aeropuertoActual);
             var url = 'http://localhost:8080/rest/aeropuertos/agregar';
-            var init = {method: 'POST', body: JSON.stringify(aeropuertoActual), headers:{
-                'Content-Type': 'application/json'
+            var init = {
+                method: 'POST', 
+                body: JSON.stringify(aeropuertoActual), 
+                headers:{
+                    'Content-Type': 'application/json'
               }};
             var request = new Request(url, init);
             fetch(request)
             .then(response => response.json())
             .catch(error => toastr.error('No se ha podido registrar el aeropuerto: ' + error))
-            .then(response => toastr.success('Se ha registrado el aeropuerto exitosamente: ' + response.nombre_aeropuerto)); 
-            toastr.options.onHidden = function() { location.href='aeropuertos.html';}
-            toastr.options.onclick = function() { location.href='aeropuertos.html'; }
+            .then(response => {
+                if(response.status == 500)
+                {
+                    toastr.info(response.message);
+                }
+                else
+                {
+                    toastr.success('Se ha registrado el aeropuerto exitosamente: ' + response.nombre_aeropuerto)
+                    toastr.options.onHidden = function() { location.href='aeropuertos.html';}
+                    toastr.options.onclick = function() { location.href='aeropuertos.html'; }
+                   
+                }
+            })
         },
         validarCampos:function()
         {
@@ -81,21 +93,18 @@ const aeropuertos = new Vue({
         .then(response => response.json())
         .then(paises =>{
              this.paises = paises;
-             console.log(paises)
         });
 
         fetch('http://localhost:8080/rest/ciudades')
         .then(response => response.json())
         .then(ciudades =>{
             this.ciudades = ciudades;
-            console.log(ciudades)
         });
 
         fetch('http://localhost:8080/rest/estadosaeropuerto')
         .then(response => response.json())
         .then(estadosaeropuerto =>{
             this.estadosAeropuerto = estadosaeropuerto;
-            console.log(estadosaeropuerto)
         });
     }
 });

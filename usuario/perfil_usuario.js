@@ -77,8 +77,17 @@ var app = new Vue({
 
             fetch(request)
             .then(response => response.json())
-            .catch(error => toastr.error('No se ha podido  el usuario: ' + error))
-            .then(response => toastr.success('Se ha actualizado el usuario exitosamente:'+ response.primer_nombre))
+            .catch(error =>  toastr.error('Error: ' + error))
+            .then(response => {
+                if(response.status == 500)
+                {
+                    toastr.warning('No se ha podido registrar el usuario: ' + response.message);
+                }
+                else
+                {
+                    toastr.success('Se ha registrado el usuario exitosamente'+response.primer_nombre)
+                }
+            })
         }
     },
 
