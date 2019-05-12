@@ -80,6 +80,7 @@ var app = new Vue({
                 .then(response =>  toastr.success('Se ha registrado el usuario exitosamente: ' + response.primer_nombre))
                 toastr.options.onHidden = function() { location.href='tripulantes.html';}
                 toastr.options.onclick = function() { location.href='tripulantes.html'; }
+                toastr.options.timeOut = 1000;
       
         }
 

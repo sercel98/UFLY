@@ -81,11 +81,11 @@ var app = new Vue({
             .then(response => {
                 if(response.status == 500)
                 {
-                    toastr.warning('No se ha podido registrar el usuario: ' + response.message);
+                    toastr.warning('No se ha podido editar el usuario: ' + response.message);
                 }
                 else
                 {
-                    toastr.success('Se ha registrado el usuario exitosamente'+response.primer_nombre)
+                    toastr.success('Se ha editado el usuario exitosamente'+response.primer_nombre)
                 }
             })
         }
