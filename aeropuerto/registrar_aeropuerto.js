@@ -47,13 +47,13 @@ const aeropuertos = new Vue({
                 'Content-Type': 'application/json'
               }};
             var request = new Request(url, init);
-
             fetch(request)
             .then(response => response.json())
             .catch(error => toastr.error('No se ha podido registrar el aeropuerto: ' + error))
-            .then(response => toastr.success('Se ha registrado el aeropuerto exitosamente: ' + response))
+            .then(response => toastr.success('Se ha registrado el aeropuerto exitosamente: ' + response.nombre_aeropuerto)); 
+            toastr.options.onHidden = function() { location.href='aeropuertos.html';}
+            toastr.options.onclick = function() { location.href='aeropuertos.html'; }
         },
-
         validarCampos:function()
         {
             if (this.nombreAeropuerto.length > 3 && !this.nombreAeropuerto.startsWith(" ") &&
