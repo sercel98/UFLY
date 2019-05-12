@@ -15,9 +15,6 @@ var app = new Vue({
         fechaNacimiento: '',
         tipoUsuario: '',
         tiposUsuarios: []
-
-
-
     },
     methods: {
 
@@ -41,8 +38,6 @@ var app = new Vue({
         procesarFormulario: function () {
 
             var tiposUsuarios = this.tiposUsuarios.find(tiposUsuarios => tiposUsuarios.tipo_usuario === this.tipoUsuario);
-            console.log(this.tiposUsuarios)
-
 
             var obj = {
                 "id_usuario": "",
@@ -62,14 +57,14 @@ var app = new Vue({
                     "id_tipo_usuario": tiposUsuarios.id_tipo_usuario,
                     "tipo_usuario": tiposUsuarios.tipo_usuario
                     }
-
-
             }
 
             console.log(obj);
             var url = 'http://localhost:8080/rest/usuarios/agregar';
             var init = {
-                method: 'POST', body: JSON.stringify(obj), headers: {
+                method: 'POST', 
+                body: JSON.stringify(obj),
+                headers: {
                     'Content-Type': 'application/json'
                 }
             };
@@ -79,6 +74,7 @@ var app = new Vue({
             .then(response => response.json())
             .catch(error =>  toastr.error('Error: ' + error))
             .then(response => {
+                console.log(response);
                 if(response.status == 500)
                 {
                     toastr.warning('No se ha podido registrar el usuario: ' + response.message);
