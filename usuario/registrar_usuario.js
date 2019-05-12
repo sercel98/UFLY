@@ -86,6 +86,8 @@ var app = new Vue({
             .then(response => response.json())
             .catch(error => toastr.error('No se ha podido registrar el usuario: ' + error))
             .then(response => toastr.success('Se ha registrado el usuario exitosamente: ' + response.primer_nombre))
+            toastr.options.onHidden = function() { location.href='usuarios.html';}
+            toastr.options.onclick = function() { location.href='usuarios.html'; }
         },
     },
 })

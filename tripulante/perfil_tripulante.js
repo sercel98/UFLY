@@ -42,10 +42,8 @@ var app = new Vue({
 
             fetch(request)
             .then(response => response.json())
-            .catch(error => alert('No se ha podido actualizar el tripulante: ' + error))
-
-            //TODO: hacer toast en vez de alerts.
-            .then(response => alert('Se ha actualizado el tripulante exitosamente: ' + response.primer_nombre))
+            .catch(error => toastr.error('No se ha podido actualizar el tripulante: ' + error))
+           .then(response => toastr.success('Se ha actualizado el tripulante exitosamente: ' + response.primer_nombre))
         },
 
 
@@ -56,7 +54,7 @@ var app = new Vue({
 
             }
             else {
-                alert("LA INFORMACIÓN DEL TRIPULANTE ES INCOMPLETA!");
+                toastr.warning("LA INFORMACIÓN DEL TRIPULANTE ES INCOMPLETA!");
             }
 
         }
