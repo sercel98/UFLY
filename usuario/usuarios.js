@@ -12,6 +12,7 @@ const usuarios = new Vue({
 
             location.href = 'perfil_usuario.html?' + id;
         },
+
     },
     computed: {
         searchUser: function () {
@@ -24,7 +25,7 @@ const usuarios = new Vue({
             }
             else if(nombre)
             {
-                return this.usuarios.filter((usuario) => (usuario.primer_nombre.toLowerCase() + usuario.segundo_nombre.toLowerCase() + usuario.primer_apellido.toLowerCase() + usuario.segundo_apellido.toLowerCase()).includes(this.buscado.replace(' ', '').replace(' ', '').replace(' ', '').toLowerCase()));
+               return this.usuarios.filter((usuario) => (usuario.primer_nombre.toLowerCase() + usuario.primer_apellido.toLowerCase() + usuario.segundo_apellido.toLowerCase()).includes(this.buscado.replace(' ', '').replace(' ', '').replace(' ', '').toLowerCase()));
             }
             else
             {
