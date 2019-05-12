@@ -57,7 +57,7 @@ var app = new Vue({
                 }
                 else
                 {
-                    toastr.success('Se ha actualizado el aeropuerto exitosamente: ' + response.nombre_aeropuerto))
+                    toastr.success('Se ha actualizado el aeropuerto exitosamente: ' + response.nombre_aeropuerto)
                 }
             })
         },
@@ -101,8 +101,7 @@ var app = new Vue({
             .then(estadosaeropuerto => {
                 this.estadosAeropuerto = estadosaeropuerto;
             });
-
-
+            
         var urlPagina = window.location.href;
         var posicion = urlPagina.indexOf('?');
         idAeropuerto = urlPagina.substr(posicion + 1, urlPagina.length);

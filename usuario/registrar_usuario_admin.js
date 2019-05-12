@@ -90,6 +90,7 @@ var app = new Vue({
                     toastr.options.onclick = function() { location.href='usuarios.html'; }
                 }
             })
+            
         }
 
     },
