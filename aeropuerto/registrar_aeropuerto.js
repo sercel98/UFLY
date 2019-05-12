@@ -50,8 +50,8 @@ const aeropuertos = new Vue({
 
             fetch(request)
             .then(response => response.json())
-            .catch(error => alert('No se ha podido registrar el aeropuerto: ' + error))
-            .then(response => alert('Se ha registrado el aeropuerto exitosamente: ' + response))
+            .catch(error => toastr.error('No se ha podido registrar el aeropuerto: ' + error))
+            .then(response => toastr.success('Se ha registrado el aeropuerto exitosamente: ' + response))
         },
 
         validarCampos:function()
@@ -65,7 +65,7 @@ const aeropuertos = new Vue({
             } 
             else 
             {
-                alert("LA INFORMACIÓN DEL AEROPUERTO ES INCOMPLETA!"); 
+                toastr.warning("LA INFORMACIÓN DEL AEROPUERTO ES INCOMPLETA!"); 
             }
         }
     },

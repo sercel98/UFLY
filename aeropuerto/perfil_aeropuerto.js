@@ -48,7 +48,7 @@ var app = new Vue({
 
             fetch(request)
             .then(response => response.json())
-            .catch(error => alert('No se ha podido actualizar el aeropuerto: ' + error))
+            .catch(error => toastr.error('No se ha podido actualizar el aeropuerto: ' + error))
             .then(response => toastr.success('Se ha actualizado el aeropuerto exitosamente: ' + response.nombre_aeropuerto))
         },
 
@@ -60,7 +60,7 @@ var app = new Vue({
 
             }
             else {
-                alert("LA INFORMACIÓN DEL AEROPUERTO ES INCOMPLETA!");
+                toastr.warning("LA INFORMACIÓN DEL AEROPUERTO ES INCOMPLETA!");
             }
 
         }
