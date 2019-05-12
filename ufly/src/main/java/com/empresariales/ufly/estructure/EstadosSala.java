@@ -30,6 +30,11 @@ public class EstadosSala implements Serializable
 	@JsonIgnore
     private List<Salas> salas;
 	
+	public EstadosSala() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public EstadosSala(Short id_estado_sala, String nombre_estado) {
 		super();
 		this.id_estado_sala = id_estado_sala;

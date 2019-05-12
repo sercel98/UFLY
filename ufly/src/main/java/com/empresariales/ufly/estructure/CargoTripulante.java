@@ -30,6 +30,11 @@ public class CargoTripulante implements Serializable
 	@JsonIgnore
 	private List<CargosActuales> cargos;
 
+	public CargoTripulante() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public CargoTripulante(Short id_cargo_tripulante, String cargo_tripulante) {
 		super();
 		this.id_cargo_tripulante = id_cargo_tripulante;

@@ -30,11 +30,15 @@ public class EstadosTripulante implements Serializable
 	@JsonIgnore
 	private List<Tripulantes> tripulantes;
 
-		
-	public EstadosTripulante(Short id_estado_tripulante, String nombre_estado) {
+	public EstadosTripulante() {
+		super();
+	}
+
+	public EstadosTripulante(Short id_estado_tripulante, String nombre_estado, List<Tripulantes> tripulantes) {
 		super();
 		this.id_estado_tripulante = id_estado_tripulante;
 		this.nombre_estado = nombre_estado;
+		this.tripulantes = tripulantes;
 	}
 
 	public Short getId_estado_tripulante() {
@@ -64,7 +68,9 @@ public class EstadosTripulante implements Serializable
 	@Override
 	public String toString() {
 		return "EstadosTripulante [id_estado_tripulante=" + id_estado_tripulante + ", nombre_estado=" + nombre_estado
-				+ "]";
+				+ ", tripulantes=" + tripulantes + "]";
 	}
+
+
 	
 }

@@ -36,6 +36,11 @@ public class Salas implements Serializable
 	@OnDelete(action = OnDeleteAction.CASCADE)	
 	private Aeropuerto fkaeropuertos;
 
+	public Salas() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Salas(Short id_sala, String nombre_sala) {
 		super();
 		this.id_sala = id_sala;
