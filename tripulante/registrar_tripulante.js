@@ -33,7 +33,7 @@ var app = new Vue({
 
             }
             else {
-                alert("Los datos ingresados no son válidos!");
+                toastr.warning("Los datos ingresados no son válidos!");
             }
         },
 
@@ -76,9 +76,11 @@ var app = new Vue({
 
             fetch(request)
                 .then(response => response.json())
-                .catch(error => alert('No se ha podido registrar el usuario: ' + error))
-                .then(response => alert('Se ha registrado el usuario exitosamente: ' + response.primer_nombre))
-
+                .catch(error =>  toastr.error('No se ha podido registrar el usuario: ' + error))
+                .then(response =>  toastr.success('Se ha registrado el usuario exitosamente: ' + response.primer_nombre))
+                toastr.options.onHidden = function() { location.href='tripulantes.html';}
+                toastr.options.onclick = function() { location.href='tripulantes.html'; }
+      
         }
 
     },
