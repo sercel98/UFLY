@@ -16,7 +16,7 @@ const tripulantes = new Vue({
     },
     computed: {
         searchTripulantes: function () {
-            var cedula = document.getElementById('customRadioInline1').checked;
+            var cedula = document.getElementById('customRadioInline1').checked; 
             var nombre = document.getElementById('customRadioInline2').checked;
             
             if (cedula) 

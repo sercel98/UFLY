@@ -10,10 +10,9 @@ var app = new Vue({
         telefono: '',
         genero: '',
         direccion: '',
-        correoElectronico: '',
         fechaNacimiento: '',
-        tipoUsuario: '',
-        tiposUsuarios: []
+        estadoTripulante: '',
+        estadosTripulantes: []
 
 
 
@@ -26,7 +25,7 @@ var app = new Vue({
                 this.primerApellido.length > 3 && !this.primerNombre.startsWith(" ") &&
                 this.segundoApellido.length > 3 && !this.segundoApellido.startsWith(" ") &&
                 this.direccion.length > 5 && !this.direccion.startsWith(" ") &&
-                this.correoElectronico.length > 5 && !this.direccion.startsWith(" ") &&
+                 !this.direccion.startsWith(" ") &&
                 !this.telefono.startsWith(" ") && this.telefono.toString().length > 5 &&
                 this.identificacion.toString().length > 7 && !this.identificacion.startsWith(" ")) {
                 this.procesarFormulario();
@@ -39,34 +38,31 @@ var app = new Vue({
 
         procesarFormulario: function () {
 
-            var tiposUsuarios = this.tiposUsuarios.find(tiposUsuarios => tiposUsuarios.tipo_usuario === this.tipoUsuario);
-            console.log(this.tiposUsuarios)
+
+            var estadosTripulantes = this.estadosTripulantes.find(estadosTripulantes => estadosTripulantes.nombre_estado === this.estadoTripulante);
+            console.log(this.estadosTripulantes)
 
 
             var obj = {
-                "id_usuario": "",
-                "cedula": this.identificacion,
-                "contrasenia": this.contrasenia,
+                "id_tripulante": "",
+                "cedula_tripulante": this.identificacion,
                 "primer_nombre": this.primerNombre,
                 "segundo_nombre": this.segundoNombre,
                 "primer_apellido": this.primerApellido,
                 "segundo_apellido": this.segundoApellido,
-                "correo_electronico": this.correoElectronico,
-                "telefono": this.telefono,
-                "genero": this.genero,
+                "fkestados_tripulante": {
+                    "id_estado_tripulante": estadosTripulantes.id_estado_tripulante,
+                    "nombre_estado": estadosTripulantes.nombre_estado
+                    },
                 "direccion": this.direccion,
                 "fecha_nacimiento": this.fechaNacimiento,
-
-                "fktipo_usuario": {
-                    "id_tipo_usuario": tiposUsuarios.id_tipo_usuario,
-                    "tipo_usuario": tiposUsuarios.tipo_usuario
-                    }
-
+                "genero": this.genero,
+                "telefono": this.telefono,
 
             }
 
             console.log(obj);
-            var url = 'http://localhost:8080/rest/usuarios/agregar';
+            var url = 'http://localhost:8080/rest/tripulantes/agregar';
             var init = {
                 method: 'POST', body: JSON.stringify(obj), headers: {
                     'Content-Type': 'application/json'
@@ -76,8 +72,8 @@ var app = new Vue({
 
             fetch(request)
                 .then(response => response.json())
-                .catch(error =>  toastr.error('No se ha podido registrar el usuario: ' + error))
-                .then(response =>  toastr.success('Se ha registrado el usuario exitosamente: ' + response.primer_nombre))
+                .catch(error =>  toastr.error('No se ha podido registrar el tripulante: ' + error))
+                .then(response =>  toastr.success('Se ha registrado el tripulante exitosamente: ' + response.primer_nombre))
                 toastr.options.onHidden = function() { location.href='tripulantes.html';}
                 toastr.options.onclick = function() { location.href='tripulantes.html'; }
                 toastr.options.timeOut = 1000;
@@ -86,11 +82,11 @@ var app = new Vue({
 
     },
     mounted() {
-        fetch('http://localhost:8080/rest/tiposusuario')
+        fetch('http://localhost:8080/rest/estadostripulantes')
             .then(response => response.json())
-            .then(tiposUsuarios => {
-                this.tiposUsuarios = tiposUsuarios;
-                console.log(tiposUsuarios)
+            .then(estadosTripulantes => {
+                this.estadosTripulantes = estadosTripulantes;
+                console.log(estadosTripulantes)
             });
     },
 

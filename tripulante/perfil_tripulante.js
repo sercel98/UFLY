@@ -63,7 +63,7 @@ var app = new Vue({
 
     mounted() {
      
-        fetch('http://localhost:8080/rest/estadosTripulante')
+        fetch('http://localhost:8080/rest/estadostripulante')
             .then(response => response.json())
             .then(estadostripulante => {
                 this.estadosTripulante = estadostripulante;
