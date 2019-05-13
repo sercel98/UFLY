@@ -10,12 +10,16 @@ var app = new Vue({
         direccionAeropuerto: '',
         telefonoAeropuerto: '',
         estadoAeropuerto: '',
+        nuevaSala: '',
+        nuevoEstadoSala: '',
 
         aeropuertoActual: {},
+        salasActuales: {},
 
         ciudades: [],
         paises: [],
-        estadosAeropuerto: []
+        estadosAeropuerto: [],
+        estadosSala: []
     },
     methods: {
         procesarFormulario() {
@@ -64,6 +68,41 @@ var app = new Vue({
             })
         },
 
+        registrarSala: function() {
+
+        },
+
+        actualizarSala: function(sala) {
+            
+            var estadosSala = this.estadosSala.find(estadoSala => estadoSala.nombre_estado === sala.fkestado_sala.nombre_estado);
+            sala.fkestado_sala = estadosSala;
+
+            var url = 'http://localhost:8080/rest/salas/' + sala.id_sala;
+            var init = {
+                method: 'PUT',
+                body: JSON.stringify(sala),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+            var request = new Request(url, init);
+
+            fetch(request)
+            .then(response => response.json())
+            .catch(error => toastr.error('No se ha podido actualizar la sala: ' + error))
+            .then(response => {
+                console.log(response);
+                if(response.status == 500)
+                {
+                    toastr.info(response.message);
+                }
+                else
+                {
+                    toastr.success('Se ha actualizado la sala exitosamente: ' + response.nombre_sala)
+                }
+            })
+        },
+
         validarCampos: function () {
             if (this.nombreAeropuerto.length > 3 && !this.nombreAeropuerto.startsWith(" ") &&
                 this.direccionAeropuerto.length > 5 && !this.direccionAeropuerto.startsWith(" ") &&
@@ -87,40 +126,56 @@ var app = new Vue({
 
     mounted() {
         fetch('http://localhost:8080/rest/paises')
-            .then(response => response.json())
-            .then(paises => {
-                this.paises = paises;
-            });
+        .then(response => response.json())
+        .then(paises => {
+            this.paises = paises;
+        });
 
         fetch('http://localhost:8080/rest/ciudades')
-            .then(response => response.json())
-            .then(ciudades => {
-                this.ciudades = ciudades;
-            });
+        .then(response => response.json())
+        .then(ciudades => {
+            this.ciudades = ciudades;
+        });
 
         fetch('http://localhost:8080/rest/estadosaeropuerto')
-            .then(response => response.json())
-            .then(estadosaeropuerto => {
-                this.estadosAeropuerto = estadosaeropuerto;
-            });
+        .then(response => response.json())
+        .then(estadosaeropuerto => {
+            this.estadosAeropuerto = estadosaeropuerto;
+        });
+
+        fetch('http://localhost:8080/rest/estadossala')
+        .then(response => response.json())
+        .then(estadossala => {
+            console.log(estadossala);
+            this.estadosSala = estadossala;
+        });
             
         var urlPagina = window.location.href;
         var posicion = urlPagina.indexOf('?');
         idAeropuerto = urlPagina.substr(posicion + 1, urlPagina.length);
 
-        var url = 'http://localhost:8080/rest/aeropuertos/' + idAeropuerto;
+        var urlAeropuertos = 'http://localhost:8080/rest/aeropuertos/' + idAeropuerto;
 
-        fetch(url)
-            .then(response => response.json())
-            .then(aeropuertoActual => {
-                this.nombreAeropuerto = aeropuertoActual.nombre_aeropuerto,
-                    this.direccionAeropuerto = aeropuertoActual.direccion_aeropuerto,
-                    this.telefonoAeropuerto = aeropuertoActual.telefono,
-                    this.estadoAeropuerto = aeropuertoActual.fkestados_aeropuerto.nombre_estado,
-                    this.ciudadAeropuerto = aeropuertoActual.fkciudades.nombre_ciudad,
-                    this.paisAeropuerto = aeropuertoActual.fkciudades.fkpais.nombre_pais
+        fetch(urlAeropuertos)
+        .then(response => response.json())
+        .then(aeropuertoActual => {
+            this.nombreAeropuerto = aeropuertoActual.nombre_aeropuerto,
+            this.direccionAeropuerto = aeropuertoActual.direccion_aeropuerto,
+            this.telefonoAeropuerto = aeropuertoActual.telefono,
+            this.estadoAeropuerto = aeropuertoActual.fkestados_aeropuerto.nombre_estado,
+            this.ciudadAeropuerto = aeropuertoActual.fkciudades.nombre_ciudad,
+            this.paisAeropuerto = aeropuertoActual.fkciudades.fkpais.nombre_pais
 
-                this.aeropuertoActual = aeropuertoActual;
-            });
+            this.aeropuertoActual = aeropuertoActual;
+        });
+
+        var urlSalas = 'http://localhost:8080/rest/salas/' + idAeropuerto;
+
+        fetch(urlSalas)
+        .then(response => response.json())
+        .then(salas => {
+            console.log(salas);
+            this.salasActuales = salas;
+        });
     }
 })
