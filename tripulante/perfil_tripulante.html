@@ -17,18 +17,23 @@
 </head>
 
 <body class="body-admin">
+
     <div id="perfil_tripulante">
 
         <cabecera title="Tripulante actual"></cabecera>
         
         <div class="informacion-tripulante  mt-3 mx-5">
+          
             <div class="encabezado text-center">
                 <h2 class="py-2 m-0">Información del tripulante</h2>
             </div>
 
             <form @submit.prevent="validarCampos">
+
                 <div id="items-perfil-tripulante">
+                    
                     <div class=" form-row mx-5">
+          
                         <div class="form-group col-md-4 my-3">
                             <label>Nombre del tripulante:</label>
                             <label id="tripulante-info">{{nombreTripulante}} </label>
@@ -61,13 +66,54 @@
                             <input type="text" class="form-control" name="direccionTripulante" id="direccionTripulante"
                                 v-model="direccionTripulante" placeholder="Dirección" maxlength="25" required>
                         </div>
+                       
                         <div class="col-md-3 my-3">
                             <label>Teléfono:</label>
                             <input type="text" class="form-control" name="telefonoTripulante" id="telefonoTripulante"
                                 v-model="telefonoTripulante" placeholder="Telefono" maxlength="14" required>
                         </div>
+                    
                     </div>
                 </div>
+
+                <div class="encabezado text-center">
+                    <h2 class="py-2 m-0">Cargos del tripulante</h2>
+                </div>                
+
+                <div class="mx-5 my-3">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Nombre del cargo
+                                    </th>
+                                    <th>
+                                        Antiguedad
+                                    </th>
+                                    <th>
+                                        Opciones
+                                    </th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody id="contenido" v-for="cargo of searchCargo">
+                                    <tr>
+                                        <td>
+                                            {{cargo.fkcargo_tripulante.cargo_tripulante}}
+                                        </td>
+                                        <td>
+                                            2 años
+                                        </td>
+                                        <td>
+                                            eliminar
+                                        </td>
+                                    </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
                 <div class="d-flex justify-content-center flex-wrap my-2 mx-5" id="registrar_tripulantes">
                     <div class="botones mx-2 my-2">
                         <!--ENVIAR TODA LA INFORMACION DEL AEROPUERTO ACTUAL-->
@@ -85,6 +131,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
 <script src="/components/headerComponent.js"></script>
 <script src="perfil_tripulante.js"></script>
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.0.min.js"

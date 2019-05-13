@@ -15,7 +15,9 @@ var app = new Vue({
         fechaNacimientoTripulante: '',
         telefonoTripulante: '',
         tripulanteActual: {},
+        cargoTripulante:{},
         
+        cargosActuales:[],
       
         estadosTripulante: []
     },
@@ -74,9 +76,22 @@ var app = new Vue({
                 toastr.warning("LA INFORMACIÓN DEL TRIPULANTE ES INCOMPLETA!");
             }
 
-        }
+        },
+        
+    
 
     },
+    computed: {
+        searchCargo: function () {
+            
+            
+            var estadoTripulante = this.estadosTripulante.find(estadoTripulante => estadoTripulante.nombre_estado === this.estadoTripulante)
+            
+            cargo
+            return this.cargosActuales.filter((cargo) => (cargo.id_cargos_actuales ===this.cargoTripulante));
+        } 
+    },
+   
 
     mounted() {
      
@@ -85,6 +100,13 @@ var app = new Vue({
             .then(estadostripulante => {
                 this.estadosTripulante = estadostripulante;
             });
+
+
+        fetch('http://localhost:8080/rest/cargosactuales')
+        .then(response => response.json())
+        .then(cargosactuales => {
+            this.cargosActuales = cargosactuales;
+        });
 
 
         var urlPagina = window.location.href;
@@ -113,8 +135,13 @@ var app = new Vue({
 
                 this.nombreTripulante = this.primerNombre + " " + this.segundoNombre + " " + this.primerApellido + " " + this.segundoApellido,
                 this.tripulanteActual = tripulante;
-
                 console.log(this.tripulanteActual);
+                console.log(this.cargosActuales);
+
+                
+
+
+                
             });
     }   
 })
