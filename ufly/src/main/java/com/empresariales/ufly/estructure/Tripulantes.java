@@ -59,7 +59,7 @@ public class Tripulantes implements Serializable
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date fecha_nacimiento;
 	
-	@ManyToOne
+	@ManyToOne//(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "fkestados_tripulante", nullable = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private EstadosTripulante fkestados_tripulante;

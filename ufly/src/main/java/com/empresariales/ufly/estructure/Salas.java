@@ -38,6 +38,7 @@ public class Salas implements Serializable
 	
 	public Salas() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public Salas(Short id_sala, String nombre_sala) {
@@ -82,7 +83,4 @@ public class Salas implements Serializable
 	public String toString() {
 		return "Salas [id_sala=" + id_sala + ", nombre_sala=" + nombre_sala + "]";
 	}
-	
-	
-	
 }

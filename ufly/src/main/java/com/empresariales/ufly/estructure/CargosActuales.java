@@ -33,6 +33,11 @@ public class CargosActuales implements Serializable
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Tripulantes fktripulantes;
 
+	public CargosActuales() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public CargosActuales(Short id_cargos_actuales, CargoTripulante fkcargo_tripulante, Tripulantes fktripulantes) {
 		super();
 		this.id_cargos_actuales = id_cargos_actuales;
