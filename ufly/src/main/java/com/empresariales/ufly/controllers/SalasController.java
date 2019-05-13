@@ -88,9 +88,7 @@ public class SalasController
 	{
 		Salas sala = salasRepository.findById(id_sala)
 	            .orElseThrow(() -> new ResourceNotFoundException("Salas", "id_sala", id_sala));
-		
 		sala.setNombre_sala(salaDetalle.getNombre_sala());
-		sala.setFkaeropuertos(salaDetalle.getFkaeropuertos());
 		sala.setFkestado_sala(salaDetalle.getFkestado_sala());
 		
 		Salas nuevo = salasRepository.save(sala);

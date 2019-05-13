@@ -62,6 +62,7 @@ public class TripulantesController
 		tripulante.setDireccion(tripulanteDetalle.getDireccion());
 		tripulante.setTelefono(tripulanteDetalle.getTelefono());
 		tripulante.setFecha_nacimiento(tripulanteDetalle.getFecha_nacimiento());
+		tripulante.setFkestados_tripulante(tripulanteDetalle.getFkestados_tripulante());
 
 		Tripulantes nuevo = tripulantesRepository.save(tripulante);
 		
