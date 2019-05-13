@@ -61,7 +61,7 @@
                         <label>Ciudad:</label>
                         <select class="custom-select" name="ciudadAeropuerto" id="ciudadAeropuerto"
                             v-model="ciudadAeropuerto" required>
-                            <option selected>{{ciudadAeropuerto}}</option>
+                            <option selected >{{ciudadAeropuerto}}</option>
                             <option v-for="ciudad of buscarCiudades" v-show="ciudad.nombre_ciudad != ciudadAeropuerto">
                                 {{ ciudad.nombre_ciudad }}
                             </option>
@@ -122,7 +122,7 @@
                                             {{index + 1}}
                                         </td>
                                         <td>
-                                            <input type="text" class="text-center" v-model="sala.nombre_sala">
+                                            <label>{{sala.nombre_sala}}</label>
                                         </td>
                                         <td>
                                             <div>

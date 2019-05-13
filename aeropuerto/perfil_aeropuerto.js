@@ -8,7 +8,7 @@ var app = new Vue({
         ciudadAeropuerto: '',
         paisAeropuerto: '',
         direccionAeropuerto: '',
-        telefonoAeropuerto: '',
+        telefonoAeropuerto: '', 
         estadoAeropuerto: '',
         nuevaSala: '',
         nuevoEstadoSala: '',
@@ -62,8 +62,6 @@ var app = new Vue({
                 }
                 else
                 {
-                    toastr.options.onHidden = function() { location.href='aeropuertos.html';}
-                    toastr.options.timeOut = 1000;
                     toastr.success('Se ha actualizado el aeropuerto exitosamente: ' + response.nombre_aeropuerto)
                 }
             })
