@@ -1,6 +1,7 @@
 package com.empresariales.ufly.estructure;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -32,7 +33,7 @@ public class Tripulantes implements Serializable
 	private int id_tripulante;
 	
 	@Column(name = "cedula_tripulante", unique = true, length = 15)
-	private int cedula_tripulante;
+	private BigInteger cedula_tripulante;
 	
 	@Column(name = "primer_nombre", nullable = false, length = 20)
 	private String primer_nombre;
@@ -72,7 +73,7 @@ public class Tripulantes implements Serializable
 		super();
 	}
 	
-	public Tripulantes(int id_tripulante, int cedula_tripulante, String primer_nombre, String segundo_nombre,
+	public Tripulantes(int id_tripulante, BigInteger cedula_tripulante, String primer_nombre, String segundo_nombre,
 			String primer_apellido, String segundo_apellido, String telefono, short genero,
 			String direccion, Date fecha_nacimiento, EstadosTripulante fkestados_tripulante) {
 		super();
@@ -97,11 +98,11 @@ public class Tripulantes implements Serializable
 		this.id_tripulante = id_tripulante;
 	}
 
-	public int getCedula_tripulante() {
+	public BigInteger getCedula_tripulante() {
 		return cedula_tripulante;
 	}
 
-	public void setCedula_tripulante(int cedula_tripulante) {
+	public void setCedula_tripulante(BigInteger cedula_tripulante) {
 		this.cedula_tripulante = cedula_tripulante;
 	}
 

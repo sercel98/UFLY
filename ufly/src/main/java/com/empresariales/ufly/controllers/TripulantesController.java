@@ -54,14 +54,8 @@ public class TripulantesController
 		Tripulantes tripulante = tripulantesRepository.findById(id_tripulante)
 				.orElseThrow(() -> new ResourceNotFoundException("Tripulantes", "id_tripulante", id_tripulante));
 		
-		tripulante.setPrimer_nombre(tripulanteDetalle.getPrimer_nombre());
-		tripulante.setSegundo_nombre(tripulanteDetalle.getSegundo_nombre());
-		tripulante.setPrimer_apellido(tripulanteDetalle.getPrimer_apellido());
-		tripulante.setSegundo_apellido(tripulanteDetalle.getSegundo_apellido());
-		tripulante.setGenero(tripulanteDetalle.getGenero());
 		tripulante.setDireccion(tripulanteDetalle.getDireccion());
 		tripulante.setTelefono(tripulanteDetalle.getTelefono());
-		tripulante.setFecha_nacimiento(tripulanteDetalle.getFecha_nacimiento());
 		tripulante.setFkestados_tripulante(tripulanteDetalle.getFkestados_tripulante());
 
 		Tripulantes nuevo = tripulantesRepository.save(tripulante);

@@ -81,18 +81,27 @@ public class SalasController
 	{
 		return salasRepository.findById(id_sala)
 	            .orElseThrow(() -> new ResourceNotFoundException("Salas", "id_sala", id_sala));
-	}**/
+	}
+	 * @throws Exception **/
 	
 	@PutMapping("/{id_sala}")
-	public Salas modificarSala(@PathVariable (value = "id_sala") Short id_sala, @Valid @RequestBody Salas salaDetalle )
+	public Salas modificarSala(@PathVariable (value = "id_sala") Short id_sala, @Valid @RequestBody Salas salaDetalle ) throws Exception
 	{
-		Salas sala = salasRepository.findById(id_sala)
-	            .orElseThrow(() -> new ResourceNotFoundException("Salas", "id_sala", id_sala));
-		sala.setNombre_sala(salaDetalle.getNombre_sala());
-		sala.setFkestado_sala(salaDetalle.getFkestado_sala());
+		if(existeSalaPorNombre(salaDetalle))
+		{
+			throw new Exception("Ya existe un sala con este nombre en el aeropuerto");
+		}
+		else
+		{
+			Salas sala = salasRepository.findById(id_sala)
+		            .orElseThrow(() -> new ResourceNotFoundException("Salas", "id_sala", id_sala));
+			sala.setNombre_sala(salaDetalle.getNombre_sala());
+			sala.setFkestado_sala(salaDetalle.getFkestado_sala());
+			
+			Salas nuevo = salasRepository.save(sala);
+			
+			return nuevo;
+		}
 		
-		Salas nuevo = salasRepository.save(sala);
-		
-		return nuevo;
 	}
 }
