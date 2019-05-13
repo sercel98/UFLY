@@ -23,7 +23,7 @@ public class Salas implements Serializable
 	@Column(name = "id_salas", length = 3)
 	private Short id_sala;
 	
-	@Column(name = "nombre_sala", unique = true, length = 10)
+	@Column(name = "nombre_sala", length = 10)
 	private String nombre_sala;
 	
 	@ManyToOne
@@ -35,6 +35,10 @@ public class Salas implements Serializable
     @JoinColumn(name = "fkaeropuertos", nullable = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)	
 	private Aeropuerto fkaeropuertos;
+	
+	public Salas() {
+		super();
+	}
 
 	public Salas(Short id_sala, String nombre_sala) {
 		super();

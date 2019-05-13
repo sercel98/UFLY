@@ -29,8 +29,11 @@ public class EstadosTripulante implements Serializable
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fkestados_tripulante")
 	@JsonIgnore
 	private List<Tripulantes> tripulantes;
-
 		
+	public EstadosTripulante() {
+		super();
+	}
+
 	public EstadosTripulante(Short id_estado_tripulante, String nombre_estado) {
 		super();
 		this.id_estado_tripulante = id_estado_tripulante;

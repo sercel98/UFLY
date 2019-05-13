@@ -1,5 +1,6 @@
 package com.empresariales.ufly.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.empresariales.ufly.estructure.Aeropuerto;
 import com.empresariales.ufly.estructure.Salas;
 import com.empresariales.ufly.exception.ResourceNotFoundException;
 import com.empresariales.ufly.repository.SalasRepository;
@@ -29,24 +31,57 @@ public class SalasController
 	@Autowired
 	private SalasRepository salasRepository;
 	
-	@GetMapping
-	public List<Salas> listarSalas()
+	@GetMapping("/{fkaeropuertos}")
+	public List<Salas> listarSalas(@PathVariable (value = "fkaeropuertos") Short fkaeropuertos)
 	{
-		return salasRepository.findAll();
+		List<Salas> salas = salasRepository.findAll();
+		List<Salas> salasActuales = new ArrayList<>();
+		
+		for (Salas salaActual : salas) {
+			if(salaActual.getFkaeropuertos().getId_aeropuerto() == fkaeropuertos)
+			{
+				salasActuales.add(salaActual);
+			}
+		}
+		
+		return salasActuales;
+	}
+	
+	private boolean existeSalaPorNombre(Salas sala)
+	{
+		List<Salas> salas = listarSalas(sala.getFkaeropuertos().getId_aeropuerto());
+		for (Salas salaActual : salas)
+		{
+			if(salaActual.getNombre_sala().equals(sala.getNombre_sala()))
+			{
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 	@PostMapping("/agregar")
-	public Salas crearSalas(@Valid @RequestBody Salas sala)
+	public Salas crearSalas(@Valid @RequestBody Salas sala) throws Exception
 	{
-		return salasRepository.save(sala);
+		if(existeSalaPorNombre(sala))
+		{
+			throw new Exception("Ya existe un sala con este nombre en el aeropuerto");
+		}
+		else
+		{
+			return salasRepository.save(sala);
+		}
+		
 	}
 	
+	/**
 	@GetMapping("/{id_sala}")
 	public Salas darSalaPorId(@PathVariable (value = "id_sala") Short id_sala)
 	{
 		return salasRepository.findById(id_sala)
 	            .orElseThrow(() -> new ResourceNotFoundException("Salas", "id_sala", id_sala));
-	}
+	}**/
 	
 	@PutMapping("/{id_sala}")
 	public Salas modificarSala(@PathVariable (value = "id_sala") Short id_sala, @Valid @RequestBody Salas salaDetalle )
@@ -62,12 +97,4 @@ public class SalasController
 		
 		return nuevo;
 	}
-	
-	
-	
-	
-	
-	
-	
-
 }
