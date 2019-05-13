@@ -89,5 +89,6 @@ public class UsuariosController
 		Usuarios actualizado = usuariosRepository.save(user);
 		
 		return actualizado;
+	}
 	
 }
