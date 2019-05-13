@@ -24,6 +24,12 @@ CONTENIDO GENERAL
   font-weight: bold;
 }
 
+#tripulante-info
+{
+  font-weight: normal;
+}
+
+
 .body-admin {
   background-color: #eeeeee;
   margin: 0;

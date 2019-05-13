@@ -21,7 +21,7 @@ const tripulantes = new Vue({
             
             if (cedula) 
             {
-                return this.tripulantes.filter((tripulante) => tripulante.cedula.toString().includes(this.buscado.toLowerCase()));
+                return this.tripulantes.filter((tripulante) => tripulante.cedula_tripulante.toString().includes(this.buscado.toLowerCase()));
             }
             else if(nombre)
             {   

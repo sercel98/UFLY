@@ -78,14 +78,14 @@
                         <tbody id="contenido" v-for="tripulante of searchTripulantes">
                             <tr @click="actualizarTripulante(tripulante.id_tripulante)">
                                 <td>
-                                    {{tripulante.cedula}}
+                                    {{tripulante.cedula_tripulante}}
                                 </td>
                                 <td>
                                     {{tripulante.primer_nombre}} {{tripulante.segundo_nombre}} {{tripulante.primer_apellido}}
                                     {{tripulante.segundo_apellido}}
                                 </td>
                                 <td>
-                                    {{tripulante.estado}}
+                                    {{tripulante.fkestados_tripulante.nombre_estado}}
                                 </td>
                                 <td>
                                     {{tripulante.telefono}}

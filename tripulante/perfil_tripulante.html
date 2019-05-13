@@ -29,40 +29,39 @@
             <form @submit.prevent="validarCampos">
                 <div id="items-perfil-tripulante">
                     <div class=" form-row mx-5">
-                        <div class="form-group col-md-6 my-3">
+                        <div class="form-group col-md-4 my-3">
                             <label>Nombre del tripulante:</label>
-                            <input type="text" class="form-control" name="nombreTripulante" id="nombreTripulante"
-                                v-model="nombreTripulante" placeholder="Nombre" maxlength="50" required>
+                            <label id="tripulante-info">{{nombreTripulante}} </label>
                         </div>
+   
+                        <div class="col-md-3 my-3">
+                            <label>Fecha de nacimiento:</label>
+                            <label id="tripulante-info">{{fechaNacimientoTripulante}} </label>
+                        </div>
+
+                        <div class="form-group col-md-2 my-3 ">
+                            <label>Genero:</label>
+                            <label v-if="generoTripulante === 1"  id="tripulante-info" >Masculino </label>
+                            <label v-if="generoTripulante === 2" id="tripulante-info" >Femenino </label>
+                        </div>
+
+                        <div class="form-group col-md-2 my-3" >
+                            <label>Estado:</label>
+                            <select class="custom-select" name="estadoTripulante" id="estadoTripulante"
+                                v-model="estadoTripulante" required>
+                                <option selected>{{estadoTripulante}}</option>
+                                <option v-for="estado of estadosTripulante" v-show="estado.nombre_estado != estadoTripulante">
+                                    {{ estado.nombre_estado }}
+                                </option>
+                            </select>
+                        </div>
+
                         <div class="form-group col-md-4 my-3">
                             <label>Dirección del tripulante:</label>
                             <input type="text" class="form-control" name="direccionTripulante" id="direccionTripulante"
                                 v-model="direccionTripulante" placeholder="Dirección" maxlength="25" required>
                         </div>
-                        <div class="form-group col-md-2 my-3">
-                                <label>Estado:</label>
-                                <select class="custom-select" name="estadoTripulante" id="estadoTripulante"
-                                    v-model="estadoTripulante" required>
-                                    <option selected>{{estadoTripulante}}</option>
-                                    <option v-for="estado of estadosTripulante"
-                                        v-show="estado.nombre_estado != estadoTripulante">
-                                        {{ estado.nombre_estado }}
-                                    </option>
-                                </select>
-                            </div>
                         <div class="col-md-3 my-3">
-                            <label>Correo electrónico:</label>
-                            <input type="text" class="form-control" name="correoTripulante" id="correoTripulante"
-                                v-model="correoTripulante" placeholder="correo Electronico" maxlength="14" required>
-                        </div>
-
-                        <div class="col-md-3 my-3">
-                            <label>Fecha de nacimiento:</label>
-                            <input type="text" class="form-control" name="fechaNacimientoTripulante" id="fechaNacimientoTripulante"
-                                v-model="fechaNacimientoTripulante" placeholder="Fecha de nacimiento" maxlength="14" required>
-                        </div>
-
-                        <div class="col-md-2 my-3">
                             <label>Teléfono:</label>
                             <input type="text" class="form-control" name="telefonoTripulante" id="telefonoTripulante"
                                 v-model="telefonoTripulante" placeholder="Telefono" maxlength="14" required>
@@ -72,7 +71,7 @@
                 <div class="d-flex justify-content-center flex-wrap my-2 mx-5" id="registrar_tripulantes">
                     <div class="botones mx-2 my-2">
                         <!--ENVIAR TODA LA INFORMACION DEL AEROPUERTO ACTUAL-->
-                        <button type="submit" class="btn" @click="validarCampos">Actualizar</button>
+                        <button type="submit" class="btn">Actualizar</button>
                     </div>
                     <div class="botones mx-2 my-2">
                         <button type="button" class="btn" OnClick="location.href='tripulantes.html'">Salir</button>

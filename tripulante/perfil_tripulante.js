@@ -10,11 +10,12 @@ var app = new Vue({
         segundoApellido: '',
         nombreTripulante:'',
         estadoTripulante: '',
+        generoTripulante: '',
         direccionTripulante: '',
-        correoTripulante: '',
         fechaNacimientoTripulante: '',
         telefonoTripulante: '',
         tripulanteActual: {},
+        
       
         estadosTripulante: []
     },
@@ -24,11 +25,12 @@ var app = new Vue({
             var estadoTripulante = this.estadosTripulante.find(estadoTripulante => estadoTripulante.nombre_estado === this.estadoTripulante)
 
             //revisar json
-            this.tripulanteActual.direccion_tripulante = this.direccionTripulante;
+            this.tripulanteActual.direccion = this.direccionTripulante;
             this.tripulanteActual.telefono = this.telefonoTripulante;
 
             this.tripulanteActual.fkestados_tripulante.id_estado_tripulante = estadoTripulante.id_estado_tripulante;
             this.tripulanteActual.fkestados_tripulante.nombre_estado = this.estadoTripulante;
+            console.log( this.tripulanteActual.fkestados_tripulante.nombre_estado);
 
             var url = 'http://localhost:8080/rest/tripulantes/' + this.tripulanteActual.id_tripulante;
             var init = {
@@ -44,6 +46,22 @@ var app = new Vue({
             .then(response => response.json())
             .catch(error => toastr.error('No se ha podido actualizar el tripulante: ' + error))
            .then(response => toastr.success('Se ha actualizado el tripulante exitosamente: ' + response.primer_nombre))
+            
+        },
+
+
+        retornarGenero: function()
+        {
+
+            if(generoTripulante=1)
+            {
+                return "Masculino";
+            }
+            else
+            {
+                return "femenino"; 
+            }
+
         },
 
 
@@ -63,7 +81,7 @@ var app = new Vue({
 
     mounted() {
      
-        fetch('http://localhost:8080/rest/estadostripulante')
+        fetch('http://localhost:8080/rest/estadostripulantes')
             .then(response => response.json())
             .then(estadostripulante => {
                 this.estadosTripulante = estadostripulante;
@@ -82,19 +100,18 @@ var app = new Vue({
 
                 //REVISAR JSON
                 this.idTripulante = tripulante.id_tripulante,
-                this.cedulaTripulante = tripulante.cedula,
+                this.cedulaTripulante = tripulante.cedula_tripulante,
                 
                 this.primerNombre = tripulante.primer_nombre,
                 this.segundoNombre = tripulante.segundo_nombre,
                 this.primerApellido = tripulante.primer_apellido,
                 this.segundoApellido = tripulante.segundo_apellido,
-    
-                this.correoTripulante = tripulante.correo_electronico,
                 this.telefonoTripulante = tripulante.telefono,
-    
+                this.generoTripulante = tripulante.genero,
                 this.direccionTripulante = tripulante.direccion,
                 this.fechaNacimientoTripulante = tripulante.fecha_nacimiento,
-    
+                this.estadoTripulante = tripulante.fkestados_tripulante.nombre_estado,
+
                 this.nombreTripulante = this.primerNombre + " " + this.segundoNombre + " " + this.primerApellido + " " + this.segundoApellido,
                 this.tripulanteActual = tripulante;
             });
