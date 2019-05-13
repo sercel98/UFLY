@@ -16,12 +16,12 @@ const tripulantes = new Vue({
     },
     computed: {
         searchTripulantes: function () {
-            var cedula = document.getElementById('customRadioInline1').checked;
+            var cedula = document.getElementById('customRadioInline1').checked; 
             var nombre = document.getElementById('customRadioInline2').checked;
             
             if (cedula) 
             {
-                return this.tripulantes.filter((tripulante) => tripulante.cedula.toString().includes(this.buscado.toLowerCase()));
+                return this.tripulantes.filter((tripulante) => tripulante.cedula_tripulante.toString().includes(this.buscado.toLowerCase()));
             }
             else if(nombre)
             {   
