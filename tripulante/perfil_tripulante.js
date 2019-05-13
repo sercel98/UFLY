@@ -23,14 +23,13 @@ var app = new Vue({
         procesarFormulario: function () {
            
             var estadoTripulante = this.estadosTripulante.find(estadoTripulante => estadoTripulante.nombre_estado === this.estadoTripulante)
-
             //revisar json
             this.tripulanteActual.direccion = this.direccionTripulante;
             this.tripulanteActual.telefono = this.telefonoTripulante;
 
             this.tripulanteActual.fkestados_tripulante.id_estado_tripulante = estadoTripulante.id_estado_tripulante;
             this.tripulanteActual.fkestados_tripulante.nombre_estado = this.estadoTripulante;
-            console.log( this.tripulanteActual.fkestados_tripulante.nombre_estado);
+            console.log( this.tripulanteActual);
 
             var url = 'http://localhost:8080/rest/tripulantes/' + this.tripulanteActual.id_tripulante;
             var init = {
@@ -114,6 +113,8 @@ var app = new Vue({
 
                 this.nombreTripulante = this.primerNombre + " " + this.segundoNombre + " " + this.primerApellido + " " + this.segundoApellido,
                 this.tripulanteActual = tripulante;
+
+                console.log(this.tripulanteActual);
             });
     }   
 })
