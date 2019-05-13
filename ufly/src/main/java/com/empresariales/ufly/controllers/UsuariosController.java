@@ -71,31 +71,23 @@ public class UsuariosController
 	}
 	
 	@PutMapping("/{id_usuario}")
-	public Usuarios modificarUsuario(@PathVariable(value = "id_usuario") Integer id_usuario, @Valid @RequestBody Usuarios usuarioDetalles) throws Exception
+	public Usuarios modificarUsuario(@PathVariable(value = "id_usuario") Integer id_usuario, @Valid @RequestBody Usuarios usuarioDetalles)
 	{
 		Usuarios user = usuariosRepository.findById(id_usuario)
 	            .orElseThrow(() -> new ResourceNotFoundException("Usuarios", "id_usuarios", id_usuario));
 		
-		if(existeUsuarioPorCedula(user))
-		{
-			throw new Exception("La cédula de este usuario ya existe");
-		}
-		else
-		{
-			user.setContrasenia(usuarioDetalles.getContrasenia());
-			user.setPrimer_nombre(usuarioDetalles.getPrimer_nombre());
-			user.setSegundo_nombre(usuarioDetalles.getSegundo_nombre());
-			user.setPrimer_apellido(usuarioDetalles.getPrimer_apellido());
-			user.setSegundo_apellido(usuarioDetalles.getSegundo_apellido());
-			user.setTelefono(usuarioDetalles.getTelefono());
-			user.setGenero(usuarioDetalles.getGenero());
-			user.setDireccion(usuarioDetalles.getDireccion());
-			user.setFecha_nacimiento(usuarioDetalles.getFecha_nacimiento());
+		user.setContrasenia(usuarioDetalles.getContrasenia());
+		user.setPrimer_nombre(usuarioDetalles.getPrimer_nombre());
+		user.setSegundo_nombre(usuarioDetalles.getSegundo_nombre());
+		user.setPrimer_apellido(usuarioDetalles.getPrimer_apellido());
+		user.setSegundo_apellido(usuarioDetalles.getSegundo_apellido());
+		user.setTelefono(usuarioDetalles.getTelefono());
+		user.setGenero(usuarioDetalles.getGenero());
+		user.setDireccion(usuarioDetalles.getDireccion());
+		user.setFecha_nacimiento(usuarioDetalles.getFecha_nacimiento());
 
-			Usuarios actualizado = usuariosRepository.save(user);
-			
-			return actualizado;
-		}
-	}
+		Usuarios actualizado = usuariosRepository.save(user);
+		
+		return actualizado;
 	
 }

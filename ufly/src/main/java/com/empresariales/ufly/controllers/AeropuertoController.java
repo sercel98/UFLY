@@ -70,25 +70,18 @@ public class AeropuertoController
 	@PutMapping("/{id_aeropuerto}")
 	public Aeropuerto modificarAeropuerto(@PathVariable(value = "id_aeropuerto") Short id_aeropuerto, @Valid @RequestBody Aeropuerto aeropuertoDetalle) throws Exception
 	{
-		if(existeAeropuero(aeropuertoDetalle))
-		{
-			throw new Exception("El nombre del aeropuerto ya existe");
-		}
-		else
-		{
-			Aeropuerto aero=  aeropuertoRepository.findById(id_aeropuerto)
-		            .orElseThrow(() -> new ResourceNotFoundException("Aeropuerto", "id_aeropuerto", id_aeropuerto));
+		Aeropuerto aero=  aeropuertoRepository.findById(id_aeropuerto)
+	            .orElseThrow(() -> new ResourceNotFoundException("Aeropuerto", "id_aeropuerto", id_aeropuerto));
 
-			aero.setNombre_aeropuerto(aeropuertoDetalle.getNombre_aeropuerto());
-			aero.setDireccion_aeropuerto(aeropuertoDetalle.getDireccion_aeropuerto());
-			aero.setTelefono(aeropuertoDetalle.getTelefono());
-			aero.setFkestados_aeropuerto(aeropuertoDetalle.getFkestados_aeropuerto());
-			aero.setFkciudades(aeropuertoDetalle.getFkciudades());
-			
-			
-			Aeropuerto actualizado = aeropuertoRepository.save(aero);
-			return actualizado;
-		}
+		aero.setNombre_aeropuerto(aeropuertoDetalle.getNombre_aeropuerto());
+		aero.setDireccion_aeropuerto(aeropuertoDetalle.getDireccion_aeropuerto());
+		aero.setTelefono(aeropuertoDetalle.getTelefono());
+		aero.setFkestados_aeropuerto(aeropuertoDetalle.getFkestados_aeropuerto());
+		aero.setFkciudades(aeropuertoDetalle.getFkciudades());
+		
+		
+		Aeropuerto actualizado = aeropuertoRepository.save(aero);
+		return actualizado;
 	}
 	
 }
