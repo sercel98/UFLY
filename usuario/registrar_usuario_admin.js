@@ -21,7 +21,7 @@ var app = new Vue({
         validarCampos: function () {
 
             if (this.primerNombre.length > 2 && !this.primerNombre.startsWith(" ") &&
-                this.primerApellido.length > 3 && !this.primerNombre.startsWith(" ") &&
+                this.primerApellido.length > 3 && !this.primerApellido.startsWith(" ") &&
                 this.segundoApellido.length > 3 && !this.segundoApellido.startsWith(" ") &&
                 this.direccion.length > 5 && !this.direccion.startsWith(" ") &&
                 this.correoElectronico.length > 5 && !this.direccion.startsWith(" ") &&

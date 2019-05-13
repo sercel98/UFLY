@@ -8,7 +8,7 @@ CONTENIDO GENERAL
 
 /* AGREGAR AQUÍ SI QUIERES QUE EL COLOR SEA BLANCO*/
 
-.busqueda, .informacion-aeropuerto,.informacion-tripulante, .registro-usuario-admin, table, thead, td, .opciones button, h6, th, .botones button, #btn-editar, .sidebar-nav li a, .encabezado h2, .header h1, .opciones button:hover, .buscar-btn-usuario {
+.busqueda, .informacion-aeropuerto,.informacion-tripulante, .registro-usuario-admin, .registro-pasajero-admin, table, thead, td, .opciones button, h6, th, .botones button, #btn-editar, .sidebar-nav li a, .encabezado h2, .header h1, .opciones button:hover, .buscar-btn-usuario {
   color: white;
 }
 
@@ -20,7 +20,7 @@ CONTENIDO GENERAL
 
 /*AGREGAR AQUÍ SI QUIERES QUE LA FUENTE SEA BOLD*/
 
-.header h1, .encabezado h2, .informacion-aeropuerto,.informacion-tripulante, .registro-usuario-admin, thead, #titulo-perfil, .label-perfil {
+.header h1, .encabezado h2, .informacion-aeropuerto,.informacion-tripulante, .registro-usuario-admin, .registro-pasajero-admin, thead, #titulo-perfil, .label-perfil {
   font-weight: bold;
 }
 
@@ -51,7 +51,7 @@ table, tr, td, thead {
   width: 80%;
 }
 
-.informacion-aeropuerto, .registro-usuario-admin ,.informacion-tripulante{
+.informacion-aeropuerto, .registro-usuario-admin, .registro-pasajero-admin, .informacion-tripulante{
   font-size: 20px;
 }
 
