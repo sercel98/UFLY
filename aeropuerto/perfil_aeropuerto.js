@@ -8,7 +8,7 @@ var app = new Vue({
         ciudadAeropuerto: '',
         paisAeropuerto: '',
         direccionAeropuerto: '',
-        telefonoAeropuerto: '',
+        telefonoAeropuerto: '', 
         estadoAeropuerto: '',
         nuevaSala: '',
         nuevoEstadoSala: '',
@@ -57,50 +57,49 @@ var app = new Vue({
                 console.log(response);
                 if(response.status == 500)
                 {
-                    toastr.info('No se ha podido actualizar el aeropuerto: ' + response.message);
+                    toastr.warning('No se ha podido actualizar el aeropuerto: ' + response.message);
+
                 }
                 else
                 {
-                    toastr.options.onHidden = function() { location.href='aeropuertos.html';}
-                    toastr.options.timeOut = 1000;
                     toastr.success('Se ha actualizado el aeropuerto exitosamente: ' + response.nombre_aeropuerto)
                 }
             })
         },
 
         registrarSala: function() {
-
             var estadosSala = this.estadosSala.find(estadoSala => estadoSala.nombre_estado === this.nuevoEstadoSala);
-
+            
             var salaActual = {
-                "id_sala": "",
-                "nombre_sala": this.nuevaSala,
-                "fkestado_sala": estadosSala,
-                "fkaeropuertos": this.aeropuertoActual
-            }
+                    "id_sala": "",
+                    "nombre_sala": this.nuevaSala,
+                    "fkestado_sala": estadosSala,
+                    "fkaeropuertos": this.aeropuertoActual
+                }
+            
+                        var url = 'http://localhost:8080/rest/salas/agregar';
+                        var init = {
+                            method: 'POST', 
+                            body: JSON.stringify(salaActual), 
+                            headers:{
+                                'Content-Type': 'application/json'
+                          }};
+                        var request = new Request(url, init);
+                        fetch(request)
+                       .then(response => response.json())
+                        .catch(error => toastr.error('Error: ' + error))
+                        .then(response => {
+                            if(response.status == 500)
+                            {
+                                toastr.info('No se ha podido registrar la sala: ' + response.message);
+                            }
+                            else
+                            {
+                                toastr.success('Se ha registrado la sala exitosamente: ' + response.nombre_sala);
+                                this.salasActuales.push(salaActual);
+                            }
+                        })
 
-            var url = 'http://localhost:8080/rest/salas/agregar';
-            var init = {
-                method: 'POST', 
-                body: JSON.stringify(salaActual), 
-                headers:{
-                    'Content-Type': 'application/json'
-              }};
-            var request = new Request(url, init);
-            fetch(request)
-            .then(response => response.json())
-            .catch(error => toastr.error('Error: ' + error))
-            .then(response => {
-                if(response.status == 500)
-                {
-                    toastr.info('No se ha podido registrar la sala: ' + response.message);
-                }
-                else
-                {
-                    toastr.success('Se ha registrado la sala exitosamente: ' + response.nombre_sala);
-                    this.salasActuales.push(salaActual);
-                }
-            })
         },
 
         actualizarSala: function(sala) {
@@ -120,12 +119,12 @@ var app = new Vue({
 
             fetch(request)
             .then(response => response.json())
-            .catch(error => toastr.error('Error: ' + error))
+            .catch(error => toastr.error('No se ha podido actualizar la sala: ' + error))
             .then(response => {
                 console.log(response);
                 if(response.status == 500)
                 {
-                    toastr.info('No se ha podido actualizar la sala: ' + response.message);
+                    toastr.info(response.message);
                 }
                 else
                 {
