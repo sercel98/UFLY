@@ -52,6 +52,10 @@ public class Pasajeros implements Serializable
 
 	// Hay que hacer el list cuando se haga la clase de tiquetes	
 	
+	public Pasajeros() {
+		super();
+	}
+	
 	public Pasajeros(int id_pasajero, BigInteger cedula, String primer_nombre, String segundo_nombre,
 			String primer_apellido, String segundo_apellido, String telefono, short genero, String direccion,
 			Date fecha_nacimiento) {

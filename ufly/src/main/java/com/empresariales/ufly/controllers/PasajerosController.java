@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.empresariales.ufly.estructure.Pasajeros;
+import com.empresariales.ufly.estructure.Salas;
 import com.empresariales.ufly.exception.ResourceNotFoundException;
 import com.empresariales.ufly.repository.PasajerosRepository;
 
@@ -35,9 +36,31 @@ public class PasajerosController
 	}
 	
 	@PostMapping("/agregar")
-	public Pasajeros crearPasajero(@Valid @RequestBody Pasajeros pasajero)
+	public Pasajeros crearPasajero(@Valid @RequestBody Pasajeros pasajero) throws Exception
 	{
-		return pasajeroRepository.save(pasajero);
+		if(existePasajeroPorCedula(pasajero))
+		{
+			throw new Exception("Ya existe un pasajero con esta cédula");
+		}
+		else
+		{
+			return pasajeroRepository.save(pasajero);
+		}
+		
+	}
+	
+	private boolean existePasajeroPorCedula(Pasajeros pasajero)
+	{
+		List<Pasajeros> pasajeros = listarPasajeros();
+		for (Pasajeros pasajeroActual : pasajeros)
+		{
+			if(pasajeroActual.getCedula().compareTo(pasajero.getCedula()) == 0)
+			{
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 	@GetMapping("/{id_pasajero}")
