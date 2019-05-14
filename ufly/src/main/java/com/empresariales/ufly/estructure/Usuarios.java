@@ -46,7 +46,7 @@ public class Usuarios implements Serializable
 	@Column(name = "segundo_apellido", nullable = false, length = 20)
 	private String segundo_apellido;
 	
-	@Column(name = "correo_electronico", nullable = false, length = 50)
+	@Column(name = "correo_electronico", unique = true, length = 50)
 	private String correo_electronico;
 	
 	@Column(name = "telefono", nullable = false, length = 14)

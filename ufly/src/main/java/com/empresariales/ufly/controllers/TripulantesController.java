@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.empresariales.ufly.estructure.Tripulantes;
+import com.empresariales.ufly.estructure.Usuarios;
 import com.empresariales.ufly.exception.ResourceNotFoundException;
 import com.empresariales.ufly.repository.TripulantesRepository;
 
@@ -36,9 +37,30 @@ public class TripulantesController
 	}
 	
 	@PostMapping("/agregar")
-	public Tripulantes crearTripulantes(@Valid @RequestBody Tripulantes tripulante)
+	public Tripulantes crearTripulantes(@Valid @RequestBody Tripulantes tripulante) throws Exception
 	{
-		return tripulantesRepository.save(tripulante);
+		if(existeUsuarioPorCedula(tripulante))
+		{
+			throw new Exception("La cédula de este usuario ya existe");
+		}
+		else
+		{
+			return tripulantesRepository.save(tripulante);
+		}
+	}
+	
+	private boolean existeUsuarioPorCedula(Tripulantes tripulante)
+	{
+		List<Tripulantes> tripulantes = listarTripulantes();
+		for (Tripulantes tripulanteActual : tripulantes)
+		{
+			if(tripulante.getCedula_tripulante().compareTo(tripulanteActual.getCedula_tripulante()) == 0)
+			{
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 	@GetMapping("/{id_tripulante}")

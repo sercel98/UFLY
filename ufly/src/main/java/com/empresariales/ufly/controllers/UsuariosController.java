@@ -42,11 +42,28 @@ public class UsuariosController
 		{
 			throw new Exception("La cédula de este usuario ya existe");
 		}
+		else if(existeUsuarioPorCorreo(usuario))
+		{
+			throw new Exception("El correo electrónico de este usuario ya existe");
+		}
 		else
 		{
 			return usuariosRepository.save(usuario);
 		}
+	}
+	
+	private boolean existeUsuarioPorCorreo(Usuarios usuario)
+	{
+		List<Usuarios> usuarios = listarUsuarios();
+		for (Usuarios usuarioActual : usuarios)
+		{
+			if(usuario.getCorreo_electronico().equals(usuarioActual.getCorreo_electronico()))
+			{
+				return true;
+			}
+		}
 		
+		return false;
 	}
 	
 	private boolean existeUsuarioPorCedula(Usuarios usuario)
@@ -77,14 +94,8 @@ public class UsuariosController
 	            .orElseThrow(() -> new ResourceNotFoundException("Usuarios", "id_usuarios", id_usuario));
 		
 		user.setContrasenia(usuarioDetalles.getContrasenia());
-		user.setPrimer_nombre(usuarioDetalles.getPrimer_nombre());
-		user.setSegundo_nombre(usuarioDetalles.getSegundo_nombre());
-		user.setPrimer_apellido(usuarioDetalles.getPrimer_apellido());
-		user.setSegundo_apellido(usuarioDetalles.getSegundo_apellido());
 		user.setTelefono(usuarioDetalles.getTelefono());
-		user.setGenero(usuarioDetalles.getGenero());
 		user.setDireccion(usuarioDetalles.getDireccion());
-		user.setFecha_nacimiento(usuarioDetalles.getFecha_nacimiento());
 
 		Usuarios actualizado = usuariosRepository.save(user);
 		

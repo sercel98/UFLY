@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.empresariales.ufly.estructure.Aeropuerto;
 import com.empresariales.ufly.estructure.CargoTripulante;
 import com.empresariales.ufly.exception.ResourceNotFoundException;
 import com.empresariales.ufly.repository.CargoTripulanteRepository;
@@ -35,9 +36,28 @@ public class CargoTripulanteController
 	}
 	
 	@PostMapping("/agregar")
-	public CargoTripulante crearCargoTripulante(@Valid @RequestBody CargoTripulante cargo)
+	public CargoTripulante crearCargoTripulante(@Valid @RequestBody CargoTripulante cargo) throws Exception
 	{
+		if(existeCargo(cargo))
+		{
+			throw new Exception("El nombre del cargo ya existe");
+		}
+		
 		return cargoTRepository.save(cargo);
+	}
+	
+	private boolean existeCargo(CargoTripulante cargo)
+	{
+		List<CargoTripulante> cargosTripulante = listarCargosTripulantes();
+		for (CargoTripulante cargoActual : cargosTripulante)
+		{
+			if(cargoActual.getCargo_tripulante().equals(cargo.getCargo_tripulante()))
+			{
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 	@GetMapping("/{id_cargo}")
