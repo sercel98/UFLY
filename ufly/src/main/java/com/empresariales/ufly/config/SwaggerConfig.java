@@ -27,7 +27,7 @@ public class SwaggerConfig
 	{
 		ApiInfo apiInfo = new ApiInfo(
 				"Documentación UFly", 
-				"UFly, hacemos lo que se puede", 
+				"UFly, Se hace lo que se puede ✈", 
 				"1.0", 
 				"Terms of Service", 
 				new Contact("PSG Enterprise Software", "", ""),
