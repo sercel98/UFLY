@@ -71,34 +71,34 @@ var app = new Vue({
             var estadosSala = this.estadosSala.find(estadoSala => estadoSala.nombre_estado === this.nuevoEstadoSala);
             
             var salaActual = {
-                    "id_sala": "",
-                    "nombre_sala": this.nuevaSala,
-                    "fkestado_sala": estadosSala,
-                    "fkaeropuertos": this.aeropuertoActual
-                }
+                "id_sala": "",
+                "nombre_sala": this.nuevaSala,
+                "fkestado_sala": estadosSala,
+                "fkaeropuertos": this.aeropuertoActual
+            }
             
-                        var url = 'http://localhost:8080/rest/salas/agregar';
-                        var init = {
-                            method: 'POST', 
-                            body: JSON.stringify(salaActual), 
-                            headers:{
-                                'Content-Type': 'application/json'
-                          }};
-                        var request = new Request(url, init);
-                        fetch(request)
-                       .then(response => response.json())
-                        .catch(error => toastr.error('Error: ' + error))
-                        .then(response => {
-                            if(response.status == 500)
-                            {
-                                toastr.info('No se ha podido registrar la sala: ' + response.message);
-                            }
-                            else
-                            {
-                                toastr.success('Se ha registrado la sala exitosamente: ' + response.nombre_sala);
-                                this.salasActuales.push(salaActual);
-                            }
-                        })
+            var url = 'http://localhost:8080/rest/salas/agregar';
+            var init = {
+                method: 'POST', 
+                body: JSON.stringify(salaActual), 
+                headers:{
+                    'Content-Type': 'application/json'
+                }};
+            var request = new Request(url, init);
+            fetch(request)
+            .then(response => response.json())
+            .catch(error => toastr.error('Error: ' + error))
+            .then(response => {
+                if(response.status == 500)
+                {
+                    toastr.info('No se ha podido registrar la sala: ' + response.message);
+                }
+                else
+                {
+                    toastr.success('Se ha registrado la sala exitosamente: ' + response.nombre_sala);
+                    this.salasActuales.push(salaActual);
+                }
+            })
 
         },
 

@@ -74,43 +74,55 @@
                         </div>
                     
                     </div>
-                </div>
-
-                <div class="encabezado text-center">
-                    <h2 class="py-2 m-0">Cargos del tripulante</h2>
-                </div>                
-
-                <div class="mx-5 my-3">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Nombre del cargo
-                                    </th>
-                                    <th>
-                                        Antiguedad
-                                    </th>
-                                    <th>
-                                        Opciones
-                                    </th>
-                                </tr>
-                            </thead>
-                            
-                            <tbody id="contenido" v-for="cargo of searchCargo">
-                                    <tr>
-                                        <td>
-                                            {{cargo.fkcargo_tripulante.cargo_tripulante}}
-                                        </td>
-                                        <td>
-                                            2 años
-                                        </td>
-                                        <td>
-                                            eliminar
-                                        </td>
-                                    </tr>
-                            </tbody>
-                        </table>
+                    <div class="encabezado text-center">
+                        <h2 class="py-2 m-0">Cargos del tripulante</h2>
+                    </div>             
+                    
+                    <div class="d-flex justify-content-center flex-wrap my-3">
+                        <div class="form-group col-md-2">
+                            <select class="custom-select" name="nuevoCargo" id="nuevoCargo"
+                                v-model="nuevoCargo">
+                                <option selected >{{nuevoCargo}}</option>
+                                <option v-for="cargo of cargosTripulante"
+                                    v-show="cargo.cargo_tripulante != nuevoCargo">
+                                    {{ cargo.cargo_tripulante }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-2 botones">
+                            <button type="button" class="btn" @click="registrarCargoTripulante">Registrar cargo</button>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="form-group col-md-7">
+                            <div class="table-responsive">
+                                <table class="table" bordercolor="#eeeeee">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Nombre del cargo</th>
+                                            <th>Opciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="contenido" v-for="cargo, index of cargosActuales">
+                                        <tr>
+                                            <td>
+                                                {{index + 1}}
+                                            </td>
+                                            <td>
+                                                <label>{{cargo.cargo_tripulante}}</label>
+                                            </td>
+                                            <td @click=""> 
+                                                <div class="botones">
+                                                    <button type="submit" class="btn">Eliminar</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
