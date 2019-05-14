@@ -151,6 +151,10 @@ var app = new Vue({
     computed: {
         buscarCiudades: function () {
             return this.ciudades.filter((ciudad) => ciudad.fkpais.nombre_pais.toLowerCase().includes(this.paisAeropuerto.toLowerCase()));
+        },
+
+        buscarSala: function() {
+            return this.salasActuales.filter((sala) => sala.nombre_sala.toLowerCase().includes(this.nuevaSala.toLowerCase()));
         }
     },
 
