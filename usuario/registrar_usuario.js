@@ -75,10 +75,9 @@ var app = new Vue({
                 }
                 else
                 {
-
-                    toastr.success('Se ha registrado el usuario exitosamente: ' + response.primer_nombre)
+                    toastr.options.timeOut=600; 
                     toastr.options.onHidden = function() { location.href='usuarios.html';}
-                    toastr.options.onclick = function() { location.href='usuarios.html'; }
+                    toastr.success('Se ha registrado el usuario exitosamente: ' + response.primer_nombre)
             
                 }
             })

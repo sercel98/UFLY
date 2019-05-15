@@ -25,7 +25,7 @@ const tripulantes = new Vue({
             }
             else if(nombre)
             {   
-                return this.tripulantes.filter((tripulante) => (tripulante.primer_nombre.toLowerCase() + tripulante.segundo_nombre.toLowerCase() + tripulante.primer_apellido.toLowerCase() + tripulante.segundo_apellido.toLowerCase()).includes(this.buscado.replace(' ', '').replace(' ', '').replace(' ', '').toLowerCase()));
+                return this.tripulantes.filter((tripulante) => (tripulante.primer_nombre.toLowerCase() + tripulante.primer_apellido.toLowerCase() + tripulante.segundo_apellido.toLowerCase()).includes(this.buscado.replace(' ', '').replace(' ', '').toLowerCase()));
             }
             else
             {

@@ -59,7 +59,7 @@ const aeropuertos = new Vue({
                 }
                 else
                 {
-                    toastr.options.timeOut = 1000;
+                    toastr.options.timeOut = 600;
                     toastr.options.onHidden = function() { location.href='aeropuertos.html';};
                     toastr.success('Se ha registrado el aeropuerto exitosamente: ' + response.nombre_aeropuerto);
 

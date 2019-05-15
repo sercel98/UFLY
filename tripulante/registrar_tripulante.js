@@ -70,13 +70,14 @@ var app = new Vue({
             };
             var request = new Request(url, init);
 
+            toastr.options.onHidden = function() { location.href='tripulantes.html';}
+            toastr.options.timeOut = 600;
+            
             fetch(request)
                 .then(response => response.json())
                 .catch(error =>  toastr.error('No se ha podido registrar el tripulante: ' + error))
                 .then(response =>  toastr.success('Se ha registrado el tripulante exitosamente: ' + response.primer_nombre))
-                toastr.options.onHidden = function() { location.href='tripulantes.html';}
-                toastr.options.onclick = function() { location.href='tripulantes.html'; }
-                toastr.options.timeOut = 1000;
+            
       
         }
 

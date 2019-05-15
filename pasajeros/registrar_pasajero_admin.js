@@ -68,8 +68,8 @@ var app = new Vue({
                 }
                 else
                 {
-                    toastr.options.onHidden = function() { location.href='pasajeros.html';}
                     toastr.options.timeOut = 1000;
+                    toastr.options.onHidden = function() { location.href='pasajeros.html';}
                     toastr.success('Se ha registrado el usuario exitosamente: ' + response.primer_nombre + " " + response.primer_apellido)
                 }
             })
