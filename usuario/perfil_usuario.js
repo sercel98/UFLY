@@ -85,7 +85,7 @@ var app = new Vue({
                 }
                 else
                 {
-                    toastr.success('Se ha editado el usuario exitosamente'+response.primer_nombre)
+                    toastr.success('Se ha editado el usuario exitosamente:'+response.primer_nombre)
                 }
             })
         }
