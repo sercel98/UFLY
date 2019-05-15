@@ -96,16 +96,18 @@ var app = new Vue({
                 else
                 {
                     toastr.success('Se ha registrado la sala exitosamente: ' + response.nombre_sala);
-                    this.salasActuales.push(salaActual);
+                    this.salasActuales.push(response);
+                    this.nuevaSala = '';
                 }
             })
 
         },
 
-        actualizarSala: function(sala) {
-            
+        actualizarSala: function(sala, index) {
             var estadosSala = this.estadosSala.find(estadoSala => estadoSala.nombre_estado === sala.fkestado_sala.nombre_estado);
-            sala.fkestado_sala = estadosSala;
+            
+            sala.fkestado_sala.id_estado_sala = estadosSala.id_estado_sala;
+            sala.fkestado_sala.nombre_estado = estadosSala.nombre_estado;
 
             var url = 'http://localhost:8080/rest/salas/' + sala.id_sala;
             var init = {
@@ -128,7 +130,9 @@ var app = new Vue({
                 }
                 else
                 {
+                    this.salasActuales.splice(index, 1);
                     toastr.success('Se ha actualizado la sala exitosamente: ' + response.nombre_sala)
+                    this.salasActuales.push(response);
                 }
             })
         },
@@ -180,7 +184,6 @@ var app = new Vue({
         fetch('http://localhost:8080/rest/estadossala')
         .then(response => response.json())
         .then(estadossala => {
-            console.log(estadossala);
             this.estadosSala = estadossala;
         });
             
@@ -208,7 +211,6 @@ var app = new Vue({
         fetch(urlSalas)
         .then(response => response.json())
         .then(salas => {
-            console.log(salas);
             this.salasActuales = salas;
         });
     }
