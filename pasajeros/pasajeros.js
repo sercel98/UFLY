@@ -8,9 +8,7 @@ const pasajeros = new Vue({
     },
 
     methods: {
-        actualizarAeropuerto(id) {
-            location.href = 'perfil_pasajero.html?' + id;
-        }
+     
     },
 
     computed: {
