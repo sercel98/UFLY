@@ -29,7 +29,7 @@ const tripulantes = new Vue({
             }
             else
             {
-                return this.tripulantes.filter((tripulante) => tripulante.estado.toLowerCase().includes(this.buscado.toLowerCase()));
+                return this.tripulantes.filter((tripulante) => tripulante.fkestados_tripulante.nombre_estado.toLowerCase().includes(this.buscado.toLowerCase()));
 
             }
         }
