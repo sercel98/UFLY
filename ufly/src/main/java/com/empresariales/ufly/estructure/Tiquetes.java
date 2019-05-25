@@ -26,8 +26,8 @@ public class Tiquetes implements Serializable
 	@Column(name = "precio_tiquete", nullable = false, length = 7)
 	private int precio_tiquete;
 	
-	@Column(name = "numero_asientos", nullable = false, length = 2)
-	private short numero_asientos;
+	@Column(name = "numero_asiento", nullable = false, length = 2)
+	private short numero_asiento;
 	
 	@ManyToOne//(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "fkvuelos", nullable = false)
@@ -37,7 +37,7 @@ public class Tiquetes implements Serializable
 	@ManyToOne//(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "fktipos_tiquete", nullable = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	private TipoTiquete fktipos_tiquete;
+	private TiposTiquete fktipos_tiquete;
 	
 	@ManyToOne//(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "fkestado_tiquete", nullable = false)
@@ -58,12 +58,12 @@ public class Tiquetes implements Serializable
 		super();
 	}
 
-	public Tiquetes(int id_tiquete, int precio_tiquete, short numero_asientos, Vuelo fkvuelos,
-			TipoTiquete fktipos_tiquete, EstadosTiquete fkestado_tiquete, Usuarios fkusuarios, Pasajeros fkpasajeros) {
+	public Tiquetes(int id_tiquete, int precio_tiquete, short numero_asiento, Vuelo fkvuelos,
+			TiposTiquete fktipos_tiquete, EstadosTiquete fkestado_tiquete, Usuarios fkusuarios, Pasajeros fkpasajeros) {
 		super();
 		this.id_tiquete = id_tiquete;
 		this.precio_tiquete = precio_tiquete;
-		this.numero_asientos = numero_asientos;
+		this.numero_asiento = numero_asiento;
 		this.fkvuelos = fkvuelos;
 		this.fktipos_tiquete = fktipos_tiquete;
 		this.fkestado_tiquete = fkestado_tiquete;
@@ -87,12 +87,12 @@ public class Tiquetes implements Serializable
 		this.precio_tiquete = precio_tiquete;
 	}
 
-	public short getNumero_asientos() {
-		return numero_asientos;
+	public short getNumero_asiento() {
+		return numero_asiento;
 	}
 
-	public void setNumero_asientos(short numero_asientos) {
-		this.numero_asientos = numero_asientos;
+	public void setNumero_asiento(short numero_asiento) {
+		this.numero_asiento = numero_asiento;
 	}
 
 	public Vuelo getFkvuelos() {
@@ -103,11 +103,11 @@ public class Tiquetes implements Serializable
 		this.fkvuelos = fkvuelos;
 	}
 
-	public TipoTiquete getFktipos_tiquete() {
+	public TiposTiquete getFktipos_tiquete() {
 		return fktipos_tiquete;
 	}
 
-	public void setFktipos_tiquete(TipoTiquete fktipos_tiquete) {
+	public void setFktipos_tiquete(TiposTiquete fktipos_tiquete) {
 		this.fktipos_tiquete = fktipos_tiquete;
 	}
 
@@ -137,8 +137,8 @@ public class Tiquetes implements Serializable
 
 	@Override
 	public String toString() {
-		return "Tiquetes [id_tiquete=" + id_tiquete + ", precio_tiquete=" + precio_tiquete + ", numero_asientos="
-				+ numero_asientos + ", fkvuelos=" + fkvuelos + ", fktipos_tiquete=" + fktipos_tiquete
+		return "Tiquetes [id_tiquete=" + id_tiquete + ", precio_tiquete=" + precio_tiquete + ", numero_asiento="
+				+ numero_asiento + ", fkvuelos=" + fkvuelos + ", fktipos_tiquete=" + fktipos_tiquete
 				+ ", fkestado_tiquete=" + fkestado_tiquete + ", fkusuarios=" + fkusuarios + ", fkpasajeros="
 				+ fkpasajeros + "]";
 	}

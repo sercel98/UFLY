@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tipostiquete")
-public class TipoTiquete implements Serializable
+public class TiposTiquete implements Serializable
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,11 +30,11 @@ public class TipoTiquete implements Serializable
 	@JsonIgnore
 	private List<Tiquetes> tiquetes;
 
-	public TipoTiquete() {
+	public TiposTiquete() {
 		super();
 	}
 
-	public TipoTiquete(Short id_tipo, String nombre_tipo) {
+	public TiposTiquete(Short id_tipo, String nombre_tipo) {
 		super();
 		this.id_tipo = id_tipo;
 		this.nombre_tipo = nombre_tipo;

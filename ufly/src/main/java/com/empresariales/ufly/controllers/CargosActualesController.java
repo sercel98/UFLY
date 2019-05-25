@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.empresariales.ufly.estructure.CargoTripulante;
 import com.empresariales.ufly.estructure.CargosActuales;
-import com.empresariales.ufly.estructure.Salas;
-import com.empresariales.ufly.exception.ResourceNotFoundException;
 import com.empresariales.ufly.repository.CargosActualesRepository;
 
 import io.swagger.annotations.Api;
