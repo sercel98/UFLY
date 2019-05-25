@@ -30,16 +30,33 @@ public class TiquetesController
 	private TiquetesRepository tiquetesrepository;
 	
 	@GetMapping
-	public List<Tiquetes> listarCiudades()
+	public List<Tiquetes> listarTiquetes()
 	{
 		return tiquetesrepository.findAll();
 	}
 
 	@PostMapping("/agregar")
-	public Tiquetes crearTiquetes(@Valid @RequestBody Tiquetes tiquete)
+	public Tiquetes crearTiquetes(@Valid @RequestBody Tiquetes tiquete) throws Exception
 	{
-		//no se si validar si ya existe uno o no
+		if(existeTiquete(tiquete))
+		{
+			throw new Exception("El tiquete ya existe");
+
+		}
 		return tiquetesrepository.save(tiquete);	
+	}
+	
+	private boolean existeTiquete(Tiquetes nuevo)
+	{
+		List<Tiquetes> tiquetes = listarTiquetes();
+		for (Tiquetes tiqueteActual : tiquetes) 
+		{
+			if(nuevo.getId_tiquete() == tiqueteActual.getId_tiquete())
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	@GetMapping("/{id_tiquete}")
@@ -65,17 +82,6 @@ public class TiquetesController
 		return tiquetesrepository.save(tiquete);
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }
