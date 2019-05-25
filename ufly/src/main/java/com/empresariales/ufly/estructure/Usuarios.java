@@ -3,6 +3,7 @@ package com.empresariales.ufly.estructure;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,12 +13,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "usuarios")
@@ -66,6 +69,10 @@ public class Usuarios implements Serializable
     @JoinColumn(name = "fktipo_usuario", nullable = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private TiposUsuario fktipo_usuario;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fkusuarios")
+	@JsonIgnore
+	private List<Tiquetes> tiquetes;
 
 	public Usuarios() {
 		super();

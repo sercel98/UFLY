@@ -1,7 +1,9 @@
 package com.empresariales.ufly.estructure;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,10 +11,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "salas")
@@ -36,9 +41,12 @@ public class Salas implements Serializable
 	@OnDelete(action = OnDeleteAction.CASCADE)	
 	private Aeropuerto fkaeropuertos;
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fksalas")
+	@JsonIgnore
+	private List<Vuelo> salas;
+	
 	public Salas() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Salas(Short id_sala, String nombre_sala) {

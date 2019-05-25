@@ -3,15 +3,19 @@ package com.empresariales.ufly.estructure;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "pasajeros")
@@ -50,7 +54,9 @@ public class Pasajeros implements Serializable
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date fecha_nacimiento;
 
-	// Hay que hacer el list cuando se haga la clase de tiquetes	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fkpasajero")
+	@JsonIgnore
+	private List<Tiquetes> tiquetes;
 	
 	public Pasajeros() {
 		super();
@@ -150,6 +156,14 @@ public class Pasajeros implements Serializable
 
 	public void setFecha_nacimiento(Date fecha_nacimiento) {
 		this.fecha_nacimiento = fecha_nacimiento;
+	}
+
+	public List<Tiquetes> getTiquetes() {
+		return tiquetes;
+	}
+
+	public void setTiquetes(List<Tiquetes> tiquetes) {
+		this.tiquetes = tiquetes;
 	}
 
 	@Override

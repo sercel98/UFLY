@@ -50,7 +50,14 @@ public class Aeropuerto implements Serializable
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fkaeropuertos")
 	@JsonIgnore
 	private List<Salas> salas;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fkaeropuertos_origen")
+	@JsonIgnore
+	private List<Vuelo> aeropuertos_origen;
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fkaeropuertos_destino")
+	@JsonIgnore
+	private List<Vuelo> aeropuertos_destino;
 	
 	public Aeropuerto() {
 		super();
@@ -119,6 +126,22 @@ public class Aeropuerto implements Serializable
 
 	public void setSalas(List<Salas> salas) {
 		this.salas = salas;
+	}
+
+	public List<Vuelo> getAeropuertos_origen() {
+		return aeropuertos_origen;
+	}
+
+	public void setAeropuertos_origen(List<Vuelo> aeropuertos_origen) {
+		this.aeropuertos_origen = aeropuertos_origen;
+	}
+
+	public List<Vuelo> getAeropuertos_destino() {
+		return aeropuertos_destino;
+	}
+
+	public void setAeropuertos_destino(List<Vuelo> aeropuertos_destino) {
+		this.aeropuertos_destino = aeropuertos_destino;
 	}
 
 	@Override
