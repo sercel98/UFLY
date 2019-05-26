@@ -35,8 +35,8 @@ public class Vuelo implements Serializable
 	@Column(name = "desembarque", nullable = false, length = 25)
 	private Timestamp desembarque;	
 	
-	@Column(name = "sillas_disponibles_bussines", nullable = false, length = 4)
-	private short sillas_disponibles_bussines;
+	@Column(name = "sillas_disponibles_business", nullable = false, length = 4)
+	private short sillas_disponibles_business;
 
 	@Column(name = "sillas_disponibles_primera", nullable = false, length = 4)
 	private short sillas_disponibles_primera;
@@ -44,8 +44,8 @@ public class Vuelo implements Serializable
 	@Column(name = "sillas_disponibles_economicos", nullable = false, length = 4)
 	private short sillas_disponibles_economicos;
 	
-	@Column(name = "chequeo", nullable = false, length = 25)
-	private Timestamp chequeo;	
+	@Column(name = "check_in", nullable = false, length = 25)
+	private Timestamp check_in;	
 	
 	@ManyToOne //(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "fkaeropuertos_origen", nullable = false)
