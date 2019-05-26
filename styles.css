@@ -8,7 +8,7 @@ CONTENIDO GENERAL
 
 /* AGREGAR AQUÍ SI QUIERES QUE EL COLOR SEA BLANCO*/
 
-.busqueda, .informacion-aeropuerto,.informacion-tripulante, .registro-usuario-admin, .registro-pasajero-admin, table, thead, td, .opciones button, h6, th, .botones button, #btn-editar, .sidebar-nav li a, .encabezado h2, .header h1, .opciones button:hover, .buscar-btn-usuario {
+.busqueda,#login,  .informacion-aeropuerto,.informacion-tripulante, .registro-usuario-admin, .registro-pasajero-admin, table, thead, td, .opciones button, h6, th, .botones button, #btn-editar, .sidebar-nav li a, .encabezado h2, .header h1, .opciones button:hover, .buscar-btn-usuario {
   color: white;
 }
 
@@ -24,7 +24,7 @@ CONTENIDO GENERAL
   font-weight: bold;
 }
 
-#tripulante-info
+#tripulante-info,#login
 {
   font-weight: normal;
 }
