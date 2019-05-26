@@ -23,6 +23,12 @@ template: `
                         <li class="nav-item col-6 col-md">
                             <a class="py-0 nav-link" href="/pasajeros/pasajeros.html">Pasajeros</a>
                         </li>
+                        <li class="nav-item col-6 col-md">
+                        <a class="py-0 nav-link" href="/vuelo/vuelos.html">Vuelos</a>
+                        </li>
+                        <li class="nav-item col-6 col-md">
+                        <a class="py-0 nav-link" href="/avion/aviones.html">Aviones</a>
+                        </li>
                     </ul>
                 </nav>
             </div>

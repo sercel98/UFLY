@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>UFly - Registrar vuelo</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
+</head>
+
+<body class="body-admin">
+    <div id="registro-vuelo">
+        <cabecera title="Registrar vuelo"></cabecera>
+
+        <div class="informacion-vuelo mt-3 mx-5">
+            <div class="encabezado text-center">
+                <h2 class="py-2 m-0">Información del vuelo</h2>
+            </div>
+
+            <form @submit.prevent="validarCampos">
+
+                <div id="items-formulario-vuelo">
+
+                    <div class=" form-row mx-5">
+
+                        <div class="form-group col-md-12 my-3">
+
+                            <label>Horario</label>
+
+                            <div class=" form-row mx-4">
+
+                                <div class="form-group col-md-3">
+                                    <label>Fecha de embarque:</label>
+                                    <input type="datetime-local" class="form-control" name="embarqueVuelo"
+                                        id="embarqueVuelo" v-model="embarqueVuelo" required>
+                                </div>
+                                <div class="col-md-1">
+
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Fecha de desembarque:</label>
+                                    <input type="datetime-local" class="form-control" name="desembarqueVuelo"
+                                        id="desembarqueVuelo" v-model="desembarqueVuelo" required>
+                                </div>
+                                <div class="col-md-1">
+
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label>Hora de Check-in:</label>
+                                    <input type="datetime-local" class="form-control" name="horaCheckIn"
+                                        id="direccionAeropuerto" v-model="horaCheckIn" required>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group col-md-12">
+                            <label>Capacidad</label>
+                            <div class="form-row mx-4">
+                                <div class="col-md-3 ">
+                                    <label>Sillas clase económica:</label>
+                                    <input type="text" class="form-control" name="numSillasEconomica"
+                                        id="numSillasEconomica" v-model="numSillasEconomica"
+                                        placeholder="Cant. sillas económica" maxlength="4" required>
+                                </div>
+
+                                <div class="col-md-1">
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label>Sillas clase business:</label>
+                                    <input type="text" class="form-control" name="numSillasBusiness"
+                                        id="numSillasBusiness" v-model="numSillasBusiness"
+                                        placeholder="Can. sillas business" maxlength="4" required>
+                                </div>
+
+                                <div class="col-md-1">
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label>Sillas primera clase:</label>
+                                    <input type="text" class="form-control" name="numSillasPrimera"
+                                        id="numSillasPrimera" v-model="numSillasPrimera"
+                                        placeholder="Cant. sillas primera" maxlength="4" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12 my-3">
+                            <label>Detalles del viaje:</label>
+
+                            <div class="form-row mx-4">
+
+                                <div class="form-group col-md-3">
+                                    <label>Avión:</label>
+                                    <select class="custom-select" name="avionVuelo" id="avionVuelo" v-model="avionVuelo"
+                                        required>
+                                        <option selected>Seleccionar un avión</option>
+                                        <option v-for="avion of avionesDisponibles">
+                                            {{ avion.modelo }}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-1">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label>Aeropuerto origen:</label>
+                                    <select class="custom-select" name="ciudadAeropuerto" id="ciudadAeropuerto"
+                                        v-model="ciudadAeropuerto" required>
+                                        <option selected>Elegir el aeropuerto de origen</option>
+                                        <option v-for="aeropuerto of buscarAeropuertoOrigen">
+                                            {{ aeropuerto.nombre_aeropuerto }}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-1">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label>Aeropuerto destino:</label>
+                                    <select class="custom-select" name="estadoAeropuerto" id="estadoAeropuerto"
+                                        v-model="estadoAeropuerto" required>
+                                        <option selected>Elegir el aeropuerto de destino</option>
+                                        <option v-for="aeropuerto of buscarAeropuertoDestino">
+                                            {{ aeropuerto.nombre_aeropuerto }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center flex-wrap my-2 mx-5" id="registrar_aeropuertos">
+                    <div class="botones mx-2 my-2">
+                        <button type="submit" class="btn">Registrar</button>
+                    </div>
+                    <div class="botones mx-2 my-2">
+                        <button type="button" class="btn" OnClick="location.href='aeropuertos.html'">Salir</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.0.min.js"
+    integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="/components/headerComponent.js"></script>
+<script src="registrar_vuelo.js"></script>
+
+</html>

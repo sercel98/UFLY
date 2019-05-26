@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>UFLY</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+</head>
+
+<body class="body-admin">
+
+    <div id="vuelos">
+
+        <cabecera title="Vuelos"></cabecera>
+
+        <div class="container col-md-12">
+
+            <div class="busqueda d-flex justify-content-start align-items-center mt-3 mx-5 py-4 px-2">
+                <h5 class="m-0 py-2 px-3">Buscar: </h5>
+                <input v-model="buscado"
+                    class="caja-buscar-usuario py-1 px-2 border-0 mr-4 text-capitalize flex-fill bd-highlight col-md-12"
+                    type="text">
+            </div>
+
+            <div class="busqueda d-flex justify-content-start align-items-center flex-wrap mx-5 pb-3 px-2">
+                <h5 class="m-0 py-2 px-3">Filtro: </h5>
+                <div class="ml-3 custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline1" name="customRadioInline1" value='origen'
+                        class="custom-control-input" checked>
+                    <label class="custom-control-label" for="customRadioInline1">Origen</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline2" name="customRadioInline1" value='destino'
+                        class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline2">Destino</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline3" name="customRadioInline1" value='estado'
+                        class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline3">Estado </label>
+                </div>
+            </div>
+
+            <div class="mx-5 my-3">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Origen
+                                </th>
+                                <th>
+                                    Destino
+                                </th>
+                                <th>
+                                    Check in
+                                </th>
+                                <th>
+                                    Estado
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="contenido" v-for="vuelo of searchVuelo">
+                            <tr @click="actualizarVuelo(vuelo.id_vuelo)">
+                                <td>
+                                    {{vuelo.}}
+                                </td>
+                                <td>
+                                   
+                                </td>
+                                <td>
+                                    {{vuelo.}}
+                                </td>
+                                <td>
+                                    {{vuelo.estado}}
+                                </td>
+                            </tr>
+
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="opciones d-flex justify-content-around flex-wrap mx-5">
+            <div class=" my-2">
+                <button type="button" id="subir" OnClick=toTop() class="btn">Subir</button>
+            </div>
+
+            <div class=" my-2">
+                <button type="button" class="btn subir" OnClick="location.href='registrar_vuelo'">Agregar
+                    vuelo</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js"
+        integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ"
+        crossorigin="anonymous"></script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="/components/headerComponent.js"></script>
+    <script src="vuelos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        function toTop() {
+            window.scrollTo(0, 0)
+        }
+   </script>
+</body>
+</html>
