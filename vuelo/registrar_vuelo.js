@@ -12,27 +12,24 @@ const vuelos = new Vue({
         numSillasPrimera:'',
         horaCheckIn:'',
         avionVuelo:'',
-
-
-        codigoAeropuerto: '',
-        ciudadAeropuerto: '',
-        paisAeropuerto: '',
-        direccionAeropuerto: '',
-        telefonoAeropuerto: '',
-        estadoAeropuerto: '',
-
-        avionesDisponibles:[], 
-
-        ciudades: [],
-        paises: [],
-        estadosAeropuerto: []
+        aeropuertoOrigenVuelo:'',
+        aeropuertoDestinoVuelo:'', 
+        aviones:[], 
+        aeropuertos:[],
+        
     },
     methods: {
         procesarFormulario(){
 
-            var pais = this.paises.find( pais => pais.nombre_pais === this.paisAeropuerto )
-            var ciudad = this.ciudades.find( ciudad => ciudad.nombre_ciudad === this.ciudadAeropuerto )
-            var estadoAeropuerto = this.estadosAeropuerto.find( estadoAeropuerto => estadoAeropuerto.nombre_estado === this.estadoAeropuerto )
+            var avion  = this.aviones.find( avion => avion.modelo === this.avionVuelo )
+
+            var aeropuertoOrigen = this.aeropuertos.find( aeropuertoOrigen => aeropuertoOrigen.nombre_aeropuerto === this.aeropuertoOrigenVuelo )
+            var aeropuertoDestino = this.aeropuertos.find( aeropuertoDestino => aeropuertoDestino.nombre_aeropuerto === this.aeropuertoDestinoVuelo )
+
+            console.log(avion); 
+            console.log(aeropuertoOrigen); 
+            console.log(aeropuertoDestino); 
+
 
             var aeropuertoActual = {
                 "id_aeropuerto": "",
@@ -77,46 +74,25 @@ const vuelos = new Vue({
 
                 }
             })
-        },
-        validarCampos:function()
-        {
-            if (this.nombreAeropuerto.length > 3 && !this.nombreAeropuerto.startsWith(" ") &&
-            this.direccionAeropuerto.length > 5 && !this.direccionAeropuerto.startsWith(" ") &&
-            !this.telefonoAeropuerto.startsWith(" ") && this.telefonoAeropuerto.toString().length > 5 ) 
-            {
-                this.procesarFormulario();
-
-            } 
-            else 
-            {
-                toastr.warning("LA INFORMACIÓN DEL AEROPUERTO ES INCOMPLETA!"); 
-            }
         }
     },
 
     computed: {
-        buscarCiudades: function () {
-            return this.ciudades.filter((ciudad) => ciudad.fkpais.nombre_pais.toLowerCase().includes(this.paisAeropuerto.toLowerCase()));
-        }
+      
     },
 
     mounted(){
-        fetch('http://localhost:8080/rest/paises')
+        fetch('http://localhost:8080/rest/aeropuertos')
         .then(response => response.json())
-        .then(paises =>{
-             this.paises = paises;
+        .then(aeropuertos =>{
+             this.aeropuertos = aeropuertos;
         });
 
-        fetch('http://localhost:8080/rest/ciudades')
+        fetch('http://localhost:8080/rest/aviones')
         .then(response => response.json())
-        .then(ciudades =>{
-            this.ciudades = ciudades;
+        .then(aviones =>{
+            this.aviones = aviones;
         });
 
-        fetch('http://localhost:8080/rest/estadosaeropuerto')
-        .then(response => response.json())
-        .then(estadosaeropuerto =>{
-            this.estadosAeropuerto = estadosaeropuerto;
-        });
     }
 });

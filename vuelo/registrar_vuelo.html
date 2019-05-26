@@ -25,7 +25,7 @@
                 <h2 class="py-2 m-0">Información del vuelo</h2>
             </div>
 
-            <form @submit.prevent="validarCampos">
+            <form @submit.prevent="procesarFormulario">
 
                 <div id="items-formulario-vuelo">
 
@@ -57,7 +57,7 @@
                                 <div class="form-group col-md-3">
                                     <label>Hora de Check-in:</label>
                                     <input type="datetime-local" class="form-control" name="horaCheckIn"
-                                        id="direccionAeropuerto" v-model="horaCheckIn" required>
+                                        id="horaCheckIn" v-model="horaCheckIn" required>
                                 </div>
                             </div>
 
@@ -105,7 +105,7 @@
                                     <select class="custom-select" name="avionVuelo" id="avionVuelo" v-model="avionVuelo"
                                         required>
                                         <option selected>Seleccionar un avión</option>
-                                        <option v-for="avion of avionesDisponibles">
+                                        <option v-for="avion of aviones" v-show="avion.estado != 'Inactivo'">
                                             {{ avion.modelo }}
                                         </option>
                                     </select>
@@ -116,8 +116,8 @@
 
                                 <div class="form-group col-md-3">
                                     <label>Aeropuerto origen:</label>
-                                    <select class="custom-select" name="ciudadAeropuerto" id="ciudadAeropuerto"
-                                        v-model="ciudadAeropuerto" required>
+                                    <select class="custom-select" name="AeropuertoOrigenVuelo" id="AeropuertoOrigenVuelo"
+                                        v-model="AeropuertoOrigenVuelo" required>
                                         <option selected>Elegir el aeropuerto de origen</option>
                                         <option v-for="aeropuerto of buscarAeropuertoOrigen">
                                             {{ aeropuerto.nombre_aeropuerto }}
@@ -130,10 +130,10 @@
 
                                 <div class="form-group col-md-3">
                                     <label>Aeropuerto destino:</label>
-                                    <select class="custom-select" name="estadoAeropuerto" id="estadoAeropuerto"
-                                        v-model="estadoAeropuerto" required>
+                                    <select class="custom-select" name="AeropuertoDestinoVuelo" id="AeropuertoDestinoVuelo"
+                                        v-model="AeropuertoDestinoVuelo" required>
                                         <option selected>Elegir el aeropuerto de destino</option>
-                                        <option v-for="aeropuerto of buscarAeropuertoDestino">
+                                        <option v-for="aeropuerto of buscarAeropuertoDestino" v-show="aeropuerto.nombre_aeropuerto != aeropuertoOrigenVuelo">
                                             {{ aeropuerto.nombre_aeropuerto }}
                                         </option>
                                     </select>
@@ -148,7 +148,7 @@
                         <button type="submit" class="btn">Registrar</button>
                     </div>
                     <div class="botones mx-2 my-2">
-                        <button type="button" class="btn" OnClick="location.href='aeropuertos.html'">Salir</button>
+                        <button type="button" class="btn" OnClick="location.href='vuelos.html'">Salir</button>
                     </div>
                 </div>
             </form>

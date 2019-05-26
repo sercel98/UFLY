@@ -19,7 +19,6 @@
     <div id="vuelos">
 
         <cabecera title="Vuelos"></cabecera>
-
         <div class="container col-md-12">
 
             <div class="busqueda d-flex justify-content-start align-items-center mt-3 mx-5 py-4 px-2">
@@ -70,16 +69,16 @@
                         <tbody id="contenido" v-for="vuelo of searchVuelo">
                             <tr @click="actualizarVuelo(vuelo.id_vuelo)">
                                 <td>
-                                    {{vuelo.}}
+                                    {{vuelo.fkaeropuertos_origen.nombre_aeropuerto}}
                                 </td>
                                 <td>
-                                   
+                                    {{vuelo.fkaeropuertos_destino.nombre_aeropuerto}}
                                 </td>
                                 <td>
-                                    {{vuelo.}}
+                                    {{vuelo.chequeo}}
                                 </td>
                                 <td>
-                                    {{vuelo.estado}}
+                                    {{vuelo.fkestados_vuelo.nombre_estado}}
                                 </td>
                             </tr>
 
