@@ -61,6 +61,11 @@ public class Vuelo implements Serializable
     @JoinColumn(name = "fkestados_vuelo", nullable = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private EstadosVuelo fkestados_vuelo;
+
+	@ManyToOne // (cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "fkaviones", nullable = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Avion fkaviones;
 	
 	@ManyToOne //(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "fksalas", nullable = false)
@@ -171,6 +176,14 @@ public class Vuelo implements Serializable
 
 	public void setFkestados_vuelo(EstadosVuelo fkestados_vuelo) {
 		this.fkestados_vuelo = fkestados_vuelo;
+	}
+
+	public Avion getFkaviones() {
+		return fkaviones;
+	}
+
+	public void setFkaviones(Avion fkaviones) {
+		this.fkaviones = fkaviones;
 	}
 
 	public Salas getFksalas() {

@@ -84,6 +84,7 @@ public class VueloController
 		vuelo.setFkaeropuertos_origen(vueloNuevo.getFkaeropuertos_origen());
 		vuelo.setFkaeropuertos_destino(vueloNuevo.getFkaeropuertos_destino());
 		vuelo.setFkestados_vuelo(vueloNuevo.getFkestados_vuelo());
+		vuelo.setFkaviones(vueloNuevo.getFkaviones());
 		vuelo.setFksalas(vueloNuevo.getFksalas());
 		
 		return vueloRepository.save(vuelo);
