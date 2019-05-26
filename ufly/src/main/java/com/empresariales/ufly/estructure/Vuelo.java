@@ -83,10 +83,10 @@ public class Vuelo implements Serializable
 		this.id_vuelo = id_vuelo;
 		this.embarque = embarque;
 		this.desembarque = desembarque;
-		this.sillas_disponibles_bussines = sillas_disponibles_bussines;
+		this.sillas_disponibles_business = sillas_disponibles_bussines;
 		this.sillas_disponibles_primera = sillas_disponibles_primera;
 		this.sillas_disponibles_economicos = sillas_disponibles_economicos;
-		this.chequeo = chequeo;
+		this.check_in = chequeo;
 		this.fkaeropuertos_origen = fkaeropuertos_origen;
 		this.fkaeropuertos_destino = fkaeropuertos_destino;
 		this.fkestados_vuelo = fkestados_vuelo;
@@ -118,11 +118,11 @@ public class Vuelo implements Serializable
 	}
 
 	public short getSillas_disponibles_bussines() {
-		return sillas_disponibles_bussines;
+		return sillas_disponibles_business;
 	}
 
 	public void setSillas_disponibles_bussines(short sillas_disponibles_bussines) {
-		this.sillas_disponibles_bussines = sillas_disponibles_bussines;
+		this.sillas_disponibles_business = sillas_disponibles_bussines;
 	}
 
 	public short getSillas_disponibles_primera() {
@@ -142,11 +142,11 @@ public class Vuelo implements Serializable
 	}
 
 	public Timestamp getChequeo() {
-		return chequeo;
+		return check_in;
 	}
 
 	public void setChequeo(Timestamp chequeo) {
-		this.chequeo = chequeo;
+		this.check_in = chequeo;
 	}
 
 	public Aeropuerto getFkaeropuertos_origen() {
@@ -192,9 +192,9 @@ public class Vuelo implements Serializable
 	@Override
 	public String toString() {
 		return "Vuelo [id_vuelo=" + id_vuelo + ", embarque=" + embarque + ", desembarque=" + desembarque
-				+ ", sillas_disponibles_bussines=" + sillas_disponibles_bussines + ", sillas_disponibles_primera="
+				+ ", sillas_disponibles_business=" + sillas_disponibles_business + ", sillas_disponibles_primera="
 				+ sillas_disponibles_primera + ", sillas_disponibles_economicos=" + sillas_disponibles_economicos
-				+ ", chequeo=" + chequeo + "]";
+				+ ", check_in=" + check_in + "]";
 	}
 	
 	
