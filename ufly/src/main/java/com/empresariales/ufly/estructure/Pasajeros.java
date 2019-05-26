@@ -54,7 +54,7 @@ public class Pasajeros implements Serializable
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date fecha_nacimiento;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fkpasajero")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "fkpasajeros")
 	@JsonIgnore
 	private List<Tiquetes> tiquetes;
 	
