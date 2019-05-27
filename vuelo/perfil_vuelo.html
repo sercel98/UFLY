@@ -23,7 +23,7 @@
 
         <div class="informacion-vuelo mt-3 mx-5">
             <div class="encabezado text-center">
-                <h2 class="py-2 m-0">Información del vuelo</h2>
+                <h2 class="py-3 m-0">Información del vuelo</h2>
             </div>
 
             <form @submit.prevent="validarCampos">
@@ -139,24 +139,113 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
 
-                <div class="encabezado text-center">
-                    <h2 class="py-2 m-0">Tiquetes del vuelo</h2>
-                </div>
-
-                <div class="d-flex justify-content-center flex-wrap my-2 mx-5" id="registrar_aeropuertos">
-                    <div class="botones mx-2 my-2">
-                        <!--ENVIAR TODA LA INFORMACION DEL AEROPUERTO ACTUAL-->
-                        <button type="submit" class="btn">Actualizar</button>
+                    <div class="encabezado text-center">
+                        <h2 class="py-3 m-0">Tiquetes del vuelo</h2>
                     </div>
-                    <div class="botones mx-2 my-2">
-                        <button type="button" class="btn" OnClick="location.href='vuelos.html'">Salir</button>
+
+                    <div class="busqueda d-flex justify-content-start align-items-center mt-3 mx-5 py-4 px-2">
+                        <h5 class="m-0 py-2 px-3">Buscar: </h5>
+                        <input v-model="buscado"
+                            class="caja-buscar-usuario py-1 px-2 border-0 mr-4 text-capitalize flex-fill bd-highlight col-md-12"
+                            type="text">
+                    </div>
+
+                    <div class="busqueda d-flex justify-content-start align-items-center flex-wrap mx-5 pb-3 px-2">
+                        <h5 class="m-0 py-2 px-3">Filtro: </h5>
+                        <div class="ml-3 custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline1" name="customRadioInline1" value='nombrePasajero'
+                                class="custom-control-input" checked>
+                            <label class="custom-control-label" for="customRadioInline1">Nombre pasajero</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline2" name="customRadioInline1" value='tipoTiquete'
+                                class="custom-control-input">
+                            <label class="custom-control-label" for="customRadioInline2">Tipo tiquete</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline3" name="customRadioInline1" value='estado'
+                                class="custom-control-input">
+                            <label class="custom-control-label" for="customRadioInline3">Estado </label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline4" name="customRadioInline1" value='numeroAsiento'
+                                class="custom-control-input">
+                            <label class="custom-control-label" for="customRadioInline4">Número de asiento </label>
+                        </div>
+                    </div>
+
+                    <div class="mx-5 my-3">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Nombre del pasajero
+                                        </th>
+                                        <th>
+                                            Número de asiento
+                                        </th>
+                                        <th>
+                                            Tipo de tiquete
+                                        </th>
+                                        <th>
+                                            Estado del tiquete
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="contenido" v-for="tiquete of searchTiquetes">
+                                    <tr @click="actualizarTiquete(vuelo.id_vuelo)">
+                                        <td>
+                                            
+                                        </td>
+                                        <td>
+                                        
+                                        </td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+
+
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="opciones d-flex justify-content-around flex-wrap mx-5">
+                        <div class=" my-2">
+                            <button type="button" id="subir" OnClick=toTop() class="btn">Subir</button>
+                        </div>
+
+                        <div class=" my-2">
+                            <button type="button" class="btn subir"
+                                OnClick="location.href='registrar_tiquete.html'">Agregar
+                                tiquete</button>    
+                        </div>
                     </div>
                 </div>
-            </form>
+
         </div>
+
+
+
+        <div class="d-flex justify-content-center flex-wrap my-2 mx-5" id="registrar_aeropuertos">
+            <div class="botones mx-2 my-2">
+                <!--ENVIAR TODA LA INFORMACION DEL AEROPUERTO ACTUAL-->
+                <button type="submit" class="btn">Actualizar</button>
+            </div>
+            <div class="botones mx-2 my-2">
+                <button type="button" class="btn" OnClick="location.href='vuelos.html'">Salir</button>
+            </div>
+        </div>
+
+
+        </form>
+    </div>
     </div>
 </body>
 

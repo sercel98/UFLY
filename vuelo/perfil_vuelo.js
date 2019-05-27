@@ -124,7 +124,7 @@ var app = new Vue({
                 this.desembarqueVuelo = this.desembarqueVuelo.toString().substring(0, 16);
                 this.numSillasEconomica = vueloActual.sillas_disponibles_economicos,
                     //OJO CON BUSSINES
-                this.numSillasBusiness = vueloActual.sillas_disponibles_bussines,
+                this.numSillasBusiness = vueloActual.sillas_disponibles_business,
                 this.numSillasPrimera = vueloActual.sillas_disponibles_primera,
                 this.horaCheckIn = vueloActual.chequeo,
                 this.horaCheckIn = this.horaCheckIn.toString().substring(0, 16);

@@ -38,10 +38,6 @@ const vuelos = new Vue({
             var aeropuertoOrigen = this.aeropuertos.find( aeropuertoOrigen => aeropuertoOrigen.nombre_aeropuerto === this.aeropuertoOrigenVuelo )
             var aeropuertoDestino = this.aeropuertos.find( aeropuertoDestino => aeropuertoDestino.nombre_aeropuerto === this.aeropuertoDestinoVuelo )
 
-            console.log(avion); 
-            console.log(aeropuertoOrigen); 
-            console.log(aeropuertoDestino); 
-
 
             var vueloActual = {
                             "id_vuelo": "",
@@ -99,7 +95,7 @@ const vuelos = new Vue({
                                 "fabricante": avion.fabricante,
                                 "modelo": avion.modelo,
                                 "anio_fabricacion": avion.anio_fabricacion,
-                                "numero_sillas_busines": avion.numero_sillas_business,
+                                "numero_sillas_business": avion.numero_sillas_business,
                                 "numero_sillas_primera": avion.numero_sillas_primera,
                                 "numero_sillas_economica": avion.numero_sillas_economica,
                                 "fkestados_avion": {
@@ -137,7 +133,7 @@ const vuelos = new Vue({
 
                             }
                 
-              
+              console.log(vueloActual)
 
             var url = 'http://localhost:8080/rest/aeropuertos/agregar';
             var init = {
