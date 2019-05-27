@@ -19,7 +19,8 @@ import io.swagger.annotations.Api;
 @RestController
 @RequestMapping("/rest/estadosavion")
 @Api(description = "Operaciones de los estados del avion")
-public class EstadosAvionController {
+public class EstadosAvionController 
+{
 	@Autowired
 	private EstadosAvionRepository estadosRepository;
 

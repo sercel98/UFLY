@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class EstadosAvion implements Serializable 
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_estado_avion", length = 1)
 	private Short id_estado_avion;
 
@@ -65,7 +65,6 @@ public class EstadosAvion implements Serializable
 
 	@Override
 	public String toString() {
-		return "EstadosAvion [id_estado_avion=" + id_estado_avion + ", nombre_estado=" + nombre_estado + ", aviones="
-				+ aviones + "]";
+		return "EstadosAvion [id_estado_avion=" + id_estado_avion + ", nombre_estado=" + nombre_estado + "]";
 	}
 }

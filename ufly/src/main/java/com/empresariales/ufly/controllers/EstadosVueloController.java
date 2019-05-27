@@ -35,7 +35,7 @@ public class EstadosVueloController
 	}
 	
 	@PostMapping("/agregar")
-	public EstadosVuelo crearEstadoTiquete(@Valid @RequestBody EstadosVuelo estado)
+	public EstadosVuelo crearEstadoVuelo(@Valid @RequestBody EstadosVuelo estado)
 	{	
 		return estadosRepository.save(estado);
 	}
