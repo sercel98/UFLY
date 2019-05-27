@@ -108,28 +108,28 @@ const vuelos = new Vue({
                                     }
                                 },
                             "fksalas": {
-                                "id_sala": salaAbordaje.id_sala,
-                                "nombre_sala": salaAbordaje.nombre_sala,
+                                "id_sala": sala.id_sala,
+                                "nombre_sala": sala.nombre_sala,
                                 "fkestado_sala": {
-                                    "id_estado_sala": salaAbordaje.fkestado_sala.id_estado_sala,
-                                    "nombre_estado": salaAbordaje.fkestado_sala.nombre_estado
+                                    "id_estado_sala": sala.fkestado_sala.id_estado_sala,
+                                    "nombre_estado": sala.fkestado_sala.nombre_estado
                                     },
                                 "fkaeropuertos": {
-                                    "id_aeropuerto": salaAbordaje.fkaeropuertos.id_aeropuerto,
-                                    "nombre_aeropuerto": salaAbordaje.fkaeropuertos.nombre_aeropuerto,
-                                    "direccion_aeropuerto": salaAbordaje.fkaeropuertos.direccion_aeropuerto,
-                                    "telefono": salaAbordaje.fkaeropuertos.telefono,
+                                    "id_aeropuerto": aeropuertoOrigen.id_aeropuerto,
+                                    "nombre_aeropuerto": aeropuertoOrigen.nombre_aeropuerto,
+                                    "direccion_aeropuerto": aeropuertoOrigen.direccion_aeropuerto,
+                                    "telefono": aeropuertoOrigen.telefono,
     
                                     "fkestados_aeropuerto": {
-                                        "id_estado_aeropuerto": salaAbordaje.fkaeropuertos.fkestados_aeropuerto.id_estado_aeropuerto,
-                                        "nombre_estado":salaAbordaje.fkaeropuertos.fkestados_aeropuerto.nombre_estado
+                                        "id_estado_aeropuerto": aeropuertoOrigen.fkestados_aeropuerto.id_estado_aeropuerto,
+                                        "nombre_estado":aeropuertoOrigen.fkestados_aeropuerto.nombre_estado
                                         },
                                     "fkciudades": {
-                                        "id_ciudad": salaAbordaje.fkaeropuertos.fkciudades.id_ciudad,
-                                        "nombre_ciudad": salaAbordaje.fkaeropuertos.fkciudades.nombre_ciudad,
+                                        "id_ciudad": aeropuertoOrigen.fkciudades.id_ciudad,
+                                        "nombre_ciudad":aeropuertoOrigen.fkciudades.nombre_ciudad,
                                         "fkpais": {
-                                            "id_pais": salaAbordaje.fkaeropuertos.fkciudades.fkpais.id_pais,
-                                            "nombre_pais": salaAbordaje.fkaeropuertos.fkciudades.fkpais.nombre_pais
+                                            "id_pais": aeropuertoOrigen.fkciudades.fkpais.id_pais,
+                                            "nombre_pais": aeropuertoOrigen.fkciudades.fkpais.nombre_pais
                                             }
                                         }}
                             },
@@ -191,7 +191,7 @@ const vuelos = new Vue({
         });
 
         //arreglar
-        var urlSalas = 'http://localhost:8080/rest/salas/'+this.aeropuertoOrigenVuelo.id_aeropuerto ;
+        var urlSalas = 'http://localhost:8080/rest/salas/1' ;
 
         fetch(urlSalas)
         .then(response => response.json())

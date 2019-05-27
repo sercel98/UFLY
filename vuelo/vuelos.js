@@ -17,6 +17,7 @@ const vuelos = new Vue({
     computed: {
         searchVuelo: function () {
 
+            
             var origen = document.getElementById('customRadioInline1').checked;
             var destino = document.getElementById('customRadioInline2').checked;
             if (origen) {
@@ -26,7 +27,15 @@ const vuelos = new Vue({
             } else {
                 return this.vuelos.filter((vuelo) => vuelo.fkestados_vuelo.nombre_estado.toLowerCase().includes(this.buscado.toLowerCase()));
             }
+        },
+
+
+        formatearFecha: function(fecha)
+        {
+            return fecha.toString().substring(0, 16);
+    
         }
+        
     },
 
 mounted() {
