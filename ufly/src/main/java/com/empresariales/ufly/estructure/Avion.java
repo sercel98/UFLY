@@ -20,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "aviones")
-public class Avion implements Serializable {
+public class Avion implements Serializable 
+{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_avion", length = 10)
