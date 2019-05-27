@@ -24,7 +24,7 @@ CONTENIDO GENERAL
   font-weight: bold;
 }
 
-#tripulante-info,#login
+#tripulante-info,#login, #vuelo-info
 {
   font-weight: normal;
 }

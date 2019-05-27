@@ -99,7 +99,7 @@ const vuelos = new Vue({
                                 "fabricante": avion.fabricante,
                                 "modelo": avion.modelo,
                                 "anio_fabricacion": avion.anio_fabricacion,
-                                "numero_sillas_business": avion.numero_sillas_business,
+                                "numero_sillas_busines": avion.numero_sillas_business,
                                 "numero_sillas_primera": avion.numero_sillas_primera,
                                 "numero_sillas_economica": avion.numero_sillas_economica,
                                 "fkestados_avion": {
