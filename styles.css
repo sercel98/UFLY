@@ -14,13 +14,13 @@ CONTENIDO GENERAL
 
 /*AGREGAR AQUÍ SI QUIERES QUE EL COLOR SEA EL GRIS*/
 
-.header, .busqueda, th, .botones button, #btn-editar, #sidebar-wrapper, .encabezado h2, thead, .opciones button, #header6 {
+.header, .busqueda, th, .botones button,  #btn-editar, #sidebar-wrapper, .encabezado h2, thead, .opciones button, #header6 {
   background-color: #393E46;
 }
 
 /*AGREGAR AQUÍ SI QUIERES QUE LA FUENTE SEA BOLD*/
 
-.header h1, .encabezado h2,.informacion-vuelo, .informacion-aeropuerto,.informacion-tripulante, .registro-usuario-admin, .registro-pasajero-admin, thead, #titulo-perfil, .label-perfil {
+.header h1, .encabezado h2,.informacion-vuelo,.informacion-aeropuerto,.informacion-tripulante, .registro-usuario-admin, .registro-pasajero-admin, thead, #titulo-perfil, .label-perfil {
   font-weight: bold;
 }
 
@@ -29,6 +29,10 @@ CONTENIDO GENERAL
   font-weight: normal;
 }
 
+#subtitulo
+{
+  color: #393E46;
+}
 
 .body-admin {
   background-color: #eeeeee;

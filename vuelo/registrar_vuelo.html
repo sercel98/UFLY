@@ -33,7 +33,7 @@
 
                         <div class="form-group col-md-12 my-3">
 
-                            <label>Horario</label>
+                            <label id="subtitulo">Horario</label>
 
                             <div class=" form-row mx-4">
 
@@ -65,7 +65,7 @@
 
 
                         <div class="form-group col-md-12">
-                            <label>Capacidad</label>
+                            <label id="subtitulo">Capacidad</label>
                             <div class="form-row mx-4">
                                 <div class="col-md-3 ">
                                     <label>Sillas clase económica:</label>
@@ -96,7 +96,7 @@
                             </div>
                         </div>
                         <div class="form-group col-md-12 my-3">
-                            <label>Detalles del viaje:</label>
+                            <label id="subtitulo">Detalles del viaje:</label>
 
                             <div class="form-row mx-4">
 
@@ -105,7 +105,7 @@
                                     <select class="custom-select" name="avionVuelo" id="avionVuelo" v-model="avionVuelo"
                                         required>
                                         <option selected>Seleccionar un avión</option>
-                                        <option v-for="avion of aviones" v-show="avion.estado != 'Inactivo'">
+                                        <option v-for="avion of aviones" >
                                             {{ avion.modelo }}
                                         </option>
                                     </select>
@@ -116,10 +116,10 @@
 
                                 <div class="form-group col-md-3">
                                     <label>Aeropuerto origen:</label>
-                                    <select class="custom-select" name="AeropuertoOrigenVuelo" id="AeropuertoOrigenVuelo"
-                                        v-model="AeropuertoOrigenVuelo" required>
+                                    <select class="custom-select" name="aeropuertoOrigenVuelo" id="aeropuertoOrigenVuelo"
+                                        v-model="aeropuertoOrigenVuelo" required>
                                         <option selected>Elegir el aeropuerto de origen</option>
-                                        <option v-for="aeropuerto of buscarAeropuertoOrigen">
+                                        <option v-for="aeropuerto of aeropuertos">
                                             {{ aeropuerto.nombre_aeropuerto }}
                                         </option>
                                     </select>
@@ -130,14 +130,26 @@
 
                                 <div class="form-group col-md-3">
                                     <label>Aeropuerto destino:</label>
-                                    <select class="custom-select" name="AeropuertoDestinoVuelo" id="AeropuertoDestinoVuelo"
-                                        v-model="AeropuertoDestinoVuelo" required>
+                                    <select class="custom-select" name="aeropuertoDestinoVuelo" id="aeropuertoDestinoVuelo"
+                                        v-model="aeropuertoDestinoVuelo" required>
                                         <option selected>Elegir el aeropuerto de destino</option>
-                                        <option v-for="aeropuerto of buscarAeropuertoDestino" v-show="aeropuerto.nombre_aeropuerto != aeropuertoOrigenVuelo">
+                                        <option v-for="aeropuerto of aeropuertos" v-show="aeropuerto.nombre_aeropuerto != aeropuertoOrigenVuelo">
                                             {{ aeropuerto.nombre_aeropuerto }}
                                         </option>
                                     </select>
                                 </div>
+                            </div>
+                            <div class="form-row mx-3   col-md-3">
+                                <label>Sala de abordaje: </label>
+                                
+                                <select class="custom-select" name="salaAbordaje" id="salaAbordaje"
+                                v-model="salaAbordaje" required>
+                                <option selected>Elegir la sala de abordaje</option>
+                                <option v-for="sala of cargarSalas">
+                                    {{ sala.nombre_sala }}
+                                </option>
+                            </select>
+                       
                             </div>
                         </div>
                     </div>
