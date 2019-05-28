@@ -3,6 +3,7 @@ const vuelos = new Vue({
     data: {
 
         vuelos: [],
+        horaCheckIn: '',
         buscado: ''
 
     },
@@ -27,15 +28,7 @@ const vuelos = new Vue({
             } else {
                 return this.vuelos.filter((vuelo) => vuelo.fkestados_vuelo.nombre_estado.toLowerCase().includes(this.buscado.toLowerCase()));
             }
-        },
-
-
-        formatearFecha: function(fecha)
-        {
-            return fecha.toString().substring(0, 16);
-    
         }
-        
     },
 
 mounted() {
