@@ -2,6 +2,7 @@ package com.empresariales.ufly.estructure;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -18,6 +19,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -29,11 +31,17 @@ public class Vuelo implements Serializable
 	@Column(name = "id_vuelo", length = 8)
 	private int id_vuelo;
 	
+	@JsonFormat(timezone = "GMT-5")
 	@Column(name = "embarque", nullable = false, length = 25)
-	private Timestamp embarque;
+	private Date embarque;
 	
+	@JsonFormat(timezone = "GMT-5")
 	@Column(name = "desembarque", nullable = false, length = 25)
-	private Timestamp desembarque;	
+	private Date desembarque;
+	
+	@JsonFormat(timezone = "GMT-5")
+	@Column(name = "check_in", nullable = false, length = 25)
+	private Date check_in;
 	
 	@Column(name = "sillas_disponibles_business", nullable = false, length = 4)
 	private short sillas_disponibles_business;
@@ -42,10 +50,7 @@ public class Vuelo implements Serializable
 	private short sillas_disponibles_primera;
 
 	@Column(name = "sillas_disponibles_economicos", nullable = false, length = 4)
-	private short sillas_disponibles_economicos;
-	
-	@Column(name = "check_in", nullable = false, length = 25)
-	private Timestamp check_in;	
+	private short sillas_disponibles_economicos;	
 	
 	@ManyToOne //(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "fkaeropuertos_origen", nullable = false)
@@ -68,7 +73,7 @@ public class Vuelo implements Serializable
 	private Avion fkaviones;
 	
 	@ManyToOne //(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "fksalas", nullable = false)
+    @JoinColumn(name = "fksalas", nullable = true)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Salas fksalas;
 
@@ -80,15 +85,15 @@ public class Vuelo implements Serializable
 		super();
 	}
 
-	public Vuelo(int id_vuelo, Timestamp embarque, Timestamp desembarque, short sillas_disponibles_bussines,
-			short sillas_disponibles_primera, short sillas_disponibles_economicos, Timestamp chequeo,
+	public Vuelo(int id_vuelo, Date embarque, Date desembarque, short sillas_disponibles_business,
+			short sillas_disponibles_primera, short sillas_disponibles_economicos, Date chequeo,
 			Aeropuerto fkaeropuertos_origen, Aeropuerto fkaeropuertos_destino, EstadosVuelo fkestados_vuelo,
 			Salas fksalas) {
 		super();
 		this.id_vuelo = id_vuelo;
 		this.embarque = embarque;
 		this.desembarque = desembarque;
-		this.sillas_disponibles_business = sillas_disponibles_bussines;
+		this.sillas_disponibles_business = sillas_disponibles_business;
 		this.sillas_disponibles_primera = sillas_disponibles_primera;
 		this.sillas_disponibles_economicos = sillas_disponibles_economicos;
 		this.check_in = chequeo;
@@ -106,28 +111,28 @@ public class Vuelo implements Serializable
 		this.id_vuelo = id_vuelo;
 	}
 
-	public Timestamp getEmbarque() {
+	public Date getEmbarque() {
 		return embarque;
 	}
 
-	public void setEmbarque(Timestamp embarque) {
+	public void setEmbarque(Date embarque) {
 		this.embarque = embarque;
 	}
 
-	public Timestamp getDesembarque() {
+	public Date getDesembarque() {
 		return desembarque;
 	}
 
-	public void setDesembarque(Timestamp desembarque) {
+	public void setDesembarque(Date desembarque) {
 		this.desembarque = desembarque;
 	}
 
-	public short getSillas_disponibles_bussines() {
+	public short getSillas_disponibles_business() {
 		return sillas_disponibles_business;
 	}
 
-	public void setSillas_disponibles_bussines(short sillas_disponibles_bussines) {
-		this.sillas_disponibles_business = sillas_disponibles_bussines;
+	public void setSillas_disponibles_business(short sillas_disponibles_business) {
+		this.sillas_disponibles_business = sillas_disponibles_business;
 	}
 
 	public short getSillas_disponibles_primera() {
@@ -146,11 +151,11 @@ public class Vuelo implements Serializable
 		this.sillas_disponibles_economicos = sillas_disponibles_economicos;
 	}
 
-	public Timestamp getChequeo() {
+	public Date getCheck_in() {
 		return check_in;
 	}
 
-	public void setChequeo(Timestamp chequeo) {
+	public void setCheck_in(Date chequeo) {
 		this.check_in = chequeo;
 	}
 

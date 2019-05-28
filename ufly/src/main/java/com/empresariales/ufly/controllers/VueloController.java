@@ -32,7 +32,7 @@ public class VueloController
 	
 	@GetMapping
 	public List<Vuelo> listarVuelos()
-	{
+	{	
 		return vueloRepository.findAll();
 	}
 	
@@ -40,6 +40,7 @@ public class VueloController
 	@PostMapping("/agregar")
 	public Vuelo crearVuelo(@RequestBody Vuelo vuelo) throws Exception
 	{
+		System.out.println(vuelo);
 		if(existeVuelo(vuelo))
 		{
 			throw new Exception("El vuelo ya existe");
@@ -77,10 +78,10 @@ public class VueloController
 		
 		vuelo.setEmbarque(vueloNuevo.getEmbarque());
 		vuelo.setDesembarque(vueloNuevo.getDesembarque());
-		vuelo.setSillas_disponibles_bussines(vueloNuevo.getSillas_disponibles_bussines());
+		vuelo.setSillas_disponibles_business(vueloNuevo.getSillas_disponibles_business());
 		vuelo.setSillas_disponibles_economicos(vueloNuevo.getSillas_disponibles_economicos());
 		vuelo.setSillas_disponibles_primera(vueloNuevo.getSillas_disponibles_primera());
-		vuelo.setChequeo(vueloNuevo.getChequeo());
+		vuelo.setCheck_in(vueloNuevo.getCheck_in());
 		vuelo.setFkaeropuertos_origen(vueloNuevo.getFkaeropuertos_origen());
 		vuelo.setFkaeropuertos_destino(vueloNuevo.getFkaeropuertos_destino());
 		vuelo.setFkestados_vuelo(vueloNuevo.getFkestados_vuelo());

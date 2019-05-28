@@ -1,5 +1,6 @@
 package com.empresariales.ufly.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -29,10 +30,18 @@ public class TiquetesController
 	@Autowired
 	private TiquetesRepository tiquetesrepository;
 	
-	@GetMapping
-	public List<Tiquetes> listarTiquetes()
+	@GetMapping("/{fkvuelos}")
+	public List<Tiquetes> listarTiquetes(@PathVariable (value = "fkvuelos") int fkvuelos)
 	{
-		return tiquetesrepository.findAll();
+		List<Tiquetes> tiquetesVuelo = new ArrayList<Tiquetes>();
+		for(Tiquetes tiqueteActual: tiquetesrepository.findAll())
+		{
+			if(tiqueteActual.getFkvuelos().getId_vuelo() == fkvuelos)
+			{
+				tiquetesVuelo.add(tiqueteActual);
+			}
+		}
+		return tiquetesVuelo;
 	}
 
 	@PostMapping("/agregar")
@@ -48,7 +57,7 @@ public class TiquetesController
 	
 	private boolean existeTiquete(Tiquetes nuevo)
 	{
-		List<Tiquetes> tiquetes = listarTiquetes();
+		List<Tiquetes> tiquetes = tiquetesrepository.findAll();
 		for (Tiquetes tiqueteActual : tiquetes) 
 		{
 			if(nuevo.getId_tiquete() == tiqueteActual.getId_tiquete())
