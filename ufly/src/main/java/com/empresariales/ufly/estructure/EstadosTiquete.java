@@ -34,6 +34,11 @@ public class EstadosTiquete implements Serializable
 		super();
 	}
 
+	public EstadosTiquete(Short id_estado) {
+		super();
+		this.id_estado = id_estado;
+	}
+
 	public EstadosTiquete(Short id_estado, String nombre_estado) {
 		super();
 		this.id_estado = id_estado;

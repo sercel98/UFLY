@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.empresariales.ufly.estructure.EstadosTiquete;
+import com.empresariales.ufly.estructure.TiposTiquete;
+import com.empresariales.ufly.estructure.Tiquetes;
 import com.empresariales.ufly.estructure.Vuelo;
 import com.empresariales.ufly.exception.ResourceNotFoundException;
+import com.empresariales.ufly.repository.TiquetesRepository;
 import com.empresariales.ufly.repository.VueloRepository;
 
 import io.swagger.annotations.Api;
@@ -29,6 +33,8 @@ public class VueloController
 	@Autowired
 	private VueloRepository vueloRepository;
 	
+	@Autowired
+	private TiquetesController tiqueteController;
 	
 	@GetMapping
 	public List<Vuelo> listarVuelos()
@@ -37,13 +43,47 @@ public class VueloController
 	}
 	
 	
-	@PostMapping("/agregar")
-	public Vuelo crearVuelo(@RequestBody Vuelo vuelo) throws Exception
+	@PostMapping("/agregar/{precio_business}/{precio_primera_clase}/{precio_economica}")
+	public Vuelo crearVuelo(@RequestBody Vuelo vuelo, @PathVariable(value = "precio_business") Integer precio_business,
+								@PathVariable(value = "precio_primera_clase") Integer precio_primera_clase, 
+								@PathVariable(value = "precio_economica") Integer precio_economica) throws Exception
 	{
 		System.out.println(vuelo);
 		if(existeVuelo(vuelo))
 		{
 			throw new Exception("El vuelo ya existe");
+		}
+		
+		short numero = 1;
+		
+		TiposTiquete tipoBusiness = new TiposTiquete(Short.parseShort("1"));
+		TiposTiquete tipoPrimeraClase = new TiposTiquete(Short.parseShort("2"));
+		TiposTiquete tipoEconomica = new TiposTiquete(Short.parseShort("3"));
+		
+		EstadosTiquete estadoDisponible = new EstadosTiquete(Short.parseShort("1"));
+		
+		for(int i = 0; i < vuelo.getSillas_disponibles_business(); i++)
+		{
+			
+			Tiquetes tiquete = new Tiquetes(precio_business, numero, vuelo, tipoBusiness, estadoDisponible);
+			tiqueteController.crearTiquetes(tiquete);
+			numero++;
+		}
+		
+		for(int i = 0; i < vuelo.getSillas_disponibles_primera(); i++)
+		{
+			
+			Tiquetes tiquete = new Tiquetes(precio_primera_clase, numero, vuelo, tipoPrimeraClase, estadoDisponible);
+			tiqueteController.crearTiquetes(tiquete);
+			numero++;
+		}
+		
+		for(int i = 0; i < vuelo.getSillas_disponibles_economicos(); i++)
+		{
+			
+			Tiquetes tiquete = new Tiquetes(precio_economica, numero, vuelo, tipoEconomica, estadoDisponible);
+			tiqueteController.crearTiquetes(tiquete);
+			numero++;
 		}
 		
 		return vueloRepository.save(vuelo);
@@ -90,8 +130,4 @@ public class VueloController
 		
 		return vueloRepository.save(vuelo);
 	}
-
-	
-	
-
 }

@@ -34,6 +34,11 @@ public class TiposTiquete implements Serializable
 		super();
 	}
 
+	public TiposTiquete(Short id_tipo) {
+		super();
+		this.id_tipo = id_tipo;
+	}
+
 	public TiposTiquete(Short id_tipo, String nombre_tipo) {
 		super();
 		this.id_tipo = id_tipo;

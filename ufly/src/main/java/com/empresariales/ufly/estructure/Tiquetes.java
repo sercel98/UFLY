@@ -45,12 +45,12 @@ public class Tiquetes implements Serializable
 	private EstadosTiquete fkestado_tiquete;
 	
 	@ManyToOne//(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "fkusuarios", nullable = false)
+    @JoinColumn(name = "fkusuarios")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Usuarios fkusuarios;
 	
 	@ManyToOne//(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "fkpasajeros", nullable = false)
+    @JoinColumn(name = "fkpasajeros")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Pasajeros fkpasajeros;
 
@@ -58,17 +58,14 @@ public class Tiquetes implements Serializable
 		super();
 	}
 
-	public Tiquetes(int id_tiquete, int precio_tiquete, short numero_asiento, Vuelo fkvuelos,
-			TiposTiquete fktipos_tiquete, EstadosTiquete fkestado_tiquete, Usuarios fkusuarios, Pasajeros fkpasajeros) {
+	public Tiquetes(int precio_tiquete, short numero_asiento, Vuelo fkvuelos, TiposTiquete fktipos_tiquete,
+			EstadosTiquete fkestado_tiquete) {
 		super();
-		this.id_tiquete = id_tiquete;
 		this.precio_tiquete = precio_tiquete;
 		this.numero_asiento = numero_asiento;
 		this.fkvuelos = fkvuelos;
 		this.fktipos_tiquete = fktipos_tiquete;
 		this.fkestado_tiquete = fkestado_tiquete;
-		this.fkusuarios = fkusuarios;
-		this.fkpasajeros = fkpasajeros;
 	}
 
 	public int getId_tiquete() {
