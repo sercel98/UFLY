@@ -12,6 +12,14 @@ CONTENIDO GENERAL
   color: white;
 }
 
+.carousel-item{
+  height: 550px;
+} 
+.carousel-item img{
+  height: 550px;
+  
+}
+
 /*AGREGAR AQUÍ SI QUIERES QUE EL COLOR SEA EL GRIS*/
 
 .header, .busqueda, th, .botones button,  #btn-editar, #sidebar-wrapper, .encabezado h2, thead, .opciones button, #header6 {
@@ -20,9 +28,10 @@ CONTENIDO GENERAL
 
 /*AGREGAR AQUÍ SI QUIERES QUE LA FUENTE SEA BOLD*/
 
-.header h1, .encabezado h2,.informacion-vuelo,.informacion-aeropuerto,.informacion-tripulante, .registro-usuario-admin, .registro-pasajero-admin, thead, #titulo-perfil, .label-perfil {
+.header h1,#carousel-text1, .encabezado h2,.informacion-vuelo,.informacion-aeropuerto,.informacion-tripulante, .registro-usuario-admin, .registro-pasajero-admin, thead, #titulo-perfil, .label-perfil {
   font-weight: bold;
 }
+
 
 #tripulante-info,#login, #vuelo-info
 {
@@ -71,6 +80,62 @@ table, tr, td, thead {
   background-color: rgba(255, 255, 255, 0.75);
   ;
 }
+
+
+#carousel-text1{
+
+  font-size: 30px; 
+  color:black;
+  font-weight: bold;
+
+}
+#carousel-subtext1{
+  font-size: 20px; 
+  color:black;
+
+
+}
+
+#carousel-text2{
+
+  font-size: 30px; 
+  color:black;
+  font-weight: bold;
+
+}
+
+#carousel-subtext2{
+
+  font-size: 20px; 
+  color:black;
+}
+
+#carousel-text3{
+
+  font-size: 30px; 
+  color:black;
+  font-weight: bold;
+
+}
+
+
+#carousel-text3{
+
+  font-size: 3  0px; 
+  color:white;
+  
+
+}
+
+
+#carousel-subtext3{
+
+  font-size: 20px; 
+  color:white;
+  
+
+}
+
 
 #titulo-perfil {
   color: black;
