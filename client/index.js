@@ -13,7 +13,7 @@ const index = new Vue({
 
     computed: {
         buscarDestinos: function () {
-            return this.vuelosDisponibles.filter((vuelo) => vuelo.fkaeropuertos_origen.nombre_aeropuerto.toLowerCase().includes(this.origenSeleccionado.toLowerCase()));
+            return this.vuelosDisponibles.filter((vuelo) => vuelo.fkaeropuertos_origen.nombre_aeropuerto.toLowerCase().includes(this.origenSeleccionado.toLowerCase()));    
         },
     },
 
