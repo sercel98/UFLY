@@ -72,7 +72,7 @@ public class Vuelo implements Serializable
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Avion fkaviones;
 	
-	@ManyToOne (cascade = CascadeType.PERSIST)
+	@ManyToOne // (cascade = CascadeType.PERSIST)
     @JoinColumn(name = "fksalas", nullable = true)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Salas fksalas;

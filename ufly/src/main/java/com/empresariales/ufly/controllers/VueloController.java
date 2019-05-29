@@ -55,6 +55,10 @@ public class VueloController
 
 		vueloRepository.save(vuelo);
 		
+		System.out.println(vuelo.getSillas_disponibles_business());
+		System.out.println( vuelo.getSillas_disponibles_primera());
+		System.out.println(vuelo.getSillas_disponibles_economicos());
+		
 		short numero = 1;
 		
 		TiposTiquete tipoBusiness = new TiposTiquete(Short.parseShort("1"));
@@ -71,22 +75,20 @@ public class VueloController
 			numero++;
 		}
 		
-		for(int i = 0; i < vuelo.getSillas_disponibles_primera(); i++)
+		for(int j = 0; j < vuelo.getSillas_disponibles_primera(); j++)
 		{
-			
 			Tiquetes tiquete = new Tiquetes(precio_primera_clase, numero, vuelo, tipoPrimeraClase, estadoDisponible);
 			tiqueteController.crearTiquetes(tiquete);
 			numero++;
 		}
 		
-		for(int i = 0; i < vuelo.getSillas_disponibles_economicos(); i++)
+		for(int k = 0; k < vuelo.getSillas_disponibles_economicos(); k++)
 		{
 			
 			Tiquetes tiquete = new Tiquetes(precio_economica, numero, vuelo, tipoEconomica, estadoDisponible);
 			tiqueteController.crearTiquetes(tiquete);
 			numero++;
 		}
-		System.out.println(vuelo);
 
 		return vuelo;
 	}

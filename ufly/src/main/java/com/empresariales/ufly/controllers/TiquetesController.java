@@ -52,7 +52,7 @@ public class TiquetesController
 			throw new Exception("El tiquete ya existe");
 
 		}
-		return tiquetesrepository.save(tiquete);	
+		return tiquetesrepository.saveAndFlush(tiquete);	
 	}
 	
 	private boolean existeTiquete(Tiquetes nuevo)
