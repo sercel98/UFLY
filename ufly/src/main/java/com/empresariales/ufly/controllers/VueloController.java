@@ -19,7 +19,6 @@ import com.empresariales.ufly.estructure.TiposTiquete;
 import com.empresariales.ufly.estructure.Tiquetes;
 import com.empresariales.ufly.estructure.Vuelo;
 import com.empresariales.ufly.exception.ResourceNotFoundException;
-import com.empresariales.ufly.repository.TiquetesRepository;
 import com.empresariales.ufly.repository.VueloRepository;
 
 import io.swagger.annotations.Api;
@@ -48,11 +47,13 @@ public class VueloController
 								@PathVariable(value = "precio_primera_clase") Integer precio_primera_clase, 
 								@PathVariable(value = "precio_economica") Integer precio_economica) throws Exception
 	{
-		System.out.println(vuelo);
 		if(existeVuelo(vuelo))
 		{
 			throw new Exception("El vuelo ya existe");
 		}
+		System.out.println(vuelo);
+
+		vueloRepository.save(vuelo);
 		
 		short numero = 1;
 		
@@ -85,8 +86,9 @@ public class VueloController
 			tiqueteController.crearTiquetes(tiquete);
 			numero++;
 		}
-		
-		return vueloRepository.save(vuelo);
+		System.out.println(vuelo);
+
+		return vuelo;
 	}
 	
 	private boolean existeVuelo(Vuelo vuelo)
