@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>UFly - Registrar Avion</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
+</head>
+
+<body class="body-admin">
+    <div id="registro-avion">
+
+        <cabecera title="Registrar Avión"></cabecera>
+
+        <div class="informacion-avion mt-3 mx-5">
+            <div class="encabezado text-center">
+                <h2 class="py-2 m-0">Información Del Avión</h2>
+            </div>
+            <form @submit.prevent="validarCampos"></form>
+
+            <div class="mx-5 my-3" id="items-formulario-aeropuerto" style="color: #ffffff">
+                <div class=" form-row mx-5">
+                    <div class="form-group col-md-4 my-3">
+                        <label>Fabricante:</label>
+                        <input type="text" class="form-control" name="fabricante" id="fabricante" v-model="fabricante"
+                            placeholder="Fabricante" maxlength="25" required>
+                    </div>
+
+                    <div class="form-group col-md-4 my-3">
+                        <label>Modelo:</label>
+                        <input type="text" class="form-control" name="modelo" id="modelo" v-model="modelo"
+                            placeholder="Modelo" maxlength="25" required>
+                    </div>
+
+                    <div class="col-md-4 my-3">
+                        <label>Año De Fabricación:</label>
+                        <input type="text" class="form-control" name="añoFabricacion" id="añoFabricacion"
+                            v-model="añoFabricacion" placeholder="Año" maxlength="14" required>
+                    </div>
+
+                    <div class="col-md-4 my-3">
+                        <label>Número De Sillas Business:</label>
+                        <input type="text" class="form-control" name="numeroSillasBusiness" id="numeroSillasBusiness"
+                            v-model="numeroSillasBusiness" placeholder="# Business" maxlength="14" required>
+                    </div>
+
+                    <div class="col-md-4 my-3">
+                        <label>Número De Sillas Primeras:</label>
+                        <input type="text" class="form-control" name="numeroSillasEconomica" id="numeroSillasEconomica"
+                            v-model="numeroSillasPrimera" placeholder="# Primeras" maxlength="14" required>
+                    </div>
+
+                    <div class="col-md-4 my-3">
+                        <label>Número De Sillas Económicas:</label>
+                        <input type="text" class="form-control" name="numSillasEconomicas" id="numSillasEconomicas"
+                            v-model="numeroSillasEconomica" placeholder="# Economicas" maxlength="14" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Estado:</label>
+                        <select class="custom-select" name="estadoAvion" id="estadoAvion" v-model="estadoAvion"
+                            required>
+                            <option selected>Elegir Estado Del Avion</option>
+                            <option v-for="estado of estadosAvion ">
+                                {{ estado.nombre_estado }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+
+        <div class="d-flex justify-content-center flex-wrap my-2 mx-5" id="registrar_avion">
+            <div class="botones mx-2 my-2">
+                <button type="submit" @click="procesarFormulario" class="btn">Registrar</button>
+            </div>
+            <div class="botones mx-2 my-2">
+                <button type="button" class="btn" OnClick="location.href='avion.html'">Salir</button>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.0.min.js"
+    integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="/components/headerComponent.js"></script>
+<script src="registrar_avion.js"></script>
+
+</html>

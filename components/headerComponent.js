@@ -27,7 +27,7 @@ template: `
                         <a class="py-0 nav-link" href="/vuelo/vuelos.html">Vuelos</a>
                         </li>
                         <li class="nav-item col-6 col-md">
-                        <a class="py-0 nav-link" href="/avion/aviones.html">Aviones</a>
+                        <a class="py-0 nav-link" href="/avion/avion.html">Aviones</a>
                         </li>
                     </ul>
                 </nav>
