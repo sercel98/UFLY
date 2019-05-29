@@ -5,9 +5,9 @@ const vuelos = new Vue({
     {
         embarqueVuelo:'',
         desembarqueVuelo:'',
-        numSillasEconomica:'',
-        numSillasBusiness:'',
-        numSillasPrimera:'',
+        precioSillaBusiness:'',
+        precioSillaPrimera:'',
+        precioSillaEconomica:'',
         horaCheckIn:'',
         avionVuelo:'',
         aeropuertoOrigenVuelo:'',
@@ -23,6 +23,9 @@ const vuelos = new Vue({
             var aeropuertoOrigen = this.aeropuertos.find( aeropuertoOrigen => aeropuertoOrigen.nombre_aeropuerto === this.aeropuertoOrigenVuelo );
             var aeropuertoDestino = this.aeropuertos.find( aeropuertoDestino => aeropuertoDestino.nombre_aeropuerto === this.aeropuertoDestinoVuelo );
 
+            var precioSillaBusiness = this.precioSillaBusiness;
+            var precioSillaPrimera = this.precioSillaPrimera;
+            var precioSillaEconomica = this.precioSillaEconomica;
 
             var vueloActual = {
                 "id_vuelo": "",
@@ -42,15 +45,20 @@ const vuelos = new Vue({
                 "fkaviones": avion
             }
                 
-            console.log(vueloActual)
+            console.log(vueloActual);
 
-            var url = 'http://localhost:8080/rest/vuelos/agregar';
+            var url = 'http://localhost:8080/rest/vuelos/agregar/' + precioSillaBusiness
+                        + "/" + precioSillaPrimera + "/" + precioSillaEconomica;
+
+            console.log(url);
+            
             var init = {
                 method: 'POST', 
                 body: JSON.stringify(vueloActual), 
                 headers:{
                     'Content-Type': 'application/json'
               }};
+
             var request = new Request(url, init);
             fetch(request)
             .then(response => response.json())
