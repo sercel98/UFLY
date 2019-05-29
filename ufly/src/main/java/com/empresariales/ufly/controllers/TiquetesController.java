@@ -30,7 +30,7 @@ public class TiquetesController
 	@Autowired
 	private TiquetesRepository tiquetesrepository;
 	
-	@GetMapping("/{fkvuelos}")
+	@GetMapping("/buscar/{fkvuelos}")
 	public List<Tiquetes> listarTiquetes(@PathVariable (value = "fkvuelos") int fkvuelos)
 	{
 		List<Tiquetes> tiquetesVuelo = new ArrayList<Tiquetes>();
