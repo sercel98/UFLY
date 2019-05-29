@@ -1,37 +1,27 @@
 const index = new Vue({
     el: '#main',
-    data: 
-    {
-        vuelosDisponibles: []
-
+    data: {
+        vuelosDisponibles: [],
+        origenes: [],
+        destinos: [],
+        origenSeleccionado: ''
     },
+
     methods: {
-
+        
     },
 
-mounted() {
+    computed: {
+        buscarDestinos: function () {
+            return this.vuelosDisponibles.filter((vuelo) => vuelo.fkaeropuertos_origen.nombre_aeropuerto.toLowerCase().includes(this.origenSeleccionado.toLowerCase()));
+        },
+    },
 
-
-    fetch('http://localhost:8080/rest/vuelos', { mode: 'cors' })
-    .then(response => response.json())
-    .then(vuelos => {
-        this.vuelos = vuelos;
-    });
-},
+    mounted() {
+        fetch('http://localhost:8080/rest/vuelos/listar/1', {mode: 'cors' })
+            .then(response => response.json())
+            .then(vuelos => {
+                this.vuelosDisponibles = vuelos;
+            });
+    },
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-})
