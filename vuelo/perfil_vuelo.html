@@ -63,48 +63,36 @@
                             </div>
 
                         </div>
-
-
                         <div class="form-group col-md-12">
                             <label id="subtitulo">Capacidad</label>
                             <div class="form-row mx-4">
+                                <div class="col-md-3">
+                                    <label>Sillas clase business: {{numSillasBusiness}}</label>
+                                </div>
+
+                                <div class="col-md-1">
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label>Sillas primera clase: {{numSillasPrimera}}</label>
+                                </div>
+
+                                <div class="col-md-1">
+                                </div>
+
                                 <div class="col-md-3 ">
-                                    <label>Sillas clase económica:</label>
-                                    <input type="text" class="form-control" name="numSillasEconomica"
-                                        id="numSillasEconomica" v-model="numSillasEconomica"
-                                        placeholder="Cant. sillas económica" maxlength="4" required>
-                                </div>
-
-                                <div class="col-md-1">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>Sillas clase business:</label>
-                                    <input type="text" class="form-control" name="numSillasBusiness"
-                                        id="numSillasBusiness" v-model="numSillasBusiness"
-                                        placeholder="Can. sillas business" maxlength="4" required>
-                                </div>
-
-                                <div class="col-md-1">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>Sillas primera clase:</label>
-                                    <input type="text" class="form-control" name="numSillasPrimera"
-                                        id="numSillasPrimera" v-model="numSillasPrimera"
-                                        placeholder="Cant. sillas primera" maxlength="4" required>
+                                    <label>Sillas clase económica: {{numSillasEconomica}}</label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group col-md-12 my-3">
-                            <label id="subtitulo">Detalles del viaje:</label>
+                            <label id="subtitulo">Detalles del vuelo:</label>
 
                             <div class="form-row mx-4">
 
                                 <div class="form-group col-md-3">
-                                    <label>Avión:</label>
-                                    <label id="vuelo-info"> {{avionVuelo}}</label>
-
+                                    <label>Avión:</label><br>
+                                    <label id="vuelo-info">{{avionVuelo}}</label>
                                 </div>
 
                                 <div class="col-md-1">
@@ -125,17 +113,35 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="form-row mx-3   col-md-3">
-                                <label>Sala de abordaje: </label>
+                            <div class="form-row mx-4 my-2">
+                                <div class="form-row  col-md-3">
+                                    <label>Sala de abordaje: </label>
+    
+                                    <select class="custom-select" name="salaAbordaje" id="salaAbordaje"
+                                        v-model="salaAbordaje" required>
+                                        <option selected>Elegir la sala de abordaje</option>
+                                        <option v-for="sala of salas">
+                                            {{ sala.nombre_sala }}
+                                        </option>
+                                    </select>
+    
+                                </div>
 
-                                <select class="custom-select" name="salaAbordaje" id="salaAbordaje"
-                                    v-model="salaAbordaje" required>
-                                    <option selected>Elegir la sala de abordaje</option>
-                                    <option v-for="sala of salas">
-                                        {{ sala.nombre_sala }}
-                                    </option>
-                                </select>
+                                <div class="col-md-1">
+                                </div>
 
+                                <div class="form-row  col-md-3">
+                                    <label>Estado del vuelo: </label>
+    
+                                    <select class="custom-select" name="estadoVuelo" id="estadoVuelo"
+                                        v-model="estadoVuelo" required>
+                                        <option selected>Elegir el estado del vuelo</option>
+                                        <option v-for="estado of estadosvuelo">
+                                            {{ estado.nombre_estado }}
+                                        </option>
+                                    </select>
+    
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -154,25 +160,17 @@
 
                     <div class="busqueda d-flex justify-content-start align-items-center flex-wrap mx-5 pb-3 px-2">
                         <h5 class="m-0 py-2 px-3">Filtro: </h5>
-                        <div class="ml-3 custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline1" name="customRadioInline1" value='nombrePasajero'
-                                class="custom-control-input" checked>
-                            <label class="custom-control-label" for="customRadioInline1">Nombre pasajero</label>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline1" name="customRadioInline1" value='tipoTiquete' class="custom-control-input" checked>
+                            <label class="custom-control-label" for="customRadioInline1">Tipo tiquete</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline2" name="customRadioInline1" value='tipoTiquete'
-                                class="custom-control-input">
-                            <label class="custom-control-label" for="customRadioInline2">Tipo tiquete</label>
+                            <input type="radio" id="customRadioInline2" name="customRadioInline1" value='estado' class="custom-control-input">
+                            <label class="custom-control-label" for="customRadioInline2">Estado </label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline3" name="customRadioInline1" value='estado'
-                                class="custom-control-input">
-                            <label class="custom-control-label" for="customRadioInline3">Estado </label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline4" name="customRadioInline1" value='numeroAsiento'
-                                class="custom-control-input">
-                            <label class="custom-control-label" for="customRadioInline4">Número de asiento </label>
+                            <input type="radio" id="customRadioInline3" name="customRadioInline1" value='numeroAsiento' class="custom-control-input">
+                            <label class="custom-control-label" for="customRadioInline3">Número de asiento </label>
                         </div>
                     </div>
 
@@ -182,9 +180,6 @@
                                 <thead>
                                     <tr>
                                         <th>
-                                            Nombre del pasajero
-                                        </th>
-                                        <th>
                                             Número de asiento
                                         </th>
                                         <th>
@@ -193,17 +188,24 @@
                                         <th>
                                             Estado del tiquete
                                         </th>
+                                        <th>
+                                            Precio del tiquete
+                                        </th>
                                     </tr>
                                 </thead>
-                                <tbody id="contenido" v-for="tiquete of searchTiquetes">
-                                    <tr @click="actualizarTiquete(vuelo.id_vuelo)">
+                                <tbody id="contenido" v-for="tiquete of searchTiquete">
+                                    <tr @click="actualizarTiquete(tiquete.id_tiquete)">
                                         <td>
+                                            {{tiquete.numero_asiento}}
                                         </td>
                                         <td>
+                                            {{tiquete.fktipos_tiquete.nombre_tipo}}
                                         </td>
                                         <td>
+                                            {{tiquete.fkestado_tiquete.nombre_estado}}
                                         </td>
                                         <td>
+                                            {{tiquete.precio_tiquete}}
                                         </td>
                                     </tr>
                                 </tbody>

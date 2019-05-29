@@ -65,22 +65,28 @@
                                 <th>
                                     Teléfono
                                 </th>
+                                <th>
+                                    Tiquetes
+                                </th>
                             </tr>
                         </thead>
                         <tbody id="contenido" v-for="usuario of searchUser">
-                            <tr @click="actualizarUsuario(usuario.id_usuario)">
-                                <td>
+                            <tr>
+                                <td @click="actualizarUsuario(usuario.id_usuario)">
                                     {{usuario.cedula}}
                                 </td>
-                                <td>
+                                <td @click="actualizarUsuario(usuario.id_usuario)">
                                     {{usuario.primer_nombre}} {{usuario.segundo_nombre}} {{usuario.primer_apellido}}
                                     {{usuario.segundo_apellido}}
                                 </td>
-                                <td>
+                                <td @click="actualizarUsuario(usuario.id_usuario)">
                                     {{usuario.correo_electronico}}
                                 </td>
-                                <td>
+                                <td @click="actualizarUsuario(usuario.id_usuario)">
                                     {{usuario.telefono}}
+                                </td>
+                                <td @click="verTiquetesUsuario(usuario.id_usuario)">
+                                    <button>Ver tiquetes</button>
                                 </td>
                             </tr>
 

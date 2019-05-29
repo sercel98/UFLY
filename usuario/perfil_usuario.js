@@ -88,6 +88,10 @@ var app = new Vue({
                     toastr.success('Se ha editado el usuario exitosamente:'+response.primer_nombre)
                 }
             })
+        },
+
+        verMisTiquetes() {
+            location.href = 'usuarios.html';
         }
     },
 
@@ -101,6 +105,7 @@ var app = new Vue({
         .then(response => response.json())
         .then(usuario => {
         
+            console.log(usuario);
             this.idUsuario = usuario.id_usuario,
             this.identificacion = usuario.cedula,
             this.contrasenia = usuario.contrasenia,

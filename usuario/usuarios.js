@@ -9,9 +9,12 @@ const usuarios = new Vue({
     methods: {
 
         actualizarUsuario: function (id) {
-
             location.href = 'perfil_usuario.html?' + id;
         },
+
+        verTiquetesUsuario(id) {
+            location.href = 'tiquetes_usuario.html?' + id;
+        }
 
     },
     computed: {
