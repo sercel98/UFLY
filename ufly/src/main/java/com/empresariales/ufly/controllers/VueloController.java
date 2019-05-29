@@ -1,5 +1,6 @@
 package com.empresariales.ufly.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -41,6 +42,19 @@ public class VueloController
 		return vueloRepository.findAll();
 	}
 	
+	@GetMapping("/listar/{fkestados_vuelo}")
+	public List<Vuelo> listarDisponibles(@PathVariable (value = "fkestados_vuelo") Short fkestados_vuelo)
+	{
+		List<Vuelo> vuelosDisponibles = new ArrayList<Vuelo>();
+		for(Vuelo vueloActual : listarVuelos())
+		{
+			if(vueloActual.getFkestados_vuelo().getId_estado_vuelo() == fkestados_vuelo)
+			{
+				vuelosDisponibles.add(vueloActual);
+			}
+		}
+		return vuelosDisponibles;
+	}
 	
 	@PostMapping("/agregar/{precio_business}/{precio_primera_clase}/{precio_economica}")
 	public Vuelo crearVuelo(@RequestBody Vuelo vuelo, @PathVariable(value = "precio_business") Integer precio_business,

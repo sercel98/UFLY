@@ -43,6 +43,21 @@ public class TiquetesController
 		}
 		return tiquetesVuelo;
 	}
+	
+	@GetMapping("/listar/{fkusuarios}")
+	public List<Tiquetes> listarTiquetesUsuario(@PathVariable (value = "fkusuarios") int fkusuarios)
+	{
+		List<Tiquetes> tiquetesUsuario = new ArrayList<Tiquetes>();
+		for(Tiquetes tiqueteActual: tiquetesrepository.findAll())
+		{
+			if(tiqueteActual.getFkusuarios().getId_usuario() == fkusuarios)
+			{
+				tiquetesUsuario.add(tiqueteActual);
+			}
+		}
+		return tiquetesUsuario;
+	}
+	
 
 	@PostMapping("/agregar")
 	public Tiquetes crearTiquetes(@Valid @RequestBody Tiquetes tiquete) throws Exception
