@@ -50,7 +50,7 @@ public class TiquetesController
 		List<Tiquetes> tiquetesUsuario = new ArrayList<Tiquetes>();
 		for(Tiquetes tiqueteActual: tiquetesrepository.findAll())
 		{
-			if(tiqueteActual.getFkusuarios().getId_usuario() == fkusuarios)
+			if(tiqueteActual.getFkusuarios() != null && tiqueteActual.getFkusuarios().getId_usuario() == fkusuarios)
 			{
 				tiquetesUsuario.add(tiqueteActual);
 			}
