@@ -63,38 +63,38 @@
 
                         </div>
 
-
                         <div class="form-group col-md-12">
-                            <label id="subtitulo">Capacidad</label>
+                            <label id="subtitulo">Precios sillas</label>
                             <div class="form-row mx-4">
                                 <div class="col-md-3 ">
-                                    <label>Sillas clase económica:</label>
-                                    <input type="text" class="form-control" name="numSillasEconomica"
-                                        id="numSillasEconomica" v-model="numSillasEconomica"
-                                        placeholder="Cant. sillas económica" maxlength="4" required>
+                                    <label>Precio silla business:</label>
+                                    <input type="text" class="form-control" name="precioSillaBusiness"
+                                        id="precioSillaBusiness" v-model="precioSillaBusiness"
+                                        placeholder="Precio silla business" required>
                                 </div>
 
                                 <div class="col-md-1">
                                 </div>
 
                                 <div class="col-md-3">
-                                    <label>Sillas clase business:</label>
-                                    <input type="text" class="form-control" name="numSillasBusiness"
-                                        id="numSillasBusiness" v-model="numSillasBusiness"
-                                        placeholder="Can. sillas business" maxlength="4" required>
+                                    <label>Precio silla primera clase:</label>
+                                    <input type="text" class="form-control" name="precioSillaPrimera"
+                                        id="precioSillaPrimera" v-model="precioSillaPrimera"
+                                        placeholder="Precio silla primera clase" required>
                                 </div>
 
                                 <div class="col-md-1">
                                 </div>
 
                                 <div class="col-md-3">
-                                    <label>Sillas primera clase:</label>
-                                    <input type="text" class="form-control" name="numSillasPrimera"
-                                        id="numSillasPrimera" v-model="numSillasPrimera"
-                                        placeholder="Cant. sillas primera" maxlength="4" required>
+                                    <label>Precio silla económica:</label>
+                                    <input type="text" class="form-control" name="precioSillaEconomica"
+                                        id="precioSillaEconomica" v-model="precioSillaEconomica"
+                                        placeholder="Precio silla económica" maxlength="4" required>
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-group col-md-12 my-3">
                             <label id="subtitulo">Detalles del viaje:</label>
 
@@ -139,16 +139,6 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-row mx-3   col-md-3">
-                                <label>Sala de abordaje: </label>
-                                
-                                <select class="custom-select" name="salaAbordaje" id="salaAbordaje"
-                                v-model="salaAbordaje" required>
-                                <option selected>Elegir la sala de abordaje</option>
-                                <option v-for="sala of salas">
-                                    {{ sala.nombre_sala }}
-                                </option>
-                            </select>
                        
                             </div>
                         </div>
@@ -157,7 +147,7 @@
 
                 <div class="d-flex justify-content-center flex-wrap my-2 mx-5" id="registrar_aeropuertos">
                     <div class="botones mx-2 my-2">
-                        <button type="submit" class="btn">Registrar</button>
+                        <button type="submit" @click="procesarFormulario" class="btn">Registrar</button>
                     </div>
                     <div class="botones mx-2 my-2">
                         <button type="button" class="btn" OnClick="location.href='vuelos.html'">Salir</button>
